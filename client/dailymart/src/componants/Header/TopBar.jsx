@@ -7,11 +7,11 @@ import { RiContactsFill } from "react-icons/ri";
 const TopBar = () => {
   return (
     <div>
-      <div className="flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start">
-        <p className="sm:text-md font-normal ">24/7 customer service +880-01612086842</p>
+      <div className="flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0 px-4">
+        <p className=" font-normal  lg:text-md text-sm ">24/7 customer service +880-01612086842</p>
         <ul className="flex space-x-10 items-center  max-sm:grid max-sm:grid-cols-2 max-sm:grid-rows-3 gap-4">
           <li>
-            <Link className="flex items-center gap-2 text-md font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link className="flex items-center gap-2 lg:text-md text-sm  font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <FaHome size={18}></FaHome>
               </span>
@@ -19,7 +19,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2 text-md font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
+            <Link className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
               <span>
                 <MdManageAccounts size={18} />
               </span>
@@ -27,7 +27,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2 text-md font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <IoLogIn size={18} />
               </span>
@@ -35,7 +35,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2 text-md font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <RiContactsFill size={18} />
               </span>

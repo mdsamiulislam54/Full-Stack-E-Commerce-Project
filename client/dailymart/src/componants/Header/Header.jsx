@@ -59,7 +59,7 @@ const Header = () => {
             </motion.div>
           </nav>
           {/* Mobile View */}
-          <div className="  max-sm:block hidden px-4 bg-red-500 ">
+          <div className="  max-sm:block hidden px-4 bg-white pb-2">
             <LogoSearch />
             <div className="flex justify-between items-center">
               <h1 className="sm:text-2xl text-xl font-bold tracking-wider  ">
