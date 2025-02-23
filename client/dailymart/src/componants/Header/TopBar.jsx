@@ -68,10 +68,10 @@ const TopBar = () => {
           onClick={closeModal}
           className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
         >
-          <VscClose size={30}/>
+          <VscClose size={30} className="hover:scale-50 duration-300 transition-all"/>
           
         </button>
-        <h2 className="text-2xl mb-4 text-center font-bold">Register</h2>
+        <h2 onClick={closeModal} className="text-2xl mb-4 text-center font-bold">Register</h2>
         <Registration/>
        
       </Modal>

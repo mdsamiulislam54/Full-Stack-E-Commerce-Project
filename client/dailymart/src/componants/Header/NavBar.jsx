@@ -4,11 +4,22 @@ import { TiShoppingCart } from "react-icons/ti";
 import { BiChevronDown } from "react-icons/bi";
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import Modal from 'react-modal'
+import Login from "../Registration/Login";
+import { VscClose } from "react-icons/vsc";
 
 Link;
 const NavBar = () => {
   const [show, setShow] = useState(false);
   const [showShop, setShowShop] = useState(false);
+  const [isModalOpen, setIsModelShow] = useState(false)
+
+  const openModel =()=>{
+    setIsModelShow(true)
+  }
+  const closeModal = ()=>{
+    setIsModelShow(false)
+  }
 
   const handleShow = () => {
     setShow(!show);
@@ -166,7 +177,7 @@ const NavBar = () => {
         <div>
           <ul className="flex space-x-10 max-sm:flex justify-between items-center sm:mb-0 mb-5">
             <li>
-              <Link className="flex items-center gap-2">
+              <Link onClick={openModel} className="flex items-center gap-2">
                 <span>
                   <FaUserCheck />
                 </span>
@@ -181,6 +192,24 @@ const NavBar = () => {
             </li>
           </ul>
         </div>
+        <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Registration Form"
+        className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto my-20"
+        overlayClassName="fixed inset-0 bg-white opacity-90 flex justify-center items-center z-100" 
+      >
+         <button
+          onClick={closeModal}
+          className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
+        >
+          <VscClose size={30} className="hover:scale-50 duration-300 transition-all"/>
+          
+        </button>
+        <h2 className="text-2xl mb-4 text-center font-bold">Login</h2>
+        <Login/>
+       
+      </Modal>
       </div>
     </div>
   );
