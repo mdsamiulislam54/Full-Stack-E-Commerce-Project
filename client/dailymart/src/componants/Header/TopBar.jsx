@@ -3,8 +3,20 @@ import { FaHome } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { IoLogIn } from "react-icons/io5";
 import { RiContactsFill } from "react-icons/ri";
+import { useState } from "react";
+import Modal from 'react-modal'
+import Registration from "../Registration/Registration";
+import { VscClose } from "react-icons/vsc";
 
 const TopBar = () => {
+  const [isModalOpen, setIsModelShow] = useState(false)
+
+  const openModel =()=>{
+    setIsModelShow(true)
+  }
+  const closeModal = ()=>{
+    setIsModelShow(false)
+  }
   return (
     <div>
       <div className="flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0 px-4">
@@ -27,7 +39,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link onClick={openModel} className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <IoLogIn size={18} />
               </span>
@@ -44,6 +56,25 @@ const TopBar = () => {
           </li>
         </ul>
       </div>
+       {/* React Modal */}
+       <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        contentLabel="Registration Form"
+        className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto my-20"
+        overlayClassName="fixed inset-0 bg-white opacity-90 flex justify-center items-center z-100" 
+      >
+         <button
+          onClick={closeModal}
+          className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
+        >
+          <VscClose size={30}/>
+          
+        </button>
+        <h2 className="text-2xl mb-4 text-center font-bold">Register</h2>
+        <Registration/>
+       
+      </Modal>
     </div>
   );
 };
