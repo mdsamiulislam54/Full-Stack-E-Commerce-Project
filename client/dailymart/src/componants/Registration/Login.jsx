@@ -78,6 +78,7 @@ const Login = () => {
             closeModalHandler();
           }, 2500);
 
+      
           form.reset();
         }
       } catch (error) {
@@ -93,6 +94,7 @@ const Login = () => {
         autoClose: 3000,
       });
     }
+   
   };
 
   return (
