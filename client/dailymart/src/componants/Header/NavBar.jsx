@@ -100,33 +100,8 @@ const NavBar = () => {
     "Frames",
     "Spectacle Cases",
     "Eyewear Accessories",
-    "Sunglasses Cases",
-    "Jewellery Sets",
-    "Earrings",
-    "Rings",
-    "Necklaces",
-    "Pendants",
-    "Bracelets",
-    "Bangles",
-    "Anklets",
-    "Mangalsutras",
-    "Chains",
-    "Toe Rings",
-    "Jewellery Boxes",
-    "Jewellery Accessories",
-    "Brooches",
-    "Cufflinks",
-    "Tiepins",
-    "Pocket Squares",
-    "Handkerchiefs",
-    "Belts",
-    "Socks",
-    "Caps & Hats",
-    "Mufflers",
-    "Scarves",
-    "Gloves",
-    "Phone Cases",
-    "Travel Accessories",
+  
+   
   ];
   return (
     <div className="px-4 sm:px-0">
@@ -147,7 +122,7 @@ const NavBar = () => {
               </span>{" "}
             </Link>
             {show && (
-              <div className="absolute   w-full left-0 p-3 shadow-lg transform translate-y-2 mt-6 py-7 rounded-md bg-primary text-light border-l-3 border-secondary ">
+              <div className="absolute    left-28 p-3 shadow-lg transform translate-y-2 mt-6 py-7 rounded-md bg-white border-l-3 border-primary ">
                 <ul className="grid sm:grid-cols-4 grid-cols-2 gap-4 ">
                   {dropDownMenuItem.map((item, index) => (
                     <li
@@ -183,7 +158,7 @@ const NavBar = () => {
               </span>
             </Link>
             {showShop && (
-              <div className="absolute left-0  w-full mx-auto p-3 shadow-lg transform translate-y-2 mt-6 py-7 rounded-md bg-primary text-light border-l-3 border-secondary ">
+              <div className="absolute left-28   mx-auto p-3 shadow-lg transform translate-y-2 mt-6 py-7 rounded-md bg-white border-l-3 border-primary ">
                 <ul className="grid sm:grid-cols-6 grid-cols-3 gap-4 ">
                   {shopDropDownMenuItem.map((item, index) => (
                     <li

@@ -28,7 +28,7 @@ const Header = () => {
   return (
     <header
       className={` relative ${
-        windowY > 0 ? "bg-white shadow-md" : "bg-light shadow-sm"
+        windowY > 0 ? "bg-white shadow-md" : "bg-light "
       } transition-all duration-300 ease-in-out`}
     >
       <div>

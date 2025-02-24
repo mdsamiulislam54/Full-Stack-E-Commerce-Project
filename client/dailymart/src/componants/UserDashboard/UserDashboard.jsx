@@ -43,7 +43,8 @@ const handleLogout = ()=>{
 
   return (
     <div>
-      <h1>User Data</h1>
+     <div className="sm:max-w-screen-xl mx-auto">
+     <h1>User Data</h1>
       {
         user ? (
           <div>
@@ -56,6 +57,7 @@ const handleLogout = ()=>{
           </div>
         )
       }
+     </div>
     </div>
   )
 }
