@@ -34,7 +34,7 @@ const TopBar = () => {
         </p>
         <ul className="flex space-x-10 items-center  max-sm:grid max-sm:grid-cols-2 max-sm:grid-rows-3 gap-4">
           <li>
-            <Link className="flex items-center gap-2 lg:text-md text-sm  font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link to={'/'} className="flex items-center gap-2 lg:text-md text-sm  font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <FaHome size={18}></FaHome>
               </span>
@@ -42,7 +42,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
+            <Link to={'/userDashboard'} className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
               <span>
                 <MdManageAccounts size={18} />
               </span>

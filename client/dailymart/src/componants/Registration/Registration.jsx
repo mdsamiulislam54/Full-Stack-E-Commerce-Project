@@ -51,6 +51,10 @@ console.log(name,email,password);
             position: "top-right",
             autoClose: 3000,
           });
+          //autu colse register modal
+          setTimeout(()=> {closeModalHandler()},2500)
+          //clear input fild
+          formData.reset();
         } else {
           toast.error("Something went wrong. Please try again.", {
             position: "top-center",
@@ -71,8 +75,7 @@ console.log(name,email,password);
       });
     }
 
-    // Reset form after submission
-    formData.reset();
+ 
   };
 
   return (
