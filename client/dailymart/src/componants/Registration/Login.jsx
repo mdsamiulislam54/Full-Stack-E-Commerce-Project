@@ -3,13 +3,24 @@ import { useRef,  } from "react";
 
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { closeLoginModal } from "../../redux/features/loginSlice";
+import { openRegisterModal } from "../../redux/features/registerSlice";
 
 
 
 
 const Login = () => {
   const clearRef = useRef(null);
+  const dispatch = useDispatch()
 
+  const openModalHandaler = ()=>{
+    dispatch(openRegisterModal())
+    closeModalHandler()
+  }
+  const closeModalHandler = ()=>{
+    dispatch(closeLoginModal())
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,8 +99,8 @@ const Login = () => {
           <div>
             <p className="py-2 text-sm text-center tracking-wide">
               Do Not have an account? Please{" "}
-              <Link
-                
+              <Link 
+                onClick={openModalHandaler}
                 className="font-bold text-primary hover:underline transition-all duration-300 hover:opacity-85 "
               >
                 Registration.

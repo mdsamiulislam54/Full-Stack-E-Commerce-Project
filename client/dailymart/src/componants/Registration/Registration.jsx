@@ -1,10 +1,28 @@
-import { useRef } from "react";
+import {  useRef } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { openLoginModal } from "../../redux/features/loginSlice";
+import { closeRgistermodal } from "../../redux/features/registerSlice";
+
 
 const Registration = () => {
+
+  // const isModalOpenHandelarRgister = useSelector((state)=> state.register.isRegistretionmodalOpen)
+  // const isModalOpenHandelar = useSelector((state)=> state.login.isLoginModalOpen)
+
   const clearForm = useRef(null);
+const dispatch = useDispatch()
+
+const openModalHandaler = ()=>{
+  dispatch(openLoginModal())
+  closeModalHandler()
+}
+const closeModalHandler = ()=>{
+  dispatch(closeRgistermodal())
+}
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,7 +109,7 @@ console.log(name,email,password);
           <div>
             <p className="py-2 text-sm text-center tracking-wide">
               Already have an account? Please{" "}
-              <Link className="font-bold text-primary hover:underline transition-all duration-300 hover:opacity-85">
+              <Link onClick={openModalHandaler} className="font-bold text-primary hover:underline transition-all duration-300 hover:opacity-85">
                 login.
               </Link>
             </p>
