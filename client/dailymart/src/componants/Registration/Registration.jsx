@@ -86,7 +86,7 @@ console.log(name,email,password);
             type="text"
             name="name"
             placeholder="Name"
-            className="w-full p-2 border-b rounded outline-none"
+            className="w-full h-full p-2 border-b rounded outline-none "
             required
           />
           <input

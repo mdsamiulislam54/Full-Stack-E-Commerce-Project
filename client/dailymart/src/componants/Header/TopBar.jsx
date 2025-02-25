@@ -27,8 +27,8 @@ const TopBar = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0 px-4">
+    <div className="bg-assent  ">
+      <div className="flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0 px-4 sm:max-w-screen-xl mx-auto py-3 ">
         <p className=" font-normal  lg:text-md text-sm ">
           24/7 customer service +880-01612086842
         </p>
@@ -75,16 +75,16 @@ const TopBar = () => {
         isOpen={isModalOpenHandelarRgister}
         onRequestClose={closeModalhandelar}
         contentLabel="Registration Form"
-        className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto my-20"
-        overlayClassName="fixed inset-0 bg-white opacity-90 flex justify-center items-center z-100"
+        className="bg-gradient-to-r from-light to-assent  p-6 rounded-lg opacity-100 shadow-lg max-w-md mx-auto my-20"
+        overlayClassName="fixed inset-0 bg-gradient-to-r from-secondary to-primary opacity-95 flex justify-center items-center z-100"
       >
         <button
           onClick={closeModalhandelar}
-          className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
+          className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer  "
         >
           <VscClose
             size={30}
-            className="hover:scale-50 duration-300 transition-all"
+            className="hover:scale-50 duration-300 transition-all animate-pulse"
           />
         </button>
         <h2

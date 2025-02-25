@@ -4,7 +4,7 @@ import Header from "../componants/Header/Header"
 
 const Layout = () => {
   return (
-    <div className=" sticky top-0 z-50 w-full bg-light shadow  transition-all duration-300 ease-in-out">
+    <div className="sticky top-0 z-50" >
         <Header />
         <Outlet />
         
@@ -12,5 +12,6 @@ const Layout = () => {
     </div>
   )
 }
+//className=" sticky top-0 left-0 z-50 w-full  shadow  transition-all duration-700 ease-in-out"
 
 export default Layout

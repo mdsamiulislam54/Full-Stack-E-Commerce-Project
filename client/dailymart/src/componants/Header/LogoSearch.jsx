@@ -3,8 +3,8 @@ import { IoIosSearch } from "react-icons/io";
 
 const LogoSearch = () => {
   return (
-    <div>
-      <div className="sm:flex justify-between items-center py-4">
+    <div className=" bg-assent ">
+      <div className="sm:flex justify-between items-center py-4 sm:max-w-screen-xl mx-auto">
         <div>
           <h1 className="sm:text-2xl text-sm font-bold tracking-wider max-sm:hidden "><span className="text-light bg-primary px-2 rounded-sm font-bold">D</span>aily Mart</h1>
           <p className="text-sm tracking-wider max-sm:hidden ">Buy your daily essentials here</p>

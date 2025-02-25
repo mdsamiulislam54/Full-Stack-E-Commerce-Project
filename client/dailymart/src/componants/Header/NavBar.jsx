@@ -104,8 +104,8 @@ const NavBar = () => {
    
   ];
   return (
-    <div className="px-4 sm:px-0">
-      <div className="flex  sm:justify-between  sm:items-center py-4 max-sm:flex-col-reverse">
+    <div className=" sm:px-0 bg-primary text-light">
+      <div className="flex  sm:justify-between  sm:items-center py-2 max-sm:flex-col-reverse sm:max-w-screen-xl mx-auto">
         <ul className="sm:flex space-x-10 grid grid-cols-3 gap-4 ">
           <li>
             <Link
@@ -198,8 +198,8 @@ const NavBar = () => {
           isOpen={isModalOpenHandelar}
           onRequestClose={closeModalhandelar}
           contentLabel="Registration Form"
-          className="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto my-20"
-          overlayClassName="fixed inset-0 bg-white opacity-90 flex justify-center items-center z-100"
+          className="bg-gradient-to-r from-light to-assent  p-6 rounded-lg opacity-100 p-6 rounded-lg shadow-lg max-w-md mx-auto my-20"
+          overlayClassName="fixed inset-0 bg-gradient-to-r from-secondary to-primary opacity-95  flex justify-center items-center z-100"
         >
           <button
             onClick={closeModalhandelar}
@@ -207,7 +207,7 @@ const NavBar = () => {
           >
             <VscClose
               size={30}
-              className="hover:scale-50 duration-300 transition-all"
+              className="hover:scale-50 duration-300 transition-all animate-pulse"
             />
           </button>
           <h2 className="text-2xl mb-4 text-center font-bold">Login</h2>
