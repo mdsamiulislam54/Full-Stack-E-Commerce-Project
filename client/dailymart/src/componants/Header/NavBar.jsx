@@ -122,7 +122,7 @@ const NavBar = () => {
               </span>{" "}
             </Link>
             {show && (
-              <div className="absolute    left-28 p-3 shadow-lg transform translate-y-2 mt-6 py-7 rounded-md bg-white border-l-3 border-primary ">
+              <div className="absolute    left-28 p-3 shadow-lg transform -translate-y-4  mt-6 py-7 rounded-md bg-white text-dark border-l-3 border-primary ">
                 <ul className="grid sm:grid-cols-4 grid-cols-2 gap-4 ">
                   {dropDownMenuItem.map((item, index) => (
                     <li
@@ -158,7 +158,7 @@ const NavBar = () => {
               </span>
             </Link>
             {showShop && (
-              <div className="absolute left-28   mx-auto p-3 shadow-lg transform translate-y-2 mt-6 py-7 rounded-md bg-white border-l-3 border-primary ">
+              <div className="absolute left-28   mx-auto p-3 shadow-lg transform -translate-y-4 mt-6 py-7 rounded-md bg-white  text-dark border-l-3 border-primary ">
                 <ul className="grid sm:grid-cols-6 grid-cols-3 gap-4 ">
                   {shopDropDownMenuItem.map((item, index) => (
                     <li
