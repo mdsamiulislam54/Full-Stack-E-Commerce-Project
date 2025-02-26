@@ -27,14 +27,14 @@ const TopBar = () => {
   };
 
   return (
-    <div className="bg-assent  ">
-      <div className="flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0 px-4 sm:max-w-screen-xl mx-auto py-3 ">
-        <p className=" font-normal  lg:text-md text-sm ">
+    <div className="sm:bg-assent  ">
+      <div className="sm:flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0  sm:max-w-screen-xl mx-auto py-3 ">
+        <p className=" font-normal  lg:text-md text-sm sm:block hidden">
           24/7 customer service +880-01612086842
         </p>
-        <ul className="flex space-x-10 items-center  max-sm:grid max-sm:grid-cols-2 max-sm:grid-rows-3 gap-4">
+        <ul className="flex sm:space-x-10 items-center gap-4">
           <li>
-            <Link to={'/'} className="flex items-center gap-2 lg:text-md text-sm  font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link to={'/'} className="flex items-center sm:gap-2 gap-1 sm:text-md text-[14px] font-normal sm:tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <FaHome size={18}></FaHome>
               </span>
@@ -42,17 +42,17 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link to={'/userDashboard'} className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
+            <Link to={'/userDashboard'} className="flex items-center sm:gap-2 gap-1 sm:text-md text-[14px] font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
               <span>
                 <MdManageAccounts size={18} />
               </span>
-              MY ACCOUNT
+              ACCOUNT
             </Link>
           </li>
           <li>
             <Link
               onClick={openModalHandelar}
-              className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out"
+              className="flex items-center sm:gap-2 gap-1 sm:text-md text-[14px] font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out"
             >
               <span>
                 <IoLogIn size={18} />
@@ -61,7 +61,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2 lg:text-md text-sm font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link className="flex items-center sm:gap-2 gap-1 sm:text-md gap-2 lg:text-md text-[14px] font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <RiContactsFill size={18} />
               </span>

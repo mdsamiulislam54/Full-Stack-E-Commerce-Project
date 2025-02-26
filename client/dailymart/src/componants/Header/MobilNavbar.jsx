@@ -1,5 +1,5 @@
-import NavBar from "./NavBar"
-import TopBar from "./TopBar"
+
+
 
 
 const MobilNavbar = () => {
@@ -7,8 +7,8 @@ const MobilNavbar = () => {
     <div>
         <div className="">
             
-            <TopBar/>
-            <NavBar/>
+          
+            
         </div>
     </div>
   )

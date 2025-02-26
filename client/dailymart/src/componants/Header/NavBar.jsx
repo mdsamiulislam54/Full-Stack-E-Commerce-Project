@@ -104,15 +104,15 @@ const NavBar = () => {
    
   ];
   return (
-    <div className=" sm:px-0 bg-primary text-light">
-      <div className="flex  sm:justify-between  sm:items-center py-2 max-sm:flex-col-reverse sm:max-w-screen-xl mx-auto">
-        <ul className="sm:flex space-x-10 grid grid-cols-3 gap-4 ">
+    <div className="  bg-primary text-light sm:px-0 px-4">
+      <div className="flex  justify-between  items-center py-2 sm:max-w-screen-xl mx-auto">
+        <ul className="flex sm:space-x-10  sm:gap-4 gap-2 ">
           <li>
             <Link
               onClick={handleShow}
-              className="flex items-center gap-2 lg:text-lg text-sm font-medium"
+              className="flex items-center gap-2 lg:text-lg text-[14px] font-medium"
             >
-              All Category{" "}
+            Category
               <span>
                 <BiChevronDown
                   className={`${
@@ -122,7 +122,7 @@ const NavBar = () => {
               </span>{" "}
             </Link>
             {show && (
-              <div className="absolute    left-28 p-3 shadow-lg transform -translate-y-4  mt-6 py-7 rounded-md bg-white text-dark border-l-3 border-primary ">
+              <div className="absolute   left-1 sm:left-28 p-3 shadow-lg transform -translate-y-4  mt-6 py-7 rounded-md bg-white text-dark border-l-3 border-primary ">
                 <ul className="grid sm:grid-cols-4 grid-cols-2 gap-4 ">
                   {dropDownMenuItem.map((item, index) => (
                     <li
@@ -137,17 +137,17 @@ const NavBar = () => {
             )}
           </li>
           <li>
-            <Link className="flex items-center lg:text-lg text-sm  gap-2">
-              All Products
+            <Link className="flex items-center lg:text-lg text-[14px]  gap-2">
+              Products
             </Link>
           </li>
           <li>
-            <Link className="flex items-center lg:text-lg text-sm  gap-2">
-              Offer Today
+            <Link className="flex items-center lg:text-lg text-[14px]  gap-2">
+              Offer 
             </Link>
           </li>
           <li onClick={handleShop} className="">
-            <Link className="flex items-center gap-2 lg:text-lg text-sm ">
+            <Link className="flex items-center gap-2 lg:text-lg text-[14px]">
               Shop
               <span>
                 <BiChevronDown
@@ -158,7 +158,7 @@ const NavBar = () => {
               </span>
             </Link>
             {showShop && (
-              <div className="absolute left-28   mx-auto p-3 shadow-lg transform -translate-y-4 mt-6 py-7 rounded-md bg-white  text-dark border-l-3 border-primary ">
+              <div className="absolute left-0 sm:left-28   mx-auto p-3 shadow-lg transform -translate-y-4 mt-6 py-7 rounded-md bg-white  text-dark border-l-3 border-primary ">
                 <ul className="grid sm:grid-cols-6 grid-cols-3 gap-4 ">
                   {shopDropDownMenuItem.map((item, index) => (
                     <li
@@ -174,11 +174,11 @@ const NavBar = () => {
           </li>
         </ul>
         <div>
-          <ul className="flex space-x-10 max-sm:flex justify-between items-center sm:mb-0 mb-5">
+          <ul className="flex sm:space-x-10 space-x-4  justify-between items-center sm:mb-0 sm:mb-5">
             <li>
               <Link
                 onClick={openModalHandelar}
-                className="flex items-center gap-2"
+                className="flex items-center text-md max-sm:text-[14px] gap-2"
               >
                 <span>
                   <FaUserCheck />
@@ -187,9 +187,9 @@ const NavBar = () => {
               </Link>
             </li>
             <li>
-              <Link className="flex items-center gap-2">
-                <TiShoppingCart />
-                <span>0</span>
+              <Link className="flex items-center text-md max-sm:text-[14px] gap-2 relative ">
+                <TiShoppingCart size={25}  className="relative"/>
+                <span className=" absolute -right-2 -top-1 font-bold text-secondary">0</span>
               </Link>
             </li>
           </ul>
