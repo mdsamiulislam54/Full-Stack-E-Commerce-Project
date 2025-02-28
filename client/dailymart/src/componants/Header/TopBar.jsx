@@ -29,12 +29,12 @@ const TopBar = () => {
   return (
     <div className="sm:bg-assent  ">
       <div className="sm:flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0  sm:max-w-screen-xl mx-auto py-3 ">
-        <p className=" font-normal  lg:text-md text-sm sm:block hidden">
-          24/7 customer service +880-01612086842
+        <p className=" font-normal  text-lg sm:block hidden">
+          24/7 customer service <strong>+880-01612086842</strong>
         </p>
-        <ul className="flex sm:space-x-10 items-center gap-4">
+        <ul className="sm:flex sm:space-x-10 items-center gap-4">
           <li>
-            <Link to={'/'} className="flex items-center sm:gap-2 gap-1 sm:text-md text-[14px] font-normal sm:tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link to={'/'} className="flex items-center sm:gap-2 gap-1 sm:text-lg  font-normal sm:tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <FaHome size={18}></FaHome>
               </span>
@@ -42,7 +42,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link to={'/userDashboard'} className="flex items-center sm:gap-2 gap-1 sm:text-md text-[14px] font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
+            <Link to={'/userDashboard'} className="flex items-center sm:gap-2 gap-1 sm:text-lg font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
               <span>
                 <MdManageAccounts size={18} />
               </span>
@@ -52,7 +52,7 @@ const TopBar = () => {
           <li>
             <Link
               onClick={openModalHandelar}
-              className="flex items-center sm:gap-2 gap-1 sm:text-md text-[14px] font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out"
+              className="flex items-center sm:gap-2 gap-1 sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out"
             >
               <span>
                 <IoLogIn size={18} />
@@ -61,7 +61,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center sm:gap-2 gap-1 sm:text-md gap-2 lg:text-md text-[14px] font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link className="flex items-center sm:gap-2 gap-1 sm:text-md sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <RiContactsFill size={18} />
               </span>
@@ -75,12 +75,12 @@ const TopBar = () => {
         isOpen={isModalOpenHandelarRgister}
         onRequestClose={closeModalhandelar}
         contentLabel="Registration Form"
-        className="bg-gradient-to-r from-light to-assent  p-6 rounded-lg opacity-100 shadow-lg max-w-md mx-auto my-20"
-        overlayClassName="fixed inset-0 bg-gradient-to-r from-secondary to-primary opacity-95 flex justify-center items-center z-100"
+        className="bg-gray-600  shadow-2xl p-6 rounded-lg opacity-100  max-w-md mx-auto my-20"
+        overlayClassName="fixed inset-0 bg-gray-800 opacity-95 flex justify-center items-center z-100"
       >
         <button
           onClick={closeModalhandelar}
-          className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer  "
+          className=" bg-secondary p-1 text-white rounded-full hover:opacity-85 cursor-pointer  "
         >
           <VscClose
             size={30}
@@ -89,7 +89,7 @@ const TopBar = () => {
         </button>
         <h2
           onClick={closeModalhandelar}
-          className="text-2xl mb-4 text-center font-bold"
+          className="text-2xl mb-4 text-center font-bold text-light"
         >
           Register
         </h2>

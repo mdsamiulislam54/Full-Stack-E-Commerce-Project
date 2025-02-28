@@ -33,7 +33,8 @@ const BannerSection = () => {
 
 
   return (
-    <div className="grid grid-cols-6 gap-2  ">
+   <div className="bg-assent">
+     <div className="grid grid-cols-6 gap-2 sm:max-w-screen-xl mx-auto ">
       <div className="col-span-5 ">
         <Swiper
           modules={[Navigation, Pagination, A11y,Autoplay]}
@@ -57,7 +58,7 @@ const BannerSection = () => {
             bannerImages.map((image, index) => {
               return (
                 <SwiperSlide key={index}>
-                  <img src={image} alt={image} />
+                  <img src={image} alt={image} className="h-full" />
                 </SwiperSlide>
               );
             })
@@ -87,11 +88,13 @@ const BannerSection = () => {
           alt=""
         />
         <img
+          className="h-[173px]"
           src="https://dropshop.com.bd/wp-content/uploads/2024/12/Neckbands-Web-Banner-Design_BDSHOP.jpg"
           alt=""
         />
       </div>
     </div>
+   </div>
   );
 };
 

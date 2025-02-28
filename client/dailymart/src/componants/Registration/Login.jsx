@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { closeLoginModal } from "../../redux/features/loginSlice";
 import { openRegisterModal } from "../../redux/features/registerSlice";
 import { setUser } from "../../redux/features/userSlice";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Login = () => {
+  const [showPassword, setPassword] = useState(false)
   const clearRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -97,6 +98,10 @@ const Login = () => {
    
   };
 
+  const showPasswordButton = () => {
+    setPassword(!showPassword);
+  };
+
   return (
     <div>
       <div className="">
@@ -105,28 +110,38 @@ const Login = () => {
             type="email"
             name="email"
             placeholder="Email"
-            className="w-full p-2 border-b rounded outline-none"
+            className="w-full p-2 border-b rounded outline-none placeholder:text-light text-light"
             required
           />
           <input
-            type="password"
+            type={`${showPassword ? "text" :'password'}`}
             name="password"
             placeholder="Password"
-            className="w-full p-2 border-b rounded outline-none"
+            className="w-full p-2 border-b rounded outline-none placeholder:text-light text-light"
             required
           />
+          <div className="flex items-center justify-between gap-1">
+           <div className="flex items-center justify-between gap-1"> 
+           <input type="checkbox" name="" id="chekbox" />
+           <label htmlFor="chekbox" className="text-sm text-light">Remember Me</label>
+           </div>
+           <div className="flex items-center justify-between gap-1 " >
+           <input type="checkbox" name="" id="chekbox2" />
+           <label htmlFor="chekbox2" className="text-sm text-light" onClick={showPasswordButton} >Show password</label>
+           </div>
+          </div>
           <button
             type="submit"
-            className="w-full bg-primary text-white p-2 rounded hover:opacity-85"
+            className="w-full bg-assent text-dark text-xl font-medium p-2 rounded hover:opacity-85"
           >
             Login
           </button>
           <div>
-            <p className="py-2 text-sm text-center tracking-wide">
+            <p className="py-2 text-sm text-center tracking-wide text-gray-200">
               Do Not have an account? Please{" "}
               <Link
                 onClick={openModalHandaler}
-                className="font-bold text-primary hover:underline transition-all duration-300 hover:opacity-85 "
+                className="font-bold text-secondary hover:underline transition-all duration-300 hover:opacity-85 "
               >
                 Registration.
               </Link>

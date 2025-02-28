@@ -1,4 +1,4 @@
-import {  useRef } from "react";
+import {  useRef,useState } from "react";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -11,7 +11,7 @@ const Registration = () => {
 
   // const isModalOpenHandelarRgister = useSelector((state)=> state.register.isRegistretionmodalOpen)
   // const isModalOpenHandelar = useSelector((state)=> state.login.isLoginModalOpen)
-
+ const [showPassword, setPassword] = useState(false)
   const clearForm = useRef(null);
 const dispatch = useDispatch()
 
@@ -77,6 +77,9 @@ console.log(name,email,password);
 
  
   };
+  const showPasswordButton = () => {
+    setPassword(!showPassword);
+  };
 
   return (
     <div>
@@ -86,33 +89,43 @@ console.log(name,email,password);
             type="text"
             name="name"
             placeholder="Name"
-            className="w-full h-full p-2 border-b rounded outline-none "
+            className="w-full h-full p-2 border-b rounded outline-none text-light placeholder:text-light "
             required
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
-            className="w-full p-2 border-b rounded outline-none"
+            className="w-full p-2 border-b rounded outline-none text-light placeholder:text-light"
             required
           />
           <input
-            type="password"
+            type={`${showPassword ? "text" :'password'}`}
             name="password"
             placeholder="Password"
-            className="w-full p-2 border-b rounded outline-none"
+            className="w-full p-2 border-b rounded outline-none text-light placeholder:text-light"
             required
           />
+          <div className="flex justify-between">
+           <div className="flex justify-center items-center gap-1" >
+           <input type="checkbox" name="" id="chexkbox" />
+           <label htmlFor="chexkbox" className="text-sm text-light " onClick={showPasswordButton}>Show Password</label>
+           </div>
+           <div className="flex justify-center items-center gap-1">
+           <input type="checkbox" name="" id="chexkbox2" />
+           <label htmlFor="chexkbox2" className="text-sm text-light ">I agree to the terms</label>
+           </div>
+          </div>
           <button
             type="submit"
-            className="w-full bg-primary text-white p-2 rounded hover:opacity-85 cursor-pointer"
+            className="w-full bg-light text-dark text-xl font-medium p-2 rounded hover:opacity-85 cursor-pointer"
           >
-            Register
+            Sign Up
           </button>
           <div>
-            <p className="py-2 text-sm text-center tracking-wide">
-              Already have an account? Please{" "}
-              <Link onClick={openModalHandaler} className="font-bold text-primary hover:underline transition-all duration-300 hover:opacity-85">
+            <p className="py-2 text-sm text-center tracking-wide flex justify-center gap-1">
+              <p className="text-gray-200">Already have an account? </p>
+              <Link onClick={openModalHandaler} className="font-medium text-secondary hover:underline transition-all duration-300 hover:opacity-85">
                 login.
               </Link>
             </p>

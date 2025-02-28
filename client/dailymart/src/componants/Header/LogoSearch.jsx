@@ -1,21 +1,20 @@
 import { IoIosSearch } from "react-icons/io";
-import Logo from "../../assets/cargo-truck.png";
-import { Link } from "react-router-dom";
+import BandLogo from './BandLogo'
 
 const LogoSearch = () => {
   return (
     <div className=" sm:bg-assent ">
       <div className="sm:flex justify-between items-center sm:py-4 py-1 sm:max-w-screen-xl mx-auto">
-        <div>
-          <div className="flex gap-3 items-center">
+        <div className="max-sm:hidden">
+          {/* <div className="flex gap-3 items-center">
             <Link className="max-sm:hidden"><img src={Logo} alt="" /></Link>
             <h1 className="sm:text-3xl text-sm font-extrabold tracking-wider max-sm:hidden flex items-center text-primary  ">
               D<span className="bg-gradient-to-t from-primary to-secondary text-transparent bg-clip-text">A</span>IL<span className="bg-gradient-to-t from-primary to-secondary text-transparent bg-clip-text">Y</span>M<span className="bg-gradient-to-t from-primary to-secondary text-transparent bg-clip-text">A</span>RT
             </h1>
-          </div>
-          <p className="text-sm tracking-wider max-sm:hidden ">
-            Buy your daily essentials here
-          </p>
+          </div> */}
+          
+            <BandLogo/>
+         
         </div>
         <div className="sm:w-4/12 w-full flex relative  ">
           <input

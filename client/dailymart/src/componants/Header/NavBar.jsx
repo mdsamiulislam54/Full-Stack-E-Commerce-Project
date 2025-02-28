@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaUserCheck } from "react-icons/fa6";
-import { TiShoppingCart } from "react-icons/ti";
+
 import { BiChevronDown } from "react-icons/bi";
 import { useState } from "react";
 import PropTypes from "prop-types";
@@ -9,6 +9,7 @@ import Login from "../Registration/Login";
 import { VscClose } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal,closeLoginModal } from "../../redux/features/loginSlice";
+import ShopCart from "../ShopCart/ShopCart";
 
 
 const NavBar = () => {
@@ -104,13 +105,13 @@ const NavBar = () => {
    
   ];
   return (
-    <div className="  bg-primary text-light sm:px-0 px-4">
+    <div className="  sm:bg-primary sm:text-light sm:px-0 ">
       <div className="flex  justify-between  items-center py-2 sm:max-w-screen-xl mx-auto">
-        <ul className="flex sm:space-x-10  sm:gap-4 gap-2 ">
+        <ul className="flex space-x-10   max-sm:flex-col max-sm:gap-2  ">
           <li>
             <Link
               onClick={handleShow}
-              className="flex items-center gap-2 lg:text-lg text-[14px] font-medium"
+              className="flex items-center gap-2 text-lg  "
             >
             Category
               <span>
@@ -136,19 +137,9 @@ const NavBar = () => {
               </div>
             )}
           </li>
-          <li>
-            <Link className="flex items-center lg:text-lg text-[14px]  gap-2">
-              Products
-            </Link>
-          </li>
-          <li>
-            <Link className="flex items-center lg:text-lg text-[14px]  gap-2">
-              Offer 
-            </Link>
-          </li>
           <li onClick={handleShop} className="">
-            <Link className="flex items-center gap-2 lg:text-lg text-[14px]">
-              Shop
+            <Link className="flex items-center gap-2 text-lg ">
+              All products
               <span>
                 <BiChevronDown
                   className={`${
@@ -172,13 +163,39 @@ const NavBar = () => {
               </div>
             )}
           </li>
+          <li>
+            <Link className="flex items-center text-lg   gap-2">
+              Blog
+            </Link>
+          </li>
+          <li>
+            <Link className="flex items-centertext-lg   gap-2">
+              Offer 
+            </Link>
+          </li>
+          <li>
+            <Link className="flex items-center lg:text-lg    gap-2">
+              New arrivals 
+            </Link>
+          </li>
+          <li>
+            <Link className="flex items-center text-lg    gap-2">
+              Todays deal
+            </Link>
+          </li>
+          <li>
+            <Link className="flex items-center text-lg    gap-2">
+              Gift cards
+            </Link>
+          </li>
+        
         </ul>
         <div>
-          <ul className="flex sm:space-x-10 space-x-4  justify-between items-center sm:mb-0 sm:mb-5">
+          <ul className="flex sm:space-x-10 space-x-4  justify-between items-center sm:mb-0 mb-5">
             <li>
               <Link
                 onClick={openModalHandelar}
-                className="flex items-center text-md max-sm:text-[14px] gap-2"
+                className="flex items-center text-lg  gap-2"
               >
                 <span>
                   <FaUserCheck />
@@ -186,31 +203,26 @@ const NavBar = () => {
                 Login
               </Link>
             </li>
-            <li>
-              <Link className="flex items-center text-md max-sm:text-[14px] gap-2 relative ">
-                <TiShoppingCart size={25}  className="relative"/>
-                <span className=" absolute -right-2 -top-1 font-bold text-secondary">0</span>
-              </Link>
-            </li>
+           
           </ul>
         </div>
         <Modal
           isOpen={isModalOpenHandelar}
           onRequestClose={closeModalhandelar}
           contentLabel="Registration Form"
-          className="bg-gradient-to-r from-light to-assent  p-6 rounded-lg opacity-100 p-6 rounded-lg shadow-lg max-w-md mx-auto my-20"
-          overlayClassName="fixed inset-0 bg-gradient-to-r from-secondary to-primary opacity-95  flex justify-center items-center z-100"
+          className="bg-gray-600  shadow-2xl p-6 rounded-lg opacity-100   max-w-md mx-auto my-20"
+          overlayClassName="fixed inset-0 bg-gray-800 opacity-95  flex justify-center items-center z-100"
         >
           <button
             onClick={closeModalhandelar}
-            className=" bg-primary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
+            className=" bg-secondary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
           >
             <VscClose
               size={30}
               className="hover:scale-50 duration-300 transition-all animate-pulse"
             />
           </button>
-          <h2 className="text-2xl mb-4 text-center font-bold">Login</h2>
+          <h2 className="text-2xl mb-4 text-center text-light font-bold">Login</h2>
           <Login />
         </Modal>
       </div>
