@@ -1,0 +1,84 @@
+[
+    {
+      "cid": "1",
+      "category": "Men's Fashion",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/d88492d9aa2ae914eecd5905692e84ea.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "2",
+      "category": "Women's Fashion",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/dac3c98288eb60dcd747ca30a148b1ba.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "3",
+      "category": "Kid's Fashion",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/0dba5de6a88f046be4f9967d557bb646.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "4",
+      "category": "footwear for men",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/4ef6c4620f1e184fe176689cb1d85bf9.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "5",
+      "category": "footwear for women",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/d88492d9aa2ae914eecd5905692e84ea.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "6",
+      "category": "Watches",
+      "images": "https://img.drz.lazcdn.com/g/kf/S948e68df428d41b2bc3039da525e32731.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "7",
+      "category": "Jewellery",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/6464219ebb93ca7598eea5d00319f576.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "8",
+      "category": "Bags & Luggage",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/992c4fcfd50271cbb8cd2a58bea80ea8.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "9",
+      "category": "Sunglasses & Frames",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/b8d9248cbfbf03edc8c7df505b901876.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "10",
+      "category": "Beauty & Grooming",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/67a17880535d197e6799d14c9da48471.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "11",
+      "category": "Accessories",
+      "images": "https://img.drz.lazcdn.com/g/kf/Sf492e36077814042840f506489ad94f3R.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "12",
+      "category": "Sportswear",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/07ce3e6979c80b1e8108aceed4f75c77.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "13",
+      "category": "Winterwear",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/388fb519ad5bf9fb60e7c906ba0ac029.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "14",
+      "category": "Eyewear",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/1b48a9e8d757e8313fef0685ed28cee2.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "15",
+      "category": "Food",
+      "images": "https://img.drz.lazcdn.com/g/kf/S1473919f24bc43ca99ce0caedc004642i.jpg_400x400q75.avif"
+    },
+    {
+      "cid": "16",
+      "category": "headphones for pc",
+      "images": "https://img.drz.lazcdn.com/g/kf/S4a620f958e604407abe3a12885d9ff794.jpg_400x400q75.avif"
+    }
+   
+  ]
+  

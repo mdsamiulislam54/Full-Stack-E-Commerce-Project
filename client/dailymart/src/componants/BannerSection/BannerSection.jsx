@@ -33,9 +33,9 @@ const BannerSection = () => {
 
 
   return (
-   <div className="bg-assent">
+   <div className="">
      <div className="grid grid-cols-6 gap-2 sm:max-w-screen-xl mx-auto ">
-      <div className="col-span-5 ">
+      <div className="sm:col-span-5 col-span-6">
         <Swiper
           modules={[Navigation, Pagination, A11y,Autoplay]}
           spaceBetween={50}
@@ -78,7 +78,7 @@ const BannerSection = () => {
           </div>
         </Swiper>
       </div>
-      <div className="col-span-1 flex flex-col gap-1">
+      <div className="col-span-1 flex flex-col gap-10 max-sm:hidden">
         <img
           src="https://images.othoba.com/images/thumbs/0727422_tv%20right%20side%20banner%20web.jpeg"
           alt=""
@@ -88,10 +88,10 @@ const BannerSection = () => {
           alt=""
         />
         <img
-          className="h-[173px]"
-          src="https://dropshop.com.bd/wp-content/uploads/2024/12/Neckbands-Web-Banner-Design_BDSHOP.jpg"
+         src="https://images.othoba.com/images/thumbs/0727422_tv%20right%20side%20banner%20web.jpeg"
           alt=""
         />
+  
       </div>
     </div>
    </div>

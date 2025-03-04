@@ -1,22 +1,18 @@
-import BannerSection from "../BannerSection/BannerSection"
-import NewArrivals from "../NewArrivals/NewArrivals"
-
-
-
+import BannerSection from "../BannerSection/BannerSection";
+import CategoryGallary from "../Catagory/CategoryGallary.jsx";
+import Products from "../Products/Products";
+import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
   return (
     <>
-    <BannerSection/>
-   
-    <div className="sm:max-w-screen-xl  mx-auto">
-        
-        <NewArrivals/>
-        
-     
-    </div>
+      <BannerSection />
+      <WhyChooseUs />
+      <CategoryGallary/>
+      <Products/>
+      
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

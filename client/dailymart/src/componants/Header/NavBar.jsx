@@ -9,7 +9,7 @@ import Login from "../Registration/Login";
 import { VscClose } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { openLoginModal,closeLoginModal } from "../../redux/features/loginSlice";
-import ShopCart from "../ShopCart/ShopCart";
+
 
 
 const NavBar = () => {
@@ -60,47 +60,12 @@ const NavBar = () => {
     "Beauty & Grooming",
     "Accessories",
     "Sportswear",
-    "Innerwear & Sleepwear",
+    
     "Winterwear",
     "Eyewear",
-    "Maternity Wear",
-    "Plus Size",
-    "Premium Brands",
-    "Handbags",
-    "Wallets",
-    "Luggage & Trolleys",
-    "Travel Accessories",
-    "Backpacks",
-    "Messenger Bags",
-    "School Bags",
-    "Laptop Bags",
-    "Duffle Bags",
-    "Trekking Bags",
-    "Rucksacks",
-    "Travel Bags",
-    "Sports Shoes",
-    "Casual Shoes",
-    "Formal Shoes",
-    "Sneakers",
-    "Sandals & Floaters",
-    "Flip Flops",
-    "Loafers",
-    "Boots",
-    "Running Shoes",
-    "Training & Gym Shoes",
-    "Football Shoes",
-    "Cricket Shoes",
-    "Badminton Shoes",
-    "Tennis Shoes",
-    "Basketball Shoes",
-    "Slippers & Flip Flops",
-    "Shoe Care & Accessories",
-    "Sunglasses",
-    "Eyeglasses",
-    "Contact Lenses",
-    "Frames",
-    "Spectacle Cases",
-    "Eyewear Accessories",
+    "Food",
+    "headphones for pc",
+
   
    
   ];

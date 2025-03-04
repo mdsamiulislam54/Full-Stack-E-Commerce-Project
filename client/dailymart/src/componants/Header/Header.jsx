@@ -15,7 +15,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Throttle বা Debounce ব্যবহার করা ভাল
+      
       setWindowY(window.scrollY);
     };
     window.addEventListener("scroll", handleScroll);
@@ -35,7 +35,7 @@ const Header = () => {
           {/* TopBar - Hide on Scroll */}
           <div
             className={`transition-transform duration-300 ease-in-out ${
-              windowY > 50
+              windowY > 0
                 ? "absolute h-0 overflow-hidden -translate-y-full z-30  "
                 : "relative translate-y-0 z-30"
             }`}
