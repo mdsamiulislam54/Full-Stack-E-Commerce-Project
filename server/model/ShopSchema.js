@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const shopSchema = new mongoose.Schema({
-    cid : {type : String, required: true, unique: true},
+    cid : {type : String, required: true},
     category : {type : String, required: true},
     images : {type : String ,required: true }
 });

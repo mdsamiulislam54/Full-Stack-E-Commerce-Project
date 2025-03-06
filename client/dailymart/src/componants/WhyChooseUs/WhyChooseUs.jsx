@@ -6,10 +6,10 @@ const WhyChooseUs = () => {
   return (
     <div>
       <div className="sm:max-w-screen-xl mx-auto   my-4 px-4 sm:px-0 ">
-        <div className="grid sm:grid-cols-4 grid-cols-2 gap-2">
-          <div className="flex justify-center items-center gap-2 bg-assent py-5 rounded-md ">
-            <span className="border-r-2 border-light px-3">
-              {" "}
+        <div className="grid sm:grid-cols-4 grid-cols-1 lg-grid-col-2 gap-2">
+          <div className="sm:flex justify-center items-center gap-2 bg-assent py-5 rounded-md text-center sm:text-start">
+            <span className="sm:border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4 ">
+            
               <FaShippingFast size={40} className="text-secondary" />
             </span>
             <span>
@@ -20,11 +20,11 @@ const WhyChooseUs = () => {
                 When you spend $100 or more{" "}
               </p>
             </span>
-          </div>
-          <div className="flex justify-center items-center gap-2 bg-assent rounded-md py-5 px-1">
-            <span className="border-r-2 border-light px-3">
-              {" "}
-              <BiSupport size={50} className="text-secondary"/>
+            </div>
+          <div className="sm:flex justify-center items-center gap-2 bg-assent rounded-md py-5 px-1 text-center sm:text-start">
+            <span className="border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4">
+            
+              <BiSupport size={50} className="text-secondary "/>
             </span>
             <span>
               <p className="sm:text-lg font-medium tracking-wide">We are available 24/7</p>
@@ -33,8 +33,8 @@ const WhyChooseUs = () => {
               </p>
             </span>
           </div>
-          <div className="flex justify-center items-center gap-2 bg-assent rounded-md py-5">
-            <span className="border-r-2 border-light px-3">
+          <div className="sm:flex justify-center items-center gap-2 bg-assent rounded-md py-5 text-center sm:text-start">
+            <span className="border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4">
               {" "}
               <MdAssignmentReturn size={50} className="text-secondary" />
             </span>
@@ -45,8 +45,8 @@ const WhyChooseUs = () => {
               </p>
             </span>
           </div>
-          <div className="flex justify-center items-center gap-2 bg-assent rounded-md py-5">
-            <span className="border-r-2 border-light px-3">
+          <div className="sm:flex justify-center items-center gap-2 bg-assent rounded-md py-5 text-center sm:text-start">
+            <span className="border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4">
               {" "}
               <MdPayment size={50} className="text-secondary" />
             </span>
@@ -60,6 +60,7 @@ const WhyChooseUs = () => {
         </div>
       </div>
     </div>
+  
   );
 };
 

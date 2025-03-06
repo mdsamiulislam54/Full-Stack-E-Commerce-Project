@@ -30,7 +30,7 @@ const Products = () => {
     <div>
       <div className="max-w-screen-xl mx-auto">
         <h1 className="text-2xl text-center mb-8">Products</h1>
-        <div className="grid grid-cols-4 gap-3 ">
+        <div className="grid grid-cols-2 gap-3 ">
           {products1.map((product, index) => {
             return (
               <div key={index} className="bg-light relative border p-2 rounded-2xl">

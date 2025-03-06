@@ -89,9 +89,19 @@ router.get("/products/data", async (req, res) => {
 
 router.post("/shop", errorHandler, async (req, res) => {
   try {
-    const data = JSON.parse(fs.readFileSync("category.json"), "utf8");
-  
-    await ShopSchemaModel.insertMany(data);
+    const data = JSON.parse( fs.readFileSync("category.json"), "utf8");
+    const uniqueCategories = [];
+    const seenCids = new Set();
+    data.forEach(element => {
+      if (!seenCids.has(element.cid)) {
+        seenCids.add(element.cid);
+        uniqueCategories.push(element);
+      } else {
+        console.log(`Duplicate category found: ${element.cid}`);
+      }
+    });
+     // Insert unique categories into the MongoDB collection
+     await ShopSchemaModel.insertMany(uniqueCategories);
 
     res.status(201).json({ message: "Shop categories inserted successfully" });
   } catch (err) {
@@ -109,5 +119,20 @@ router.get("/shop/data", async (req, res) => {
     res.status(500).json({ message: "Server error", err: err.message });
   }
 });
+router.delete("/shop", errorHandler, async (req, res) => {
+  try {
+    // Delete all shop data
+    const result = await ShopSchemaModel.deleteMany({});
+
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: "No shops found to delete!" });
+    }
+
+    res.status(200).json({ message: "All shops deleted successfully!" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error", err: err.message });
+  }
+});
+
 
 export default router;

@@ -34,7 +34,7 @@ const TopBar = () => {
         </p>
         <ul className="sm:flex sm:space-x-10 items-center gap-4">
           <li>
-            <Link to={'/'} className="flex items-center sm:gap-2 gap-1 sm:text-lg  font-normal sm:tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link to={'/'} className="flex items-center gap-2 mb-1 sm:mb-0  sm:text-lg  font-normal sm:tracking-wider hover:text-secondary transition-all duration-500 ease-in-out ">
               <span>
                 <FaHome size={18}></FaHome>
               </span>
@@ -42,7 +42,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link to={'/userDashboard'} className="flex items-center sm:gap-2 gap-1 sm:text-lg font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
+            <Link to={'/userDashboard'} className="flex items-center gap-2 mb-1 sm:mb-0   sm:text-lg font-normal tracking-wider hover:text-secondary  transition-all duration-500 ease-in-out">
               <span>
                 <MdManageAccounts size={18} />
               </span>
@@ -52,7 +52,7 @@ const TopBar = () => {
           <li>
             <Link
               onClick={openModalHandelar}
-              className="flex items-center sm:gap-2 gap-1 sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out"
+              className="flex items-center gap-2 mb-1 sm:mb-0  sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out"
             >
               <span>
                 <IoLogIn size={18} />
@@ -61,7 +61,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center sm:gap-2 gap-1 sm:text-md sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link className="flex items-center gap-2   sm:text-md sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <RiContactsFill size={18} />
               </span>

@@ -9,9 +9,8 @@ const MobilNavbar = () => {
   return (
     <div>
         <div className="px-4">
-          
-          <TopBar/>
-          <NavBar/>
+        <TopBar/>
+        <NavBar/>
 
             
         </div>

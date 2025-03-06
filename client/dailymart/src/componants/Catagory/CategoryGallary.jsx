@@ -38,8 +38,9 @@ const CategoryGallary = () => {
   }, []);
 
   return (
-    <div className="py-10 max-w-screen-xl mx-auto">
+    <div className="py-0 max-w-screen-xl mx-auto">
       <div className="max-w-screen-xl mx-auto">
+        <h1 className="text-2xl font-bold mt-10">Our Categories</h1>
         <Swiper
           effect={"coverflow"}
           spaceBetween={50}
@@ -62,17 +63,17 @@ const CategoryGallary = () => {
             clickable: true,
           }}
           modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-          className="w-"
+          className="category-swiper"
         >
           {Category.map((item) => {
             return (
-              <SwiperSlide key={item._id} className="inline-block">
-                <div className="relative group">
+              <SwiperSlide key={item._id} className="">
+                <div className="relative group swiper-slide">
                   {/* Background Image */}
                   <img
                     src={item.images}
                     alt={item.name}
-                    className="w-full  object-cover transition duration-300 rounded-md "
+                    className="w-full  object-cover transition duration-300 rounded-md swiper-slide img "
                   />
 
                   {/* Overlay (Black Background with Opacity) */}

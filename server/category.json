@@ -47,12 +47,12 @@
     {
       "cid": "10",
       "category": "Beauty & Grooming",
-      "images": "https://img.drz.lazcdn.com/static/bd/p/67a17880535d197e6799d14c9da48471.jpg_400x400q75.avif"
+      "images": "https://img.drz.lazcdn.com/static/bd/p/cc08aa13037c3d46af9e77b4e04fe19f.png_400x400q75.avif"
     },
     {
       "cid": "11",
-      "category": "Accessories",
-      "images": "https://img.drz.lazcdn.com/g/kf/Sf492e36077814042840f506489ad94f3R.jpg_400x400q75.avif"
+      "category": "Shirt For Women",
+      "images": "https://img.drz.lazcdn.com/static/bd/p/c368b7c30652e83aae1e013ba3270b5c.jpg_400x400q75.avif"
     },
     {
       "cid": "12",
@@ -67,7 +67,7 @@
     {
       "cid": "14",
       "category": "Eyewear",
-      "images": "https://img.drz.lazcdn.com/static/bd/p/1b48a9e8d757e8313fef0685ed28cee2.jpg_400x400q75.avif"
+      "images": "https://img.drz.lazcdn.com/static/bd/p/0315e2502f18966e463ce845db5e4bcc.jpg_400x400q75.avif"
     },
     {
       "cid": "15",
@@ -79,6 +79,7 @@
       "category": "headphones for pc",
       "images": "https://img.drz.lazcdn.com/g/kf/S4a620f958e604407abe3a12885d9ff794.jpg_400x400q75.avif"
     }
+   
    
   ]
   

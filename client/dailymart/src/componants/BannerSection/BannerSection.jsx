@@ -11,7 +11,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 
 // Import Swiper styles
-import "swiper/css";
+
 import { useEffect, useState } from "react";
 const BannerSection = () => {
   const [bannerImages, setBannerImages] = useState([]);
@@ -34,7 +34,7 @@ const BannerSection = () => {
 
   return (
    <div className="">
-     <div className="grid grid-cols-6 gap-2 sm:max-w-screen-xl mx-auto ">
+     <div className="grid grid-cols-6 gap-2 sm:max-w-screen-xl mx-auto  ">
       <div className="sm:col-span-5 col-span-6">
         <Swiper
           modules={[Navigation, Pagination, A11y,Autoplay]}

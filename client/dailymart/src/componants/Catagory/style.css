@@ -1,28 +1,18 @@
-
-
-
-.swiper {
+/* Only apply styles to the CategoryGallary swiper */
+.category-swiper {
   width: 100%;
-  padding-top: 50px;
+  padding-top: 10px;
   padding-bottom: 100px;
 }
 
-.swiper-slide {
+.category-swiper .swiper-slide {
   background-position: center;
   background-size: cover;
   width: 350px;
   height: 350px;
-  
 }
 
-.swiper-slide img {
+.category-swiper .swiper-slide img {
   display: block;
   width: 100%;
-}
-.imagesOverlay{
-  
-}
-
-.text_container{
-
 }
