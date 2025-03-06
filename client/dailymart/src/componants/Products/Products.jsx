@@ -1,37 +1,25 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetshproducts } from "../../redux/features/productsSlice";
+import { useEffect } from "react";
+
 const Products = () => {
-  const [products, setProducts] = useState([]);
-  const [products1, setProducts1] = useState([]);
 
-  useEffect(() => {
-    const productsFetch = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/users/products/data", );
-        const data = await response.data;
-        setProducts(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    productsFetch();
-  }, []);
-
-  useEffect(() => {
-      if(products.length > 0) {
-        const shuffled = [...products].sort(()=>0.5 - Math.random());
-        setProducts1(shuffled.slice(20,30));
-      }
-  }, [products]);
-
-
+const dispatch = useDispatch();
+const { products, loading, error} = useSelector((state)=>state.products)
+useEffect (()=>{
+  dispatch(fetshproducts())
+  
+ 
+},[dispatch])
+if (loading) return <p>Loading...</p>;
+if (error) return <p>Error: {error}</p>;
 
   return (
     <div>
       <div className="max-w-screen-xl mx-auto">
         <h1 className="text-2xl text-center mb-8">Products</h1>
-        <div className="grid grid-cols-2 gap-3 ">
-          {products1.map((product, index) => {
+        <div className="grid grid-cols-4 gap-3 ">
+          {products.map((product, index) => {
             return (
               <div key={index} className="bg-light relative border p-2 rounded-2xl">
                 <img

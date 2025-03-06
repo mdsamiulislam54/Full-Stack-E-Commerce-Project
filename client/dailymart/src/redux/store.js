@@ -4,6 +4,7 @@ import registerReducer from './features/registerSlice'
 import userReducer from './features/userSlice'
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
+import productsReducer from './features/productsSlice'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -17,7 +18,8 @@ const store = configureStore({
   reducer: {
     login: loginReducer,
     register: registerReducer,
-    user: persistedUserReducer  // Use persisted reducer here
+    user: persistedUserReducer,  // Use persisted reducer here
+    products : productsReducer
   },
 });
 
