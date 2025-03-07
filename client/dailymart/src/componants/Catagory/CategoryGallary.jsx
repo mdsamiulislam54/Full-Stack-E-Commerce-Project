@@ -1,24 +1,18 @@
 import { useEffect, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import { FaArrowRight } from "react-icons/fa6";
 
 import axios from "axios";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-coverflow";
+import "swiper/css/free-mode";
 import "swiper/css/pagination";
-
-import "./style.css";
+import './style.css'
 
 // Import required modules
-import {
-  Navigation,
-  Pagination,
-  EffectCoverflow,
-  Autoplay,
-} from "swiper/modules";
+import { Autoplay, FreeMode ,Pagination} from "swiper/modules";
 
 const CategoryGallary = () => {
   const [Category, setCategory] = useState([]);
@@ -38,75 +32,55 @@ const CategoryGallary = () => {
   }, []);
 
   return (
-    <div className="py-0 max-w-screen-xl mx-auto">
-      <div className="max-w-screen-xl mx-auto">
-        <h1 className="text-2xl font-bold mt-10">Our Categories</h1>
+    <div className=" px-4 sm:px-0 bg-assent  py-2">
+      <div className="max-w-screen-xl mx-auto my-10">
+        <h1 className="text-3xl font-medium mt-10 tracking-wider">Our Categories</h1>
         <Swiper
-          effect={"coverflow"}
-          spaceBetween={50}
-          grabCursor={true}
-          centeredSlides={true}
+          spaceBetween={30}
+         
+          slidesPerView={2}
           loop={true}
-          autoplay={{ delay: 2000, disableOnInteraction: false }}
-          slidesPerView={"auto"}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 50,
-            depth: 100,
-            modifier: 2.5,
-            slideShadows: true,
-          }}
-          pagination={{ clickable: true }}
-          navigation={{
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          freeMode={true}
+          pagination={{
             clickable: true,
           }}
-          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-          className="category-swiper"
+          modules={[FreeMode, Autoplay,Pagination]}
+          breakpoints={{
+            // breakpoints
+            640: { slidesPerView: 2, },
+            740 : { slidesPerView:2},
+            1024: { slidesPerView: 3, },
+            1440: { slidesPerView: 4, },
+          }}
+          className="mySwiper"
+        
         >
-          {Category.map((item) => {
-            return (
-              <SwiperSlide key={item._id} className="">
-                <div className="relative group swiper-slide">
-                  {/* Background Image */}
-                  <img
-                    src={item.images}
-                    alt={item.name}
-                    className="w-full  object-cover transition duration-300 rounded-md swiper-slide img "
-                  />
+          <div className="border bg-assent ">
+            {Category.map((item) => {
+              return (
+                <SwiperSlide key={item._id} className=" bg-light my-10 transition-all duration-500 rounded ">
+                  <div className="relative ">
+                    {/* Background Image */}
+                    <img
+                      src={item.images}
+                      alt={item.name}
+                      className="w-40 h-40 mx-auto object-cover mt-2 "
+                    />
 
-                  {/* Overlay (Black Background with Opacity) */}
-                  <div className="absolute inset-0 bg-black opacity-0  flex flex-col items-center justify-center text-white p-4 transition duration-300 group-hover:opacity-80 rounded-md">
-                    <h2 className="text-xl font-medium text-center">
-                      {item.category}
-                    </h2>
-                    <button className="mt-2 px-4 py-2 bg-dark text-secondary rounded-xl hover:cursor-pointer opacity-100 ">
-                      Shop Now
-                    </button>
+                    {/* Overlay (Black Background with Opacity) */}
+                    <div className="flex flex-col items-center mb-5 ">
+                      <h3 className="sm:text-xl my-2 tracking-wide font-medium font-dm-snas">{item.category}</h3>
+                      <button className="flex items-center gap-3 bg-primary sm:px-4 px-2 py-1 rounded
+                       text-light hover:text-secondary hover:ml-2 transition-all duration-300 cursor-pointer font-dm-snas">
+                        Shop Now
+                        <FaArrowRight className="ml-2" />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            );
-          })}
-
-          <div className="swiper-control absolute  z-50 buttom -[45%] flex  w-full gap-10 ">
-            <div className="swiper-button-next custom-next bg-primary rounded-2xl hover:opacity-85 transition-all duration-300 ">
-              <span>
-                <MdKeyboardArrowLeft
-                  size={40}
-                  className=" text-light hover:cursor-pointer"
-                />
-              </span>
-            </div>
-            <div className="swiper-button-prev custom-prev  bg-primary rounded-2xl hover:opacity-85 transition-all duration-300">
-              <span>
-                <MdKeyboardArrowRight
-                  size={40}
-                  className="text-light hover:cursor-pointer"
-                />
-              </span>
-            </div>
+                </SwiperSlide>
+              );
+            })}
           </div>
         </Swiper>
       </div>
