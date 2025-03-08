@@ -50,8 +50,7 @@ const BannerSection = () => {
             clickable: true,
             
           }}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+      
           className="relative"
         >
           {bannerImages.length > 0 ? (
