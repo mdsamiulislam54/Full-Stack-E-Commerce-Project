@@ -14,7 +14,6 @@ import {
 } from "../../redux/features/loginSlice";
 
 const NavBar = () => {
-  const [show, setShow] = useState(false);
   const [showShop, setShowShop] = useState(false);
   const isModalOpenHandelar = useSelector(
     (state) => state.login.isLoginModalOpen
@@ -29,96 +28,33 @@ const NavBar = () => {
     dispatch(closeLoginModal());
   };
 
-  const handleMouseEnter = () => {
-    setShow(true);
-    setShowShop(false);
-  };
-
-  const handleMouseLeave = () => {
-    setShow(false);
-  };
-
   const handleShopEnter = () => {
     setShowShop(true);
-    setShow(false);
   };
 
   const handleShopLeave = () => {
     setShowShop(false);
   };
 
-  const dropDownMenuItem = [
-    "Electronics & Gadgets",
-    "Fashion & Apparel",
-    "Home & Kitchen",
-    "Groceries & Essentials",
-    "Books & Stationery",
-    "Toys & Baby Products",
-    " Accessories",
-    "Sports & Outdoors",
-    "Health & Wellness",
-    "Beauty & Personal Care",
-  ];
-
   const shopDropDownMenuItem = [
     "Men's Fashion",
     "Women's Fashion",
     "Kid's Fashion",
+    "Cell phones",
     "Footwear",
     "Watches",
-    "Jewellery",
-    "Bags & Luggage",
-    "Sunglasses & Frames",
-    "Beauty & Grooming",
-    "Accessories",
-    "Sportswear",
-    "Winterwear",
-    "Eyewear",
+    "T-Shirt",
     "Food",
-    "headphones for pc",
+    "headphones",
   ];
   return (
     <div className="  sm:bg-primary sm:text-light sm:py-2  ">
       <div className="flex  justify-between  items-center py-2 sm:max-w-screen-xl mx-auto">
         <ul className="flex space-x-10   max-sm:flex-col max-sm:gap-2  ">
           <li>
-            <Link
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="flex items-center gap-2 text-lg  relative "
-            >
-              Category
-              <span>
-                <BiChevronDown
-                  className={`${
-                    show ? "rotate-180" : ""
-                  } transition-all duration-300 ease-in-out`}
-                />
-              </span>{" "}
+            <Link className="flex items-center gap-2 text-lg  relative ">
+              Home
             </Link>
-            {show && (
-              <div
-                className="sm:absolute   left-1 sm:left-28 p-3  transform -translate-y-4  sm:mt-4 mt-2 :p-4   sm:py-7 rounded-md sm:bg-primary text-light sm:border-l-3 sm:border-primary
-                transition-all duration-700
-                w-80 "
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <ul className="grid sm:grid-cols-1  gap-3  ">
-                  {dropDownMenuItem.map((item, index) => (
-                    <li
-                      key={index}
-                      className="hover:text-secondary hover:ml-2  cursor-pointer transition-all duration-300 ease-in-out max-sm:text-sm flex justify-between"
-                    >
-                      <span className="">{item} </span>
-                      <span className="">
-                        <MdKeyboardArrowRight size={25} />
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </li>
           <li
             onMouseEnter={handleShopEnter}
@@ -126,7 +62,7 @@ const NavBar = () => {
             className=""
           >
             <Link className="flex items-center gap-2 text-lg  ">
-              All products
+              Shop
               <span>
                 <BiChevronDown
                   className={`${
@@ -139,17 +75,17 @@ const NavBar = () => {
               <div
                 className="sm:absolute   left-1 sm:left-28 p-3  transform -translate-y-4  sm:mt-4 mt-2 sm:p-4   sm:py-7 rounded-md sm:bg-primary text-light sm:border-l-3 sm:border-primary
                 transition-all duration-700
-                w-80  "
+                w-7/12 "
                 onMouseEnter={handleShopEnter}
                 onMouseLeave={handleShopLeave}
               >
-                <ul className="grid sm:grid-cols-2 grid-cols-1  gap-4 ">
+                <ul className="grid sm:grid-cols-3 grid-cols-1  gap-4 ">
                   {shopDropDownMenuItem.map((item, index) => (
                     <li
                       key={index}
                       className="hover:text-secondary hover:ml-2  cursor-pointer transition-all duration-300 ease-in-out max-sm:text-sm flex justify-between"
                     >
-                       <span className="">{item} </span>
+                      <span className="">{item} </span>
                       <span className="">
                         <MdKeyboardArrowRight size={25} />
                       </span>

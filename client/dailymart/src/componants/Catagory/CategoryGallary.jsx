@@ -56,16 +56,16 @@ const CategoryGallary = () => {
           className="mySwiper"
         
         >
-          <div className="border bg-assent ">
+          <div className="border bg-assent  h-100">
             {Category.map((item) => {
               return (
                 <SwiperSlide key={item._id} className=" bg-light my-10 transition-all duration-500 rounded ">
-                  <div className="relative ">
+                  <div className="relative  ">
                     {/* Background Image */}
                     <img
                       src={item.images}
                       alt={item.name}
-                      className="w-40 h-40 mx-auto object-cover mt-2 "
+                      className=" w-50 h-50 mx-auto object-contain mt-2 "
                     />
 
                     {/* Overlay (Black Background with Opacity) */}

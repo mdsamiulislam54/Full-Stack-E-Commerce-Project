@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema({
     rating: { type: Number, required: true },
     brand: { type: String, required: true },
     price: { type: String, required: true },
-    discount: { type: String, required: true },
+    discountPrice: { type: String, required: true },
     img: { type: String, required: true },
     subimage1: { type: String, required: false },
     subimage2: { type: String, required: false },

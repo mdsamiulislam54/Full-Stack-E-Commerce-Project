@@ -134,5 +134,19 @@ router.delete("/shop", errorHandler, async (req, res) => {
   }
 });
 
+router.delete("/products", async (req, res) => {
+  try{
+    const shop = await ProductSchema.deleteMany({})
+    if(shop.deletedCount === 0){
+      return res.status(404).json({message: "No products found to delete!"})
+    }
+    res.status(200).json({message: "All products deleted successfully!"})
+  }
+  catch(err){
+    console.error(err)
+    res.status(500).json({message: "Server error", error: err.message})
+  }
+})
+
 
 export default router;

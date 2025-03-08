@@ -14,18 +14,22 @@ useEffect (()=>{
 if (loading) return <p>Loading...</p>;
 if (error) return <p>Error: {error}</p>;
 
+const newData = [1,7,11,40,59,65,24];
+
+const filteredProducts = products.filter((product) => newData.includes(product.pID));
+
   return (
     <div>
       <div className="max-w-screen-xl mx-auto">
         <h1 className="text-2xl text-center mb-8">Products</h1>
         <div className="grid grid-cols-4 gap-3 ">
-          {products.map((product, index) => {
+          {filteredProducts.map((product, index) => {
             return (
               <div key={index} className="bg-light relative border p-2 rounded-2xl">
                 <img
                   src={product.img}
                   alt={product.title}
-                  className="max-w-full h-70 mx-auto  "
+                  className="w-40  h-40 mx-auto object-contain  "
                 />
                 <div>
                   <h2 className="text-lg font-medium">{product.title}</h2>

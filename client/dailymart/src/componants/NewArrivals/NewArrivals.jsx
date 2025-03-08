@@ -1,25 +1,27 @@
-
+import {Link} from 'react-router-dom'
+import { MdKeyboardArrowLeft ,MdKeyboardArrowRight} from "react-icons/md";
 
 const NewArrivals = () => {
   return (
-    <div>
-
-<div className="card bg-base-100 w-96 shadow-xl">
-  <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
-    <div className="card-actions justify-end">
-      <button className="btn btn-primary">Buy Now</button>
+    <div className='my-10'>
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-0">
+          <div className='grid grid-cols-6'>
+            <div className='col-span-4 border-b pb-5'>
+              <div className='flex justify-between items-center'>
+                <h3>New Arrivals</h3>
+                <Link className='flex items-center'>View All <MdKeyboardArrowRight/> </Link>
+              </div>
+              <div></div>
+              <div></div>
+            </div>
+            <div className='col-span-2'>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+      </div>
     </div>
-  </div>
-</div>
-    </div>
-  )
-}
+  );
+};
 
-export default NewArrivals
+export default NewArrivals;

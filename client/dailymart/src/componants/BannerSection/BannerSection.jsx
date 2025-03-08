@@ -29,7 +29,7 @@ const BannerSection = () => {
 
     fetachData();
   }, []);
-  console.log(bannerImages);
+
 
 
   return (

@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "heading":"New Arrival: Men's Casual Shirts!",
+        "subheading":"Stylish  Comfortable  Perfect Fit",
+        "offer":"Free Shipping on First Order!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-1.jpg"
+    },
+    {
+        "id":2,
+        "heading":"Upgrade Your Style with Premium Watches!",
+        "subheading":"Limited Stock – Grab Yours Now!",
+        "offer":"Flat 30% Off – Limited Time Only!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-2.jpg"
+    },
+    {
+        "id":3,
+        "heading":"Step Into Elegance: Men's Formal Shoes",
+        "subheading":"Limited Stock – Get Yours Before They're Gone!",
+        "offer":"Free Shipping on First Order!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-3.jpg"
+    },
+    {
+        "id":1,
+        "heading":"Comfort & Style for Your Little Ones!",
+        "subheading":"Durable • Trendy • All-Day Comfort",
+        "offer":"Special Offer: 15% Off on First Purchase!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-4.jpg"
+    }
+]
