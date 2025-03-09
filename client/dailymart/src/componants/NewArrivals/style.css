@@ -1,0 +1,19 @@
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000 !important;
+    transition: linear 0.3s;
+    
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    color: #fff !important; /* হোভার করলে নীল হবে */
+}
+.mycart:hover .addcart {
+    cursor: pointer;
+    transition: ease-in-out 0.3s ;
+    transform: translateX(5px);
+}
+
+.addcart{
+    transform: translateX(-40px);
+}
