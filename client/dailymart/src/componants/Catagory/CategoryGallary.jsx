@@ -72,7 +72,7 @@ const CategoryGallary = () => {
                     <div className="flex flex-col items-center mb-5 ">
                       <h3 className="sm:text-xl my-2 tracking-wide font-medium font-dm-snas">{item.category}</h3>
                       <button className="flex items-center gap-3 bg-primary sm:px-4 px-2 py-1 rounded
-                       text-light hover:text-secondary hover:ml-2 transition-all duration-300 cursor-pointer font-dm-snas">
+                       text-light hover:opacity-80 hover:ml-2 transition-all duration-300 cursor-pointer font-dm-snas">
                         Shop Now
                         <FaArrowRight className="ml-2" />
                       </button>

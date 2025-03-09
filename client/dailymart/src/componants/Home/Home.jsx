@@ -17,7 +17,7 @@ const Home = () => {
       <CategoryGallary/>
       <ShopCart/>
       <NewArrivals/>
-      <Products/>
+      {/* <Products/> */}
       {/* <Pro/> */}
     
       

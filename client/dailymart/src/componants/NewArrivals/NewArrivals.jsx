@@ -9,9 +9,8 @@ import "./style.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetshproducts } from "../../redux/features/productsSlice";
-import { CiShoppingCart,CiHeart,CiSearch } from "react-icons/ci";
+import { CiShoppingCart, CiHeart, CiSearch } from "react-icons/ci";
 import { HiMiniArrowPath } from "react-icons/hi2";
-
 
 const NewArrivals = () => {
   const [banner, setBanner] = useState([]);
@@ -63,12 +62,10 @@ const NewArrivals = () => {
   return (
     <div className="my-10">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-0">
-        <div className="grid grid-cols-6">
-          <div className="col-span-4 ">
+        <div className="grid sm:grid-cols-6 grid-cols-1 gap-3">
+          <div className="col-span-4  ">
             <div className="flex justify-between items-center border-b-2 border-gray-300 pb-5 mb-5">
-              <h3 className="text-xl font-normal tracking-wide">
-                New Arrivals
-              </h3>
+              <h3 className="text-xl font-bold tracking-wide">New Arrivals</h3>
               <Link className="flex items-center tracking-wide ">
                 View All <MdKeyboardArrowRight size={25} />{" "}
               </Link>
@@ -83,27 +80,27 @@ const NewArrivals = () => {
               >
                 {banner.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <img src={item.image} alt={item.title} loading="lazy" />
-                    <div className="absolute w-full h-full top-3/12 left-16">
-                      <h2 className="sm:text-3xl font-dm-snas  tracking-wide mb-2 text-dark font-bold">
+                    <img src={item.image} alt={item.title} loading="lazy" className="rounded" />
+                    {/* <div className="absolute w-full h-full sm:top-3/12 top-2/12 left-16">
+                      <h2 className="sm:text-3xl text-lg font-dm-snas  tracking-wide mb-2 text-dark font-bold ">
                         {item.heading}
                       </h2>
-                      <h3 className="sm:text-2xl font-dm-snas font-bold tracking-wide mb-2 text-dark">
+                      <h3 className="sm:text-2xl text-md font-dm-snas font-bold tracking-wide mb-2 text-dark">
                         {item.subheading}
                       </h3>
-                      <p className="sm:text-2xl font-dm-snas font-bold tracking-wide mb-4 text-dark ">
+                      <p className="sm:text-2xl font-dm-snas font-bold tracking-wide sm:mb-4  mb-2 text-dark ">
                         {item.offer}
                       </p>
-                      <button className=" text-light py-2 px-4 rounded-md bg-dark hover:opacity-85 transition-all duration-300 cursor-pointer ">
+                      <button className=" text-light sm:py-2 py-1 sm:px-4 px-2 rounded-md bg-dark hover:opacity-85 transition-all duration-300 cursor-pointer ">
                         {item.button}
                       </button>
-                    </div>
+                    </div> */}
                   </SwiperSlide>
                 ))}
               </Swiper>
             </div>
             <div className="">
-              <div className="grid grid-cols-4 mt-10 gap-3 ">
+              <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  mt-10 gap-3 ">
                 {NewArrivalesData.map((item, index) => {
                   return (
                     <div key={index} className="shadow bg-assent  ">
@@ -120,23 +117,34 @@ const NewArrivals = () => {
                         </span>
                         <div className="absolute bottom-0 addcart">
                           <div className="">
-                            <CiShoppingCart size={25} className="hover:text-secondary cursor-pointer transition-all duration-300"/>
-                            <CiHeart size={25} className="hover:text-secondary cursor-pointer transition-all duration-300" />
-                            <HiMiniArrowPath size={25} className="hover:text-secondary cursor-pointer transition-all duration-300" />
-                            <CiSearch  size={25} className="hover:text-secondary cursor-pointer transition-all duration-300"/>
+                            <CiShoppingCart
+                              size={25}
+                              className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
+                            />
+                            <CiHeart
+                              size={25}
+                              className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
+                            />
+                            <HiMiniArrowPath
+                              size={25}
+                              className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
+                            />
+                            <CiSearch
+                              size={25}
+                              className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
+                            />
                           </div>
+                        </div>
                       </div>
-                      </div>
-                   
+
                       <div className="p-2  ">
-                        <h3 className="font-medium tracking-wide">
+                        <h3 className="font-medium tracking-wide mb-2">
                           {item.title}...
                         </h3>
                         <div>
-                          <div className="flex items-center justify-between">
-                         
-                          <span>{item.review}</span>
-                          <span>{item.rating}</span>
+                          <div className="flex items-center justify-between mb-2">
+                            <span>{item.review}</span>
+                            <span className="font-dm-snas font-bold tracking-wider">{item.rating}</span>
                           </div>
                           <div className="flex gap-5 items-center">
                             <span className="text-lg font-dm-snas font-bold">
@@ -155,8 +163,55 @@ const NewArrivals = () => {
             </div>
           </div>
           <div className="col-span-2">
-            <div></div>
-            <div></div>
+            <div className="flex justify-between items-center border-b-2 pb-4 border-gray-300">
+              <h2 className="text-xl font-bold tracking-wider ">Best Sell </h2>
+              <h4 className="flex items-center tracking-wider text-md cursor-pointer">
+                View All
+                <MdKeyboardArrowRight size={25} />
+              </h4>
+            </div>
+            <div>
+              <div className="grid grid-cols-1 gap-3 mt-5">
+                {bestSell.map((product, index) => {
+                  return (
+                    <div key={index}>
+                      <div className="grid grid-cols-3 gap-3 mb-8 shadow rounded ">
+                        <div className="p-2 bg-light col-span-1">
+                          <img src={product.img} alt="" className="w-40 h-40 object-contain border-r pr-2 border-gray-300" />
+                        </div>
+                        <div className=" col-span-2">
+                          <div className="p-2  ">
+                            <h3 className="font-medium tracking-wide mb-2">
+                              {product.title}...
+                            </h3>
+                            <div className="">
+                              <div className="flex items-center justify-between">
+                                <span>{product.review}</span>
+                                <span className="font-dm-snas font-bold tracking-wider mb-2">{product.rating}</span>
+                              </div>
+                              <div className="flex gap-5 items-center ">
+                                <span className="text-lg font-dm-snas font-bold mb-2 tracking-wider">
+                                  {product.discountPrice}
+                                </span>
+
+                                <span className="text-md font-dm-snas text-gray-600 line-through font-bold mb-2 tracking-wider">
+                                  {product.price}
+                                </span>
+
+                               
+                              </div>
+                              <div>
+                              <button className="px-4 py-1 bg-primary text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointer">Add To Cart</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

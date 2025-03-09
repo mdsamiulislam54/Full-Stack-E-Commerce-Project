@@ -33,6 +33,7 @@ const filteredProducts = products.filter((product) => newData.includes(product.p
                 />
                 <div>
                   <h2 className="text-lg font-medium">{product.title}</h2>
+                  <h2 className="text-lg font-medium">{product.productDetails.title}</h2>
 
                   <span className="text-xl font-bold">${product.price}</span>
                   <button className="bg-primary text-light py-2 px-4 rounded-md">

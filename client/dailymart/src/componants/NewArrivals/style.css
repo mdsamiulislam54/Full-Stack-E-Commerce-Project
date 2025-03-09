@@ -10,7 +10,7 @@
 }
 .mycart:hover .addcart {
     cursor: pointer;
-    transition: ease-in-out 0.3s ;
+    transition: ease-in-out 0.5s ;
     transform: translateX(5px);
 }
 

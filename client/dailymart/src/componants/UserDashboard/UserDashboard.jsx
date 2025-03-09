@@ -49,6 +49,8 @@ const handleLogout = ()=>{
         user ? (
           <div>
             <h1> welcome {user.name}</h1>
+            <h1>Email: {user.email}</h1>
+          
             <button onClick={handleLogout}>Logout</button>
           </div>
         ):(
