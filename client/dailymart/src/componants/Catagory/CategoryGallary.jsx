@@ -35,7 +35,7 @@ const CategoryGallary = () => {
   return (
     <div className=" px-4 sm:px-0 bg-gray-100  py-2">
       <div className="max-w-screen-xl mx-auto my-10">
-        <h1 className="text-3xl font-medium mt-10 tracking-wider">Our Categories</h1>
+        <h1 className="sm:text-3xl text-xl font-medium mt-10 tracking-wider">Categories</h1>
         <Swiper
           spaceBetween={30}
          
@@ -66,7 +66,7 @@ const CategoryGallary = () => {
                     <img
                       src={item.images}
                       alt={item.name}
-                      className=" w-50 h-50 mx-auto object-contain mt-2 "
+                      className=" sm:w-50 w-40 h-40 sm:h-50 mx-auto object-contain mt-2 "
                     />
 
                     {/* Overlay (Black Background with Opacity) */}

@@ -27,7 +27,7 @@ const TopBar = () => {
   };
 
   return (
-    <div className="sm:bg-assent  ">
+    <div className="sm:bg-light  ">
       <div className="sm:flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0  sm:max-w-screen-xl mx-auto py-3 ">
         <p className=" font-normal  text-lg sm:block hidden">
           24/7 customer service <strong>+880-01612086842</strong>
