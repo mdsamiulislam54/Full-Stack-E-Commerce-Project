@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FaArrowRight } from "react-icons/fa6";
 
+
 import axios from "axios";
 
 // Import Swiper styles
@@ -32,7 +33,7 @@ const CategoryGallary = () => {
   }, []);
 
   return (
-    <div className=" px-4 sm:px-0 bg-assent  py-2">
+    <div className=" px-4 sm:px-0 bg-gray-100  py-2">
       <div className="max-w-screen-xl mx-auto my-10">
         <h1 className="text-3xl font-medium mt-10 tracking-wider">Our Categories</h1>
         <Swiper
@@ -56,7 +57,7 @@ const CategoryGallary = () => {
           className="mySwiper"
         
         >
-          <div className="border bg-assent  h-100">
+          <div className="border   h-100">
             {Category.map((item) => {
               return (
                 <SwiperSlide key={item._id} className=" bg-light my-10 transition-all duration-500 rounded ">

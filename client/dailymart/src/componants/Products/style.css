@@ -1,0 +1,9 @@
+.mycart:hover .addcart {
+    cursor: pointer;
+    transition: ease-in-out 0.5s ;
+    transform: translateX(5px);
+}
+
+.addcart{
+    transform: translateX(-40px);
+}

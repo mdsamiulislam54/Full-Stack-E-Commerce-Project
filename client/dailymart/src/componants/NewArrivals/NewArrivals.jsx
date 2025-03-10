@@ -53,7 +53,7 @@ const NewArrivals = () => {
       discountPricemain
     );
     if (isNaN(priceMain) || isNaN(discountPricemain) || priceMain === 0) {
-      return "Invalid input"; // যদি NaN হয় বা price 0 হয়, তাহলে error handle করা
+      return "Invalid input"; 
     }
     const discount = ((priceMain - discountPricemain) / priceMain) * 100;
     return discount.toFixed();
@@ -163,7 +163,7 @@ const NewArrivals = () => {
             </div>
           </div>
           <div className="col-span-2">
-            <div className="flex justify-between items-center border-b-2 pb-4 border-gray-300">
+            <div className="flex justify-between items-center border-b-2 pb-5 border-gray-300">
               <h2 className="text-xl font-bold tracking-wider ">Best Sell </h2>
               <h4 className="flex items-center tracking-wider text-md cursor-pointer">
                 View All
