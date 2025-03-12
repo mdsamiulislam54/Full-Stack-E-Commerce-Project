@@ -3,6 +3,7 @@ import { fetshproducts } from "../../redux/features/productsSlice";
 import { useEffect } from "react";
 import { CiShoppingCart, CiHeart, CiSearch } from "react-icons/ci";
 import { HiMiniArrowPath } from "react-icons/hi2";
+import { addToCart } from "../../redux/features/cartSlice";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const Products = () => {
                     <div className="">
                      
                       <CiHeart
+                      title="Wishlist"
                         size={25}
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
                       />
@@ -59,11 +61,14 @@ const Products = () => {
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
                       />
                       <CiSearch
+                      title="Search"
                         size={25}
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
                       />
                        <CiShoppingCart
+                       onClick={()=> dispatch(addToCart(product))}
                         size={25}
+                        title="Add To Cart"
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
                       />
                     </div>

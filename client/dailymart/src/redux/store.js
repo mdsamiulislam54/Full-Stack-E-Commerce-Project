@@ -5,6 +5,7 @@ import userReducer from './features/userSlice'
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistReducer } from "redux-persist";
 import productsReducer from './features/productsSlice'
+import cartReducer from "./features/cartSlice";
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -19,7 +20,8 @@ const store = configureStore({
     login: loginReducer,
     register: registerReducer,
     user: persistedUserReducer,  // Use persisted reducer here
-    products : productsReducer
+    products : productsReducer,
+    cart : cartReducer
   },
 });
 
