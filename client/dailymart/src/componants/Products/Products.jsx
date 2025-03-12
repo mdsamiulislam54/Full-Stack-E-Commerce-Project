@@ -17,12 +17,7 @@ const Products = () => {
   const discountCalculation = (price, discountPrice) => {
     const priceMain = parseFloat(price.replace("$", ""));
     const discountPricemain = parseFloat(discountPrice.replace("$", ""));
-    console.log(
-      "Parsed Price:",
-      priceMain,
-      "Parsed Discount Price:",
-      discountPricemain
-    );
+   
     if (isNaN(priceMain) || isNaN(discountPricemain) || priceMain === 0) {
       return "Invalid input";
     }

@@ -1,10 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
+const getlocalStorage = ()=>{
+    const cartData =localStorage.getItem("cart");
+    return cartData? JSON.parse(cartData):{ cartItems: [], totalPrice: 0, totalQuantity: 0, shappingFee: 0 }
+}
 
-const initialState = {
-  cartItems: [],
-  totalPrice: 0,
-  totalQuantity: 0,
+const setlocalStorage = (state) => {
+    localStorage.setItem(
+        "cart",
+        JSON.stringify({
+            cartItems: state.cartItems,
+            totalPrice: state.totalPrice,
+            totalQuantity: state.totalQuantity,
+            shappingFee: state.shappingFee,
+        })
+    );
 };
+const initialState = getlocalStorage();
 
 const cartSlice = createSlice({
     name: "cart",
@@ -13,6 +24,7 @@ const cartSlice = createSlice({
         addToCart: (state, action) => {
             const item = action.payload;
             const existingItem = state.cartItems.find((i) => i._id === item._id);
+            const itemprice = parseFloat(item.price.replace("$",""))
             
             if (existingItem) {
                 existingItem.quantity += 1;
@@ -21,20 +33,26 @@ const cartSlice = createSlice({
             }
             
             state.totalQuantity += 1;
-            state.totalPrice += item.price;
+            state.totalPrice += itemprice
+            state.shappingFee = state.cartItems.length*5
+            setlocalStorage(state)
         },
         decrementQuantity: (state, action) => {
             const itemId = action.payload;
             const existingItem = state.cartItems.find((i) => i._id === itemId);
+            const itemPrice = parseFloat(existingItem.price.replace("$", ""));
             if (existingItem) {
               if (existingItem && existingItem.quantity > 1) {
                 existingItem.quantity -= 1;
                 state.totalQuantity -= 1;
-                state.totalPrice -= existingItem.price;
+                state.totalPrice -= itemPrice
               } else {
                 state.cartItems = state.cartItems.filter((i) => i._id !== itemId);
                 state.totalQuantity -= 1;
-                state.totalPrice -= existingItem.price;
+                state.totalPrice -= itemPrice;
+                state.shappingFee = state.cartItems.length*5
+                setlocalStorage(state)
+                
               }
             }
           },
@@ -42,15 +60,25 @@ const cartSlice = createSlice({
         removeFromCart: (state, action) => {
             const itemId = action.payload;
             const existingItem = state.cartItems.find((i) => i._id === itemId);
+            const itemPrice = parseFloat(existingItem.price.replace("$", ""));
 
             if (existingItem) {
                 state.cartItems = state.cartItems.filter((i) => i._id !== itemId);
                 state.totalQuantity -= existingItem.quantity;
-                state.totalPrice -= existingItem.price * existingItem.quantity;
+                state.totalPrice -= itemPrice * existingItem.quantity;
+                state.shappingFee = state.cartItems.length * 5;
+                setlocalStorage(state)
             }
-        }
+        },
+     
+        clearCart: (state) => {
+            state.cartItems = [];
+            state.totalPrice = 0;
+            state.totalQuantity = 0;
+            setlocalStorage(state)
+          }
     }
 });
 
-export const { addToCart, removeFromCart,decrementQuantity } = cartSlice.actions;
+export const { addToCart, removeFromCart,decrementQuantity,clearCart,shappingFee } = cartSlice.actions;
 export default cartSlice.reducer;

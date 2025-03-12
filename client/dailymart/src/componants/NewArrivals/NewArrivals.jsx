@@ -46,12 +46,7 @@ const NewArrivals = () => {
   const discountCalculation = (price, discountPrice) => {
     const priceMain = parseFloat(price.replace("$", ""));
     const discountPricemain = parseFloat(discountPrice.replace("$", ""));
-    console.log(
-      "Parsed Price:",
-      priceMain,
-      "Parsed Discount Price:",
-      discountPricemain
-    );
+  
     if (isNaN(priceMain) || isNaN(discountPricemain) || priceMain === 0) {
       return "Invalid input"; 
     }
@@ -101,9 +96,9 @@ const NewArrivals = () => {
             </div>
             <div className="">
               <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2  mt-10 gap-3 ">
-                {NewArrivalesData.map((item, index) => {
+                {NewArrivalesData.map((item) => {
                   return (
-                    <div key={index} className="shadow bg-assent  ">
+                    <div key={item._id} className="shadow bg-assent  ">
                       <div className="bg-light py-5 relative overflow-hidden mycart">
                         <img
                           src={item.img}
