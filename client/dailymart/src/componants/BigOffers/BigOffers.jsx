@@ -4,7 +4,7 @@ import img2 from "../../assets/bigOffer-2.jpg";
 const BigOffers = () => {
   return (
     <div>
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-0">
+      <div className="w-11/12 mx-auto px-4 sm:px-0">
         <div className="grid sm:grid-cols-2 gap-5">
           <div className="relative overflow-hidden">
             <img className=" object-contain hover:scale-125 transition-all duration-500 cursor-pointer" src={img1} alt="big offer 1" />

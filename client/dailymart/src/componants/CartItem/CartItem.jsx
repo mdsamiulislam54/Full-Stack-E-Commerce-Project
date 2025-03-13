@@ -4,20 +4,40 @@ import {
   decrementQuantity,
   addToCart,
   clearCart,
-  
 } from "../../redux/features/cartSlice";
 import { RiDeleteBin6Line } from "react-icons/ri";
-
+import { useNavigate } from "react-router-dom";
+import { addToCheckout } from "../../redux/features/checkoutSlice";
+import { ToastContainer, toast } from "react-toastify";
+import { IoBagCheckOutline } from "react-icons/io5";
+import { useState } from "react";
 const CartItem = () => {
-  const { cartItems,totalPrice,shappingFee } = useSelector((state) => state.cart);
+  const { cartItems, totalPrice, shappingFee } = useSelector(
+    (state) => state.cart
+  );
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const navigate = useNavigate();
 
-const dispatch = useDispatch()
- // Calculate the total price of checked items
+  const dispatch = useDispatch();
+  // Calculate the total price of checked items
 
-const handleClear = ()=>{
-    dispatch(clearCart())
-}
-
+  const handleClear = () => {
+    dispatch(clearCart());
+  };
+  const handleCheckOut = (product) => {
+    navigate("/checkout");
+    dispatch(addToCheckout(product));
+  };
+  const handleCheckProduct = ()=>{
+    if (selectedProduct) {
+      handleCheckOut(selectedProduct);
+    } else {
+      toast.error("Please select a product to checkout",{
+        position: "top-right",
+        autoClose: 2000,
+      })
+    }
+  }
   return (
     <div className="bg-gray-500 min-h-screen">
       <div className="w-11/12 mx-auto p-6 ">
@@ -26,20 +46,25 @@ const handleClear = ()=>{
           <h1 className="text-2xl font-semibold text-gray-700 ">
             Shopping Cart
           </h1>
-          <button onClick={handleClear} className="text-lg tracking-wider font-medium hover:text-red-500 transition-all duration-300 cursor-pointer">All Delete</button>
+          <button
+            onClick={handleClear}
+            className="text-lg tracking-wider font-medium hover:text-red-500 transition-all duration-300 cursor-pointer"
+          >
+            All Delete
+          </button>
         </div>
 
         {cartItems.length === 0 ? (
-          <p className="text-center text-light text-lg">
-            Your cart is empty
-          </p>
+          <p className="text-center text-light text-lg">Your cart is empty</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Cart Items Section */}
             <div className="md:col-span-2 bg-white p-4 rounded-lg shadow-lg">
               {cartItems.map((item) => (
-                <div key={item._id} className="flex items-center border-b-2 border-gray-300 py-4 space-x-9">
-                 
+                <div
+                  key={item._id}
+                  className="flex items-center border-b-2 border-gray-300 py-4 space-x-9"
+                >
                   <img
                     src={item.img}
                     alt={item.title}
@@ -78,7 +103,15 @@ const handleClear = ()=>{
                     onClick={() => dispatch(removeFromCart(item._id))}
                     className=" text-dark hover:text-red-600  cursor-pointer  rounded-md text-sm"
                   >
-                  <RiDeleteBin6Line size={20}/>
+                    <RiDeleteBin6Line size={20} />
+                  </button>
+                  <button
+                    onClick={() => setSelectedProduct(item)}
+                    className={`text-dark  cursor-pointer rounded-md text-sm 
+                      ${selectedProduct && selectedProduct._id === item._id ? "text-secondary" : "text-primary"}
+                    `}
+                  >
+                    <IoBagCheckOutline size={20} />
                   </button>
                 </div>
               ))}
@@ -90,25 +123,26 @@ const handleClear = ()=>{
               <div className="flex justify-between text-gray-600">
                 <span>Subtotal</span>
                 <span>${totalPrice}</span>
-                
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>ShappingFee</span>
                 <span>${shappingFee}</span>
-                
               </div>
               <div className="flex justify-between text-gray-600">
                 <span>Total</span>
-                <span>${shappingFee+totalPrice}</span>
-                
+                <span>${shappingFee + totalPrice}</span>
               </div>
-              <button className="w-full bg-secondary hover:opacity-80 transition-all duration-300 cursor-pointer text-white mt-4 py-2 rounded-lg font-medium">
+              <button
+                onClick={handleCheckProduct}
+                className="w-full bg-secondary hover:opacity-80 transition-all duration-300 cursor-pointer text-white mt-4 py-2 rounded-lg font-medium"
+              >
                 Proceed to Checkout
               </button>
             </div>
           </div>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -59,7 +59,7 @@ const NewArrivals = () => {
 
   return (
     <div className="my-10">
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-0">
+      <div className="w-11/12 mx-auto ">
         <div className="grid sm:grid-cols-6 grid-cols-1 gap-3">
           <div className="col-span-4  ">
             <div className="flex justify-between items-center border-b-2 border-gray-300 pb-5 mb-5">

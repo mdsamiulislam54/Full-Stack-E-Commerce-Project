@@ -33,8 +33,8 @@ const CategoryGallary = () => {
   }, []);
 
   return (
-    <div className=" px-4 sm:px-0 bg-gray-100  py-2">
-      <div className="max-w-screen-xl mx-auto my-10">
+    <div className="   bg-gray-100  py-2">
+      <div className="w-11/12 mx-auto my-10">
         <h1 className="sm:text-3xl text-xl font-medium mt-10 tracking-wider">Categories</h1>
         <Swiper
           spaceBetween={30}

@@ -35,7 +35,7 @@ const Products = () => {
   }
   return (
     <div>
-      <div className="max-w-screen-xl mx-auto">
+      <div className="w-11/12 mx-auto">
         <h1 className="sm:text-2xl text-xl my-8">Just For You</h1>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 ">
           {sliceProducts.map((product, index) => {
