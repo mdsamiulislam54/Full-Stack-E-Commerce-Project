@@ -9,6 +9,7 @@ import Login from './componants/Registration/Login'
 import Registration from './componants/Registration/Registration'
 import UserDashboard from './componants/UserDashboard/UserDashboard'
 import CartItem from './componants/CartItem/CartItem'
+import Checkout from './componants/Checkout/Checkout'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/cartItems" element={<CartItem />} />
+          <Route path="/checkout" element={<Checkout />} />
 
 
         </Routes>

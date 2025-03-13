@@ -11,9 +11,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetshproducts } from "../../redux/features/productsSlice";
 import { CiShoppingCart, CiHeart, CiSearch } from "react-icons/ci";
 import { HiMiniArrowPath } from "react-icons/hi2";
+import { addToCart } from "../../redux/features/cartSlice";
+
 
 const NewArrivals = () => {
   const [banner, setBanner] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -113,6 +116,7 @@ const NewArrivals = () => {
                         <div className="absolute bottom-0 addcart">
                           <div className="">
                             <CiShoppingCart
+                            onClick={()=>dispatch(addToCart(item))}
                               size={25}
                               className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
                             />
@@ -196,7 +200,7 @@ const NewArrivals = () => {
                                
                               </div>
                               <div>
-                              <button className="px-4 py-1 bg-primary text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointer">Add To Cart</button>
+                              <button onClick={()=>dispatch(addToCart(product))} className="px-4 py-1 bg-primary text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointer">Add To Cart</button>
                               </div>
                             </div>
                           </div>

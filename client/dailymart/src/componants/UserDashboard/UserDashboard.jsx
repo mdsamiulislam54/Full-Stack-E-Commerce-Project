@@ -43,7 +43,7 @@ const handleLogout = ()=>{
 
   return (
     <div>
-     <div className="sm:max-w-screen-xl mx-auto">
+     <div className="w-11/12 mx-auto">
      <h1>User Data</h1>
       {
         user ? (

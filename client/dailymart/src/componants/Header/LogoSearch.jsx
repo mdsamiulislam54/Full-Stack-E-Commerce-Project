@@ -4,7 +4,7 @@ import BandLogo from './BandLogo'
 const LogoSearch = () => {
   return (
     <div className=" sm:bg-light ">
-      <div className="sm:flex justify-between items-center sm:py-4 py-1 sm:max-w-screen-xl mx-auto">
+      <div className="sm:flex justify-between items-center sm:py-4 py-1 w-11/12 mx-auto">
         <div className="max-sm:hidden">
         
           

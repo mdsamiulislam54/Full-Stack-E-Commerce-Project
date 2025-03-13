@@ -4,10 +4,13 @@ import { useEffect } from "react";
 import { CiShoppingCart, CiHeart, CiSearch } from "react-icons/ci";
 import { HiMiniArrowPath } from "react-icons/hi2";
 import { addToCart } from "../../redux/features/cartSlice";
+import { useNavigate } from "react-router-dom";
+import { addToCheckout } from "../../redux/features/checkoutSlice";
 
 const Products = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetshproducts());
   }, [dispatch]);
@@ -24,6 +27,12 @@ const Products = () => {
     const discount = ((priceMain - discountPricemain) / priceMain) * 100;
     return discount.toFixed();
   };
+  const handleNivigate = (product)=>{
+    navigate(`/checkout`);
+    dispatch(addToCheckout(product));
+    
+
+  }
   return (
     <div>
       <div className="max-w-screen-xl mx-auto">
@@ -31,9 +40,10 @@ const Products = () => {
         <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-3 ">
           {sliceProducts.map((product, index) => {
             return (
-              <div key={index} className="bg-light shadow p-4  relative overflow-hidden">
+              <div  key={index} className="bg-light shadow p-4  relative overflow-hidden">
                 <div className="mycart mb-2">
                   <img
+                  onClick={()=>handleNivigate(product)}
                     src={product.img}
                     alt={product.title}
                     loading="lazy"

@@ -20,7 +20,7 @@ const handleClear = ()=>{
 
   return (
     <div className="bg-gray-500 min-h-screen">
-      <div className="max-w-screen-xl mx-auto p-6 ">
+      <div className="w-11/12 mx-auto p-6 ">
         <div></div>
         <div className="flex justify-between items-center bg-light rounded mb-4 p-4">
           <h1 className="text-2xl font-semibold text-gray-700 ">
