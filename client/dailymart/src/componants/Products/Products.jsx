@@ -10,6 +10,7 @@ import { addToCheckout } from "../../redux/features/checkoutSlice";
 const Products = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
+
   const navigate = useNavigate();
   useEffect(() => {
     dispatch(fetshproducts());
@@ -32,6 +33,9 @@ const Products = () => {
     dispatch(addToCheckout(product));
     
 
+  }
+  const handleLoadProducts = ()=>{
+    navigate('/allproducts')
   }
   return (
     <div>
@@ -104,7 +108,7 @@ const Products = () => {
           })}
         </div>
        <div className="flex justify-center items-center ">
-       <button className=" border-2 border-primary px-10 py-2 rounded text-dark text-lg font-bold  tracking-wider cursor-pointer my-10 hover:bg-secondary hover:border-secondary transition-all duration-300 ">Load More</button>
+       <button onClick={handleLoadProducts} className=" border-2 border-primary px-10 py-2 rounded text-dark text-lg font-bold  tracking-wider cursor-pointer my-10 hover:bg-secondary hover:border-secondary transition-all duration-300 ">Load More</button>
        </div>
       </div>
     </div>

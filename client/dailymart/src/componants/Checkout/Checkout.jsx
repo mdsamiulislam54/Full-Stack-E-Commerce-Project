@@ -5,6 +5,11 @@ import { addToCart } from "../../redux/features/cartSlice";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import ShopCart from "../ShopCart/ShopCart";
 import RelatedProducts from "./RelatedProducts";
+import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
+import { FaBusinessTime } from "react-icons/fa";
+import { BsCashCoin } from "react-icons/bs";
+import { MdOutlineEventAvailable } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const { checkout } = useSelector((state) => state.checkout);
@@ -43,10 +48,24 @@ const Checkout = () => {
   const handelDecrement = () => {
     setCount(count - 1);
   };
- 
+  const handleDeliveryDate = () => {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 3);
+    // const option = {day:"2-digit", month:"short"}
+    const formattedDate = `${tomorrow.getDate()}-${
+      tomorrow.getDate() + 1
+    } ${tomorrow.toLocaleString("en-US", { month: "short" })}`;
+    return formattedDate;
+  };
+
   return (
     <div className="bg-light">
       <div className="w-11/12 mx-auto bg-light px-4">
+      <div className="py-2 bg-gray-50 ">
+        <Link to={'/'} className="text-sm text-gray-600" > Home {">"}</Link>
+        <Link to={'/allproducts'} className="text-sm text-gray-600"> allproducts {">"}</Link>
+      </div>
         <div className="grid sm:grid-cols-3 gap-5 my-10 border-b-2  pb-10 border-gray-200">
           <div className="flex flex-col-reverse justify-between gap-4  ">
             <div className="flex justify-center gap-5 ">
@@ -172,10 +191,10 @@ const Checkout = () => {
                       +
                     </button>
                   </div>
-                  <div className="mt-8 flex gap-10">
+                  <div className="mt-8 flex flex-col sm:flex-row gap-10">
                     <button
                       onClick={() => dispatch(addToCart(item))}
-                      className="px-10 py-2 bg-primary text-light rounded-lg  transition-all duration-500 cursor-pointer hover:bg-secondary hover:text-dark"
+                      className="px-10 py-2 bg-primary text-light rounded-lg  transition-all duration-500 cursor-pointer hover:bg-secondary hover:text-dark max-sm:w-100"
                     >
                       Add To Cart
                     </button>
@@ -186,6 +205,51 @@ const Checkout = () => {
                 </div>
               );
             })}
+          </div>
+          <div>
+            <p className="text-xl tracking-wide mb-4">Delivery Options</p>
+            <div className="ml-4">
+              <p className="flex justify-between items-center">
+                <span className="flex items-center gap-4 tracking-wide font-medium mb-4">
+                  <TbTruckDelivery size={25} />
+                  <span>Standdard Delivery</span>
+                </span>
+
+                <span className="text-2xl font-dm-snas font-bold tracking-wider">
+                  $5
+                </span>
+              </p>
+              <p className="flex justify-between items-center">
+                <span className="flex items-center gap-4 tracking-wide font-medium mb-4">
+                  <FaBusinessTime size={25} />
+                  <span>Delivery </span>
+                </span>
+
+                <span className="text-md font-medium font-dm-snas  tracking-wider">{handleDeliveryDate()}</span>
+              </p>
+              <p className="flex  gap-5 items-center  tracking-wide font-medium mb-4">
+                <span>
+                  <BsCashCoin  size={25}/>
+                </span>
+                <span>Cash on Delivery Available</span>
+              </p>
+            </div>
+            <p className="text-xl tracking-wide mb-4">Return & Warranty</p>
+            <div className="ml-4">
+              <p className="flex  gap-5 items-center  tracking-wide font-medium mb-4">
+                <span>
+                  <TbTruckReturn size={25} />
+                </span>
+                <span>Return items within 7 days</span>
+              </p>
+              <p className="flex  gap-5 items-center  tracking-wide font-medium mb-4">
+                <span>
+                  <MdOutlineEventAvailable  size={25}/>
+                </span>
+                <span>1 year limited warranty</span>
+              </p>
+              <button className="my-5 w-100 bg-gray-50 px-4 p-2 font-medium tracking-wide rounded hover:bg-gray-100 transition-all duration-300 hover:text-primary">Go to Store</button>
+            </div>
           </div>
         </div>
         <div>
@@ -217,16 +281,11 @@ const Checkout = () => {
                   </div>
 
                   <div className="grid grid-cols-3 my-10 border-t-2  pt-5 border-gray-200">
-                      {
-                        allImages.map((img)=>{
-                          return(
-                            <img key={img} src={img} alt="" />
-                          )
-              
-                        })
-                      }
+                    {allImages.map((img) => {
+                      return <img key={img} src={img} alt="" />;
+                    })}
                   </div>
-                  <RelatedProducts/>
+                  <RelatedProducts />
                 </div>
               </div>
             );

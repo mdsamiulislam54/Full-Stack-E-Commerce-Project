@@ -96,6 +96,9 @@ const NavBar = () => {
             )}
           </li>
           <li>
+            <Link to={'/allproducts'} className="flex items-center text-lg   gap-2">Products</Link>
+          </li>
+          <li>
             <Link className="flex items-center text-lg   gap-2">Blog</Link>
           </li>
           <li>

@@ -10,6 +10,7 @@ import Registration from './componants/Registration/Registration'
 import UserDashboard from './componants/UserDashboard/UserDashboard'
 import CartItem from './componants/CartItem/CartItem'
 import Checkout from './componants/Checkout/Checkout'
+import { AllProducts } from './componants/AllProducts/AllProducts'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/userDashboard" element={<UserDashboard />} />
           <Route path="/cartItems" element={<CartItem />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/allproducts" element={<AllProducts />} />
 
 
         </Routes>
