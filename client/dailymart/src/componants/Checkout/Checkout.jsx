@@ -206,7 +206,7 @@ const Checkout = () => {
               );
             })}
           </div>
-          <div>
+          <div className="sm:border-l-2 sm:pl-2 border-gray-200">
             <p className="text-xl tracking-wide mb-4">Delivery Options</p>
             <div className="ml-4">
               <p className="flex justify-between items-center">
@@ -280,9 +280,9 @@ const Checkout = () => {
                     })}
                   </div>
 
-                  <div className="grid grid-cols-3 my-10 border-t-2  pt-5 border-gray-200">
+                  <div className="grid sm:grid-cols-3 gap-5 my-10 border-t-2  pt-5 border-gray-200">
                     {allImages.map((img) => {
-                      return <img key={img} src={img} alt="" />;
+                      return <img key={img} src={img} alt="" className="flex justify-center items-center" />;
                     })}
                   </div>
                   <RelatedProducts />
