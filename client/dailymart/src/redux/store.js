@@ -7,6 +7,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import productsReducer from './features/productsSlice'
 import cartReducer from "./features/cartSlice";
 import checkoutReducer from "./features/checkoutSlice";
+import filteredProductsReducer from './features/filteredProducts'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -23,7 +24,8 @@ const store = configureStore({
     user: persistedUserReducer,  
     products : productsReducer,
     cart : cartReducer,
-    checkout : checkoutReducer
+    checkout : checkoutReducer,
+    filteredProducts : filteredProductsReducer,  
   },
 });
 
