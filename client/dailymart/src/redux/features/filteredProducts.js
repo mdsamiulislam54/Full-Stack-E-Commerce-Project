@@ -6,7 +6,7 @@ export const fetchProducts = createAsyncThunk(
   async () => {
     const res = await fetch("http://localhost:5000/api/users/products/data");
     const data = await res.json();
-    console.log(data);
+    
     return data;
   }
 );
@@ -82,7 +82,7 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        console.log("Fetched Products:", action.payload);
+      
         state.products = Array.isArray(action.payload) ? action.payload : [];
         state.filteredProducts = [...state.products];
       })
