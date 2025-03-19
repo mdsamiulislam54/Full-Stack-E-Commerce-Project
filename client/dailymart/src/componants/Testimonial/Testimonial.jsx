@@ -24,7 +24,7 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <div className="py-20 bg-assent">
+    <div className="my-20 py-4 bg-assent">
       <div className="w-11/12 mx-auto">
         <div className="flex flex-col gap-4 items-center justify-center  pb-10 ">
           <h2 className="font-dm-snas text-4xl font-semibold tracking-wide text-center">
@@ -37,7 +37,7 @@ const Testimonial = () => {
             live in
           </p>
         </div>
-        <div className="py-5">
+        <div className="py-5 ">
           <Swiper
             slidesPerView={3}
             grid={{
@@ -62,13 +62,13 @@ const Testimonial = () => {
                   slidesPerView: 3, // Medium screens
                 },
                 1024: {
-                  slidesPerView: 4, // Large screens
+                  slidesPerView: 3, // Large screens
                 },
               }}
           >
             {testimonial.map((item, index) => (
-              <SwiperSlide key={index} className="swiper-slide mb-10 ">
-                <div className="flex flex-col gap-4 items-center justify-center shadow  rounded-md p-2">
+              <SwiperSlide key={index} className="swiper-slide mb-10 bg-light rounded-xl  shadow ">
+                <div className="flex flex-col gap-4 items-center justify-center   p-2">
                   <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-sm">
                     <img
                       className="w-full h-full object-cover hover:scale-125 transition-all duration-300"

@@ -7,6 +7,7 @@ import { openLoginModal } from "../../redux/features/loginSlice";
 import { closeRgistermodal } from "../../redux/features/registerSlice";
 
 
+
 const Registration = () => {
 
   // const isModalOpenHandelarRgister = useSelector((state)=> state.register.isRegistretionmodalOpen)

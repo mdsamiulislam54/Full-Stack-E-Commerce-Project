@@ -200,7 +200,7 @@ const NewArrivals = () => {
                                
                               </div>
                               <div>
-                              <button onClick={()=>dispatch(addToCart(product))} className="px-4 py-1 bg-primary text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointer">Add To Cart</button>
+                              <button onClick={()=>dispatch(addToCart(product))} className="px-4 py-1 hover:bg-primary border border-gray-300 hover:text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointer">Add To Cart</button>
                               </div>
                             </div>
                           </div>

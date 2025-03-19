@@ -1,7 +1,8 @@
 import { IoIosSearch } from "react-icons/io";
-import BandLogo from './BandLogo'
+
 import { useDispatch } from "react-redux";
 import { setSearchTerm } from "../../redux/features/filteredProducts";
+import BrendLogo from '../../assets/brand-logo.png'
 
 const LogoSearch = () => {
   
@@ -17,8 +18,7 @@ const LogoSearch = () => {
       <div className="sm:flex justify-between items-center sm:py-4 py-1 w-11/12 mx-auto">
         <div className="max-sm:hidden">
         
-          
-            <BandLogo/>
+          <img src={BrendLogo} alt="" />
          
         </div>
         <div className="sm:w-4/12 w-full flex relative  ">

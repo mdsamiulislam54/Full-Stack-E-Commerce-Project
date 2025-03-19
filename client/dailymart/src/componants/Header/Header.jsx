@@ -5,7 +5,7 @@ import TopBar from "./TopBar";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { VscClose } from "react-icons/vsc";
 import MobilNavbar from "./MobilNavbar";
-import BandLogo from "./BandLogo";
+import BandLogo from "../../assets/brand-logo.png";
 
 import { IoIosSearch } from "react-icons/io";
 
@@ -52,7 +52,7 @@ const Header = () => {
         </nav>
 
         {/* Mobile View */}
-        <div className="max-sm:block hidden bg-primary text-light shadow-md p-4">
+        <div className="max-sm:block hidden bg-light text-light shadow-md p-4">
         
 
           <div className="flex  justify-between items-center gap-2 ">
@@ -61,7 +61,8 @@ const Header = () => {
                 {isshow ?<VscClose/>: <CgMenuRightAlt size={20} className="hover:cursor-pointer"/>}
               </div>
               <div>
-                <BandLogo />
+                <img src={BandLogo} alt="" />
+                
               </div>
             </div>
             <div className="relative  ">

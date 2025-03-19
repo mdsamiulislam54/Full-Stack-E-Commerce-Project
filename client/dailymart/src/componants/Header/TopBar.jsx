@@ -10,6 +10,7 @@ import { VscClose } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 
 import { openRegisterModal,closeRgistermodal } from "../../redux/features/registerSlice";
+import Bandlogo from '../../assets/brand-logo-2.png'
 
 const TopBar = () => {
 
@@ -76,9 +77,10 @@ const TopBar = () => {
         onRequestClose={closeModalhandelar}
         contentLabel="Registration Form"
         className="bg-gray-600  shadow-2xl p-6 rounded-lg opacity-100  max-w-md mx-auto my-20"
-        overlayClassName="fixed inset-0 bg-gray-800 opacity-95 flex justify-center items-center z-100"
+        overlayClassName="fixed inset-0 bg-gray-800 opacity-97 flex justify-center items-center z-100"
       >
-        <button
+       <div className="flex justify-between items-center">
+       <button
           onClick={closeModalhandelar}
           className=" bg-secondary p-1 text-white rounded-full hover:opacity-85 cursor-pointer  "
         >
@@ -86,9 +88,15 @@ const TopBar = () => {
             size={30}
             className="hover:scale-50 duration-300 transition-all animate-pulse"
           />
+          
         </button>
+        <div className=" flex justify-center ">
+            <img src={Bandlogo} alt="" />
+        </div>
+       </div>
+       
         <h2
-          onClick={closeModalhandelar}
+          
           className="text-2xl mb-4 text-center font-bold text-light"
         >
           Register
