@@ -40,7 +40,7 @@ const CartItem = () => {
   }
   return (
     <div className="bg-gray-500 min-h-screen">
-      <div className="w-11/12 mx-auto p-6 ">
+      <div className="w-11/12 mx-auto  ">
         <div></div>
         <div className="flex justify-between items-center bg-light rounded mb-4 p-4">
           <h1 className="text-2xl font-semibold text-gray-700 ">
@@ -57,13 +57,13 @@ const CartItem = () => {
         {cartItems.length === 0 ? (
           <p className="text-center text-light text-lg">Your cart is empty</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {/* Cart Items Section */}
-            <div className="md:col-span-2 bg-white p-4 rounded-lg shadow-lg">
+            <div className="sm:col-span-2 bg-white sm:p-4 rounded-lg shadow-lg">
               {cartItems.map((item) => (
                 <div
                   key={item._id}
-                  className="flex items-center border-b-2 border-gray-300 py-4 space-x-9"
+                  className="sm:flex items-center border-b-2 border-gray-300 py-4 space-x-9"
                 >
                   <img
                     src={item.img}
@@ -71,11 +71,13 @@ const CartItem = () => {
                     className="w-16 h-16 object-contain rounded-md"
                   />
 
-                  <div className="ml-4 flex-1">
+                  <div className="ml-4 flex-1 max-sm:flex gap-4 items-center">
                     <h3 className="text-lg font-medium">{item.title}</h3>
                     <p className="text-gray-500"> {item.price}</p>
                   </div>
                   {/* Quantity Buttons */}
+                  <div className="flex items-center gap-5 px-4">
+
                   <div className="flex items-center space-x-5">
                     <button
                       onClick={() => dispatch(decrementQuantity(item._id))}
@@ -113,6 +115,8 @@ const CartItem = () => {
                   >
                     <IoBagCheckOutline size={20} />
                   </button>
+                  </div>
+              
                 </div>
               ))}
             </div>

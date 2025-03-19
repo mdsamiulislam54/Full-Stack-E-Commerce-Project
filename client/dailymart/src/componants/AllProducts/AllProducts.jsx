@@ -16,24 +16,37 @@ export const AllProducts = () => {
   const { filteredProducts, status, rating } = useSelector(
     (state) => state.filteredProducts
   );
- 
-const [productsShow , setProductsShow] = useState(20)
+
+  const [prev, setPrv] = useState(0);
+  const [next, setNext] = useState(12);
 
   useEffect(() => {
     dispatch(fetchProducts());
-    
   }, [dispatch]);
 
   const handleRatingChange = (ratingValue) => {
     if (rating === ratingValue) {
       dispatch(setRating(null));
-     
-    }else{
+    } else {
       dispatch(setRating(ratingValue));
     }
   };
-  console.log(typeof filteredProducts);
-  const filterSliceProducts = filteredProducts.slice(0, productsShow)
+
+
+  const filterSliceProducts = filteredProducts.slice(prev, next);
+  const handlePrevBtn = () => {
+    if (prev===0) return;
+  
+    setPrv((prev) => prev - 12);
+    setNext((prev) => prev - 12);
+  };
+  const handleNextBtn = () => {
+    if ( next >=filteredProducts.length) return;
+  
+    setNext((prev) => prev + 12);
+    setPrv((prev) => prev + 12);
+  };
+
 
   return (
     <>
@@ -103,7 +116,7 @@ const [productsShow , setProductsShow] = useState(20)
                     checked={rating === "4up"}
                     onChange={() => handleRatingChange("4up")}
                     type="checkbox"
-                    id="4up" 
+                    id="4up"
                   />
                   <label htmlFor="4up"> ⭐⭐⭐⭐ & Up</label>
                 </div>
@@ -112,7 +125,7 @@ const [productsShow , setProductsShow] = useState(20)
                     checked={rating === "below4"}
                     onChange={() => handleRatingChange("below4")}
                     type="checkbox"
-                    id="below4" 
+                    id="below4"
                   />
                   <label htmlFor="below4"> ⭐⭐⭐ & Up</label>
                 </div>
@@ -134,7 +147,7 @@ const [productsShow , setProductsShow] = useState(20)
           <div className="sm:col-span-3">
             <div className="grid sm:grid-cols-3 gap-4">
               {status === "loading" ? (
-                <div className="col-span-4 flex justify-center items-center t0p-50">
+                <div className="col-span-4 flex justify-center items-center top-50">
                   <Loader />
                 </div>
               ) : status === "failed" ? (
@@ -191,6 +204,23 @@ const [productsShow , setProductsShow] = useState(20)
                   </div>
                 ))
               )}
+            </div>
+            <div>
+              <div className="my-5 flex  justify-center items-center">
+                <button
+                  disabled={filterSliceProducts.length === 0}
+                  onClick={handlePrevBtn}
+                  className="bg-red-200 p-3"
+                >
+                  Prev
+                </button>
+                <button
+                  onClick={handleNextBtn}
+                  className="bg-red-200 p-3 mx-10"
+                >
+                  next
+                </button>
+              </div>
             </div>
           </div>
         </div>
