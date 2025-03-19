@@ -84,7 +84,7 @@ const CartItem = () => {
                       disabled={item.quantity === 1}
                       className={`px-3 text-lg font-bold rounded-md  ${
                         item.quantity === 1
-                          ? "bg-red-300 cursor-not-allowed"
+                          ? "bg-secondary cursor-not-allowed"
                           : "bg-gray-100 text-dark "
                       }`}
                     >

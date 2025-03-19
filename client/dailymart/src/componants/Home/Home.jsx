@@ -11,6 +11,7 @@ import ShopCart from "../ShopCart/ShopCart.jsx";
 // import Products from "../Products/Products";
 import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 import Products from "../Products/Products.jsx";
+import Testimonial from "../Testimonial/Testimonial.jsx";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
     
       {/* <Pro/> */}
       <BigOffers/>
+      <Testimonial/>
     
       
     </>

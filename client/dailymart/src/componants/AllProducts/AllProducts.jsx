@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BannerImages from "../../assets/product-banner.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -9,6 +9,10 @@ import {
 } from "../../redux/features/filteredProducts";
 import Loader from "../Loader/Loader";
 import { CiWarning } from "react-icons/ci";
+import { addToCart } from "../../redux/features/cartSlice";
+import ShopCart from '../ShopCart/ShopCart'
+import { addToCheckout } from "../../redux/features/checkoutSlice";
+
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -16,7 +20,7 @@ export const AllProducts = () => {
   const { filteredProducts, status, rating } = useSelector(
     (state) => state.filteredProducts
   );
-
+const navigate = useNavigate()
   const [prev, setPrv] = useState(0);
   const [next, setNext] = useState(12);
 
@@ -46,7 +50,10 @@ export const AllProducts = () => {
     setNext((prev) => prev + 12);
     setPrv((prev) => prev + 12);
   };
-
+  const handleCheckOut = (products) => {
+    dispatch(addToCheckout(products));
+    navigate('/checkout')
+  }
 
   return (
     <>
@@ -100,9 +107,9 @@ export const AllProducts = () => {
                   className="w-full p-2 border rounded"
                 >
                   <option>All</option>
-                  <option>Men's Fashion</option>
-                  <option>Women's Fashion</option>
-                  <option>Kid's Fashion</option>
+                  <option>Men&apos;s Fashion</option>
+                  <option>Women&apos;s Fashion</option>
+                  <option>Kid&apos;s Fashion</option>
                   <option>Cell Phone</option>
                   <option>Footwear</option>
                 </select>
@@ -132,7 +139,7 @@ export const AllProducts = () => {
               </div>
 
               {/* Apply & Reset Buttons */}
-              <button className="w-full bg-blue-500 text-white p-2 rounded mt-2">
+              <button className="w-full bg-primary text-white p-2 rounded mt-2">
                 Apply Filters
               </button>
               <button
@@ -153,7 +160,9 @@ export const AllProducts = () => {
               ) : status === "failed" ? (
                 <div className="text-center">Error</div>
               ) : filterSliceProducts.length === 0 ? (
-                <div className="flex flex-col col-span-4 items-center justify-center h-full py-20 bg-gray-100 rounded-lg shadow-md text-center">
+                <div
+                
+                className="flex flex-col col-span-4 items-center justify-center h-full py-20 bg-gray-100 rounded-lg shadow-md text-center">
                   <div className="mb-4">
                     <CiWarning size={100} />
                   </div>
@@ -161,7 +170,7 @@ export const AllProducts = () => {
                     No Products Found
                   </h2>
                   <p className="text-gray-500 mt-2">
-                    Sorry, we couldn't find any products matching your search
+                    Sorry, we couldn&apos;t find any products matching your search
                     criteria.
                   </p>
                   <button
@@ -173,10 +182,13 @@ export const AllProducts = () => {
                 </div>
               ) : (
                 filterSliceProducts.map((product) => (
-                  <div key={product._id} className="py-5 shadow cursor-pointer">
+                  <div 
+                  
+                  key={product._id} className="py-5 shadow cursor-pointer">
                     <img
                       src={product.img}
                       alt={product.title}
+                      onClick={()=>handleCheckOut(product)}
                       className="w-48 h-48 object-contain mx-auto rounded-lg mb-3"
                     />
                     <div className="flex flex-col justify-between p-5 border-t border-gray-200">
@@ -197,7 +209,9 @@ export const AllProducts = () => {
                       <p className="text-gray-500 text-sm line-through">
                         {product.price}
                       </p>
-                      <button className="text-sm font-light text-gray-800 hover:text-gray-900 border p-1 border-gray-300 rounded-sm cursor-pointer hover:bg-secondary transition-all duration-300">
+                      <button 
+                      onClick={()=> dispatch(addToCart(product))}
+                      className="text-sm font-light text-gray-800 border px-3 py-1 border-gray-300 rounded-sm cursor-pointer hover:bg-primary hover:text-light hover:border-light transition-all duration-300">
                         Add to Cart
                       </button>
                     </div>
@@ -206,23 +220,24 @@ export const AllProducts = () => {
               )}
             </div>
             <div>
-              <div className="my-5 flex  justify-center items-center">
+              <div className="my-5 flex  justify-center gap-2 items-center">
                 <button
                   disabled={filterSliceProducts.length === 0}
                   onClick={handlePrevBtn}
-                  className="bg-red-200 p-3"
+                  className=" px-3 py-1 border border-gray-300 rounded-md font-bold tracking-wide hover:border-light cursor-pointer hover:bg-primary hover:text-light transition-all duration-300"
                 >
                   Prev
                 </button>
                 <button
                   onClick={handleNextBtn}
-                  className="bg-red-200 p-3 mx-10"
+                  className=" px-3 py-1 border border-gray-300 rounded-md font-bold tracking-wide hover:border-light cursor-pointer hover:bg-primary hover:text-light transition-all duration-300"
                 >
                   next
                 </button>
               </div>
             </div>
           </div>
+          <ShopCart/>
         </div>
       </div>
     </>
