@@ -12,6 +12,7 @@ import CartItem from './componants/CartItem/CartItem'
 import Checkout from './componants/Checkout/Checkout'
 import { AllProducts } from './componants/AllProducts/AllProducts'
 import Footer from './componants/Footer/Footer'
+import NotFound from './componants/PageNotFound/NotFound'
 
 function App() {
   return (
@@ -26,6 +27,10 @@ function App() {
           <Route path="/cartItems" element={<CartItem />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/allproducts" element={<AllProducts />} />
+
+        
+          <Route path="*" element={<NotFound/>} />
+            
 
 
         </Routes>
