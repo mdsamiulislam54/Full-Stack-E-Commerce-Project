@@ -76,6 +76,7 @@ const Checkout = () => {
                       onMouseEnter={() => handleClickImgaes(item)}
                       src={item}
                       alt=""
+                      loading="lazy"
                       className="w-20 h-20 object-contain m-5 cursor-pointer transition-all duration-300 "
                     />
                   </div>

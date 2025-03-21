@@ -81,14 +81,17 @@ const BannerSection = () => {
         <img
           src="https://images.othoba.com/images/thumbs/0727422_tv%20right%20side%20banner%20web.jpeg"
           alt=""
+          loading="lazy"
         />
         <img
           src="https://images.othoba.com/images/thumbs/0724232_Right%20side%20banar%20web.jpeg"
           alt=""
+          loading="lazy"
         />
         <img
          src="https://images.othoba.com/images/thumbs/0727422_tv%20right%20side%20banner%20web.jpeg"
           alt=""
+          loading="lazy"
         />
   
       </div>

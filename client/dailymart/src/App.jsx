@@ -11,6 +11,7 @@ import UserDashboard from './componants/UserDashboard/UserDashboard'
 import CartItem from './componants/CartItem/CartItem'
 import Checkout from './componants/Checkout/Checkout'
 import { AllProducts } from './componants/AllProducts/AllProducts'
+import Footer from './componants/Footer/Footer'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
 
 
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )

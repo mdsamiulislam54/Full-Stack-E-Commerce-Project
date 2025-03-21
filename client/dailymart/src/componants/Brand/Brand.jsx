@@ -11,7 +11,7 @@ import {  Autoplay ,FreeMode} from 'swiper/modules';
 
 const Brand = () => {
   return (
-    <div className='my-20'>
+    <div className='sm:my-10'>
       <div className='w-11/12 mx-auto'>
         <Swiper
           slidesPerView={6}
@@ -22,7 +22,18 @@ const Brand = () => {
           autoplay={{ delay: 0, disableOnInteraction: false }}
          
           modules={[ Autoplay,FreeMode]}
+
           className="mySwiper"
+          breakpoints={{
+            // breakpoints
+            320: {
+                slidesPerView: 2, 
+              },
+            640: { slidesPerView: 3, },
+            768: { slidesPerView: 4, },
+            1024: { slidesPerView: 5, },
+            1280: { slidesPerView: 6, },
+          }}
         >
           {[
             "https://brandlogos.net/wp-content/uploads/2025/03/kaspersky_lab-logo_brandlogos.net_yywlj-512x512.png",
@@ -40,7 +51,7 @@ const Brand = () => {
             "https://brandlogos.net/wp-content/uploads/2025/03/chint_group-logo_brandlogos.net_utwl0-512x174.png"
           ].map((logo, index) => (
             <SwiperSlide key={index} className="flex justify-center items-center">
-              <img src={logo} alt="brand logo" className="h-24 w-24 object-contain"  loading='lazy'/>
+              <img src={logo} alt="brand logo" className="h-40 w-40 object-contain "  loading='lazy'/>
             </SwiperSlide>
           ))}
         </Swiper>

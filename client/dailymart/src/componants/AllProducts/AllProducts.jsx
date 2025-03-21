@@ -188,6 +188,7 @@ const navigate = useNavigate()
                     <img
                       src={product.img}
                       alt={product.title}
+                      loading="lazy"
                       onClick={()=>handleCheckOut(product)}
                       className="w-48 h-48 object-contain mx-auto rounded-lg mb-3"
                     />

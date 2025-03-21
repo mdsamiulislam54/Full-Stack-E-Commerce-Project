@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { FaQuoteRight } from "react-icons/fa";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/grid";
@@ -69,12 +69,15 @@ const Testimonial = () => {
             {testimonial.map((item, index) => (
               <SwiperSlide key={index} className="swiper-slide mb-10 bg-light rounded-xl  shadow ">
                 <div className="flex flex-col gap-4 items-center justify-center   p-2">
-                  <div className="relative w-20 h-20 rounded-full overflow-hidden shadow-sm">
+                  <div className=" w-20 h-20 rounded-full overflow-hidden shadow-sm ">
                     <img
-                      className="w-full h-full object-cover hover:scale-125 transition-all duration-300"
+                      className="w-full relative h-full object-cover hover:scale-125 transition-all duration-300"
                       src={item.images}
                       alt={item.name}
                     />
+                    <div>
+                      <FaQuoteRight className="w-5 h-5 text-secondary absolute top-20 left-69 -mt-2 -ml-2" />
+                    </div>
                   </div>
                   <p className="text-[12px] tracking-wide text-center text-gray-500">
                     {item.date}

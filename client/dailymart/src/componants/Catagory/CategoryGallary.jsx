@@ -68,6 +68,7 @@ const CategoryGallary = () => {
                       src={item.images}
                       alt={item.name}
                       className=" sm:w-50 w-40 h-40 sm:h-50 mx-auto object-contain mt-2 "
+                      loading="lazy"
                     />
 
                     {/* Overlay (Black Background with Opacity) */}

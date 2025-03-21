@@ -8,6 +8,7 @@ import bcrypt from "bcrypt";
 import ProductSchema from "../model/ProductsSchemaModel.js";
 import ShopSchemaModel from "../model/ShopSchema.js";
 import errorHandler from "../errorhandaler/errorHandalar.js";
+import nodemailer from "nodemailer";
 
 const router = express.Router();
 
@@ -89,10 +90,10 @@ router.get("/products/data", async (req, res) => {
 
 router.post("/shop", errorHandler, async (req, res) => {
   try {
-    const data = JSON.parse( fs.readFileSync("category.json"), "utf8");
+    const data = JSON.parse(fs.readFileSync("category.json"), "utf8");
     const uniqueCategories = [];
     const seenCids = new Set();
-    data.forEach(element => {
+    data.forEach((element) => {
       if (!seenCids.has(element.cid)) {
         seenCids.add(element.cid);
         uniqueCategories.push(element);
@@ -100,12 +101,11 @@ router.post("/shop", errorHandler, async (req, res) => {
         console.log(`Duplicate category found: ${element.cid}`);
       }
     });
-     // Insert unique categories into the MongoDB collection
-     await ShopSchemaModel.insertMany(uniqueCategories);
+    // Insert unique categories into the MongoDB collection
+    await ShopSchemaModel.insertMany(uniqueCategories);
 
     res.status(201).json({ message: "Shop categories inserted successfully" });
   } catch (err) {
-   
     res.status(500).json({ message: "Server error", err: err.message });
   }
 });
@@ -135,18 +135,47 @@ router.delete("/shop", errorHandler, async (req, res) => {
 });
 
 router.delete("/products", async (req, res) => {
-  try{
-    const shop = await ProductSchema.deleteMany({})
-    if(shop.deletedCount === 0){
-      return res.status(404).json({message: "No products found to delete!"})
+  try {
+    const shop = await ProductSchema.deleteMany({});
+    if (shop.deletedCount === 0) {
+      return res.status(404).json({ message: "No products found to delete!" });
     }
-    res.status(200).json({message: "All products deleted successfully!"})
+    res.status(200).json({ message: "All products deleted successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
   }
-  catch(err){
-    console.error(err)
-    res.status(500).json({message: "Server error", error: err.message})
-  }
-})
+});
 
+router.post("/send-email", async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: "Email is required" });
+  }
+  // Create a transporter using SMTP
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.AUTH_EMAIL,
+      pass: process.env.AUTH_PASSWORD,
+    },
+  });
+  let mailOptions = {
+    from: process.env.AUTH_EMAIL,
+    to: email,
+    subject: "Welcome to DailyMart",
+    text: "Thank you for subscribing to our newsletter! Stay tuned for updates.👍❤️❤️❤️👍",
+  }
+  try {
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Email sent successfully" });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
 
 export default router;

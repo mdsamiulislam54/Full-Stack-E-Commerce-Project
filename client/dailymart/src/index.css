@@ -3,13 +3,40 @@
 
 
 @theme {
-  --color-primary: #4C1D95;
-  
+
+  --color-primary: #4C1D95; 
   --color-secondary: #F59E0B;
-  --color-assent: #E5E7EB;
-  --color-dark: #1F2937;
-  --color-light: #ffffff;
+   --color-assent: #E5E7EB;
+   --color-dark: #1F2937;
+   --color-light: #ffffff;
+
+
+
+
+
+
+
   --font-primary: "Poppins", sans-serif;
   --font-dm-snas: "DM Sans", sans-serif;  
   
 }
+
+  /* 4C1D95 */
+  /* F59E0B */
+
+/* 
+ --color-primary: #264653; 
+ --color-secondary: #E9C46A;
+  --color-assent: #E5E7EB;
+  --color-dark: #1F2937;
+  --color-light: #ffffff;
+
+*/
+/* 
+ --color-primary: ; 
+ --color-secondary: ;
+  --color-assent: ;
+  --color-dark: ;
+  --color-light: ;
+
+*/

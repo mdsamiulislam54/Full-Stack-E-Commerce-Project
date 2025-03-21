@@ -28,6 +28,7 @@ const RelatedProducts = () => {
                 src={product.img}
                 alt={product.title}
                 className="w-50 h-50 object-contain mx-auto"
+                loading="lazy"
               />
               <h2 className="text-xl py-2">{product.title}</h2>
               <p className="font-dm-snas font-bold">{product.price}</p>

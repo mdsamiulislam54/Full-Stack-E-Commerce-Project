@@ -3,16 +3,22 @@ import { IoIosSearch } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { setSearchTerm } from "../../redux/features/filteredProducts";
 import BrendLogo from '../../assets/brand-logo.png'
+import { useNavigate } from "react-router-dom";
+
 
 const LogoSearch = () => {
-  
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSubmit = (e)=>{
     e.preventDefault();
+    navigate('/allproducts')
     const searchValue = e.target.search.value;
     dispatch(setSearchTerm(searchValue));
-    console.log( e.target.search.value);
+   
+   
   }
+
+
   return (
     <div className=" sm:bg-light ">
       <div className="sm:flex justify-between items-center sm:py-4 py-1 w-11/12 mx-auto">

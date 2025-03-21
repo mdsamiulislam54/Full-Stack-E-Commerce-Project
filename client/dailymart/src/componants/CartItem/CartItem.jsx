@@ -68,6 +68,7 @@ const CartItem = () => {
                   <img
                     src={item.img}
                     alt={item.title}
+                    loading="lazy"
                     className="w-16 h-16 object-contain rounded-md"
                   />
 

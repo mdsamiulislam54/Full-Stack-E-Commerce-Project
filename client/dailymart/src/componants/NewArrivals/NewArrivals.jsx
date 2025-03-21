@@ -176,7 +176,7 @@ const NewArrivals = () => {
                     <div key={index}>
                       <div className="grid grid-cols-3 gap-3 mb-8 shadow rounded ">
                         <div className="p-2 bg-light col-span-1">
-                          <img src={product.img} alt="" className="w-40 h-40 object-contain border-r pr-2 border-gray-300" />
+                          <img src={product.img} alt="" className="w-40 h-40 object-contain border-r pr-2 border-gray-300" loading="lazy"/>
                         </div>
                         <div className=" col-span-2">
                           <div className="p-2  ">
