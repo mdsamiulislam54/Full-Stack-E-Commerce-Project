@@ -7,7 +7,7 @@ import { VscClose } from "react-icons/vsc";
 import MobilNavbar from "./MobilNavbar";
 import BandLogo from "../../assets/brand-logo.png";
 
-import { IoIosSearch } from "react-icons/io";
+
 
 
 const Header = () => {
@@ -55,28 +55,29 @@ const Header = () => {
         <div className="max-sm:block hidden bg-light text-light shadow-md p-4">
         
 
-          <div className="flex  justify-between items-center gap-2 ">
-            <div className="flex gap-3 items-center">
+          <div className="flex flex-row-reverse  justify-between items-center gap-2 ">
+            <div className="flex  justify-between gap-3 items-center">
               <div onClick={handleShow}>
-                {isshow ?<VscClose/>: <CgMenuRightAlt size={20} className="hover:cursor-pointer"/>}
+                {isshow ?<VscClose size={24} className="hover:cursor-pointer text-dark"/>: <CgMenuRightAlt size={24} className="hover:cursor-pointer text-dark"/>}
               </div>
-              <div>
-                <img src={BandLogo} alt="" />
+             
+            </div>
+            <div>
+                <img src={BandLogo} alt="brand logo" className="w-24 object-contain" />
                 
               </div>
-            </div>
-            <div className="relative  ">
+            {/* <div className="relative  ">
               <input type="text" name="" id="" placeholder="Sarch products..." className="border-1 border-gray-400 outline-none p-1 rounded-2xl w-full sm:w-2/3 md:w-1/2"/>
               <span className=" ">
                 <button className=" absolute top-0 right-0 text-center bg-assent text-dark hover:bg-secondary transition-colors duration-300 px-2  h-full rounded-r-2xl"><IoIosSearch/></button>
               </span>
-            </div>
+            </div> */}
            
           </div>
         
           
           <div
-            className={`max-sm:block hidden absolute top-16 left-0 w-10/12 shadow-2xl z-[100] bg-primary transition-all duration-300 ease-in-out ${
+            className={`max-sm:block hidden absolute top-20 left-0 w-10/12 shadow-2xl z-[100] bg-light text-dark transition-all duration-300 ease-in-out ${
               isshow ? "h-screen" : "h-0 overflow-hidden"
             }`}
           >

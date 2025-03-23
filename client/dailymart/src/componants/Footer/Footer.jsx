@@ -68,7 +68,7 @@ const Footer = () => {
         
         </div>
         <div className="bg-light flex max-sm:flex-col items-center justify-between gap-2 py-4 ">
-          <div className="flex max-sm:flex-col items-center justify-between gap-2   w-11/12 mx-auto">
+          <div className="flex max-sm:flex-col-reverse items-center justify-between gap-2   w-11/12 mx-auto">
           <p className="text-lg text-center  text-dark">Copyright ©2025 All rights reserved </p>
             <p className="flex items-center gap-4 text-dark">
                 <span><FaCcPaypal  size={30}/></span>
