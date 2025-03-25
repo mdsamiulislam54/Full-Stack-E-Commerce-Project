@@ -10,9 +10,8 @@ import {
 import Loader from "../Loader/Loader";
 import { CiWarning } from "react-icons/ci";
 import { addToCart } from "../../redux/features/cartSlice";
-import ShopCart from '../ShopCart/ShopCart'
+import ShopCart from "../ShopCart/ShopCart";
 import { addToCheckout } from "../../redux/features/checkoutSlice";
-
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ export const AllProducts = () => {
   const { filteredProducts, status, rating } = useSelector(
     (state) => state.filteredProducts
   );
-const navigate = useNavigate()
+  const navigate = useNavigate();
   const [prev, setPrv] = useState(0);
   const [next, setNext] = useState(12);
 
@@ -36,24 +35,23 @@ const navigate = useNavigate()
     }
   };
 
-
   const filterSliceProducts = filteredProducts.slice(prev, next);
   const handlePrevBtn = () => {
-    if (prev===0) return;
-  
+    if (prev === 0) return;
+
     setPrv((prev) => prev - 12);
     setNext((prev) => prev - 12);
   };
   const handleNextBtn = () => {
-    if ( next >=filteredProducts.length) return;
-  
+    if (next >= filteredProducts.length) return;
+
     setNext((prev) => prev + 12);
     setPrv((prev) => prev + 12);
   };
   const handleCheckOut = (products) => {
     dispatch(addToCheckout(products));
-    navigate('/checkout')
-  }
+    navigate("/checkout");
+  };
 
   return (
     <>
@@ -97,22 +95,67 @@ const navigate = useNavigate()
         <div className="grid sm:grid-cols-4 gap-5 py-5">
           <div className="sm:col-span-1 sm:border-r-2 sm:border-gray-200 sm:pr-2">
             <div className="p-4 rounded-lg">
-              <h2 className="text-lg font-bold mb-2">Filters</h2>
+              <h2 className="text-xl border-b pb-2 border-gray-300 font-bold mb-2">
+                Filters
+              </h2>
 
               {/* Category Filter */}
               <div className="mb-3">
-                <h3 className="font-semibold">Category</h3>
-                <select
-                  onChange={(e) => dispatch(setCategory(e.target.value))}
-                  className="w-full p-2 border rounded"
-                >
-                  <option>All</option>
-                  <option>Men&apos;s Fashion</option>
-                  <option>Women&apos;s Fashion</option>
-                  <option>Kid&apos;s Fashion</option>
-                  <option>Cell Phone</option>
-                  <option>Footwear</option>
-                </select>
+                <h3 className="font-semibold text-lg tracking-wider">
+                  Categorys
+                </h3>
+               
+                <ul className="flex flex-col gap-2 mt-2">
+                  <li className="sm:ml-4 text-md tracking-wider ">
+                    <Link
+                      onClick={() => dispatch(setCategory("All"))}
+                      className="hover:ml-2 transition-all duration-500 hover:text-primary flex justify-between "
+                    >
+                      <span>All products</span> <span>{">"}</span>
+                    </Link>
+                  </li>
+                  <li className="sm:ml-4 text-md tracking-wider ">
+                    <Link
+                      onClick={() => dispatch(setCategory("Men's Fashion"))}
+                      className="hover:ml-2 transition-all duration-500 hover:text-primary flex justify-between "
+                    >
+                      <span>Men&apos;s Fashion </span> <span>{">"}</span>
+                    </Link>
+                  </li>
+                  <li className="sm:ml-4 text-md tracking-wider ">
+                    <Link
+                      onClick={() => dispatch(setCategory("Women's Fashion"))}
+                      className="hover:ml-2 transition-all duration-500 hover:text-primary flex justify-between "
+                    >
+                      Women&apos;s Fashion <span>{">"}</span>
+                    </Link>
+                  </li>
+                  <li className="sm:ml-4 text-md tracking-wider ">
+                    <Link
+                      onClick={() => dispatch(setCategory("Kid's Fashion"))}
+                      className="hover:ml-2 transition-all duration-500 hover:text-primary flex justify-between "
+                    >
+                      Kid&apos;s Fashion <span>{">"}</span>
+                    </Link>
+                  </li>
+                  <li className="sm:ml-4 text-md tracking-wider ">
+                    <Link
+                      onClick={() => dispatch(setCategory("Cell Phone"))}
+                      className="hover:ml-2 transition-all duration-500 hover:text-primary flex justify-between "
+                    >
+                      Cell Phone <span>{">"}</span>
+                    </Link>
+                  </li>
+                  <li className="sm:ml-4 text-md tracking-wider ">
+                    {" "}
+                    <Link
+                      onClick={() => dispatch(setCategory("Footwear"))}
+                      className="hover:ml-2 transition-all duration-500 hover:text-primary flex justify-between "
+                    >
+                      Footwear <span>{">"}</span>
+                    </Link>
+                  </li>
+                </ul>
               </div>
 
               {/* Rating */}
@@ -160,9 +203,7 @@ const navigate = useNavigate()
               ) : status === "failed" ? (
                 <div className="text-center">Error</div>
               ) : filterSliceProducts.length === 0 ? (
-                <div
-                
-                className="flex flex-col col-span-4 items-center justify-center h-full py-20 bg-gray-100 rounded-lg shadow-md text-center">
+                <div className="flex flex-col col-span-4 items-center justify-center h-full py-20 bg-gray-100 rounded-lg shadow-md text-center">
                   <div className="mb-4">
                     <CiWarning size={100} />
                   </div>
@@ -170,8 +211,8 @@ const navigate = useNavigate()
                     No Products Found
                   </h2>
                   <p className="text-gray-500 mt-2">
-                    Sorry, we couldn&apos;t find any products matching your search
-                    criteria.
+                    Sorry, we couldn&apos;t find any products matching your
+                    search criteria.
                   </p>
                   <button
                     onClick={() => dispatch(fetchProducts())}
@@ -182,14 +223,12 @@ const navigate = useNavigate()
                 </div>
               ) : (
                 filterSliceProducts.map((product) => (
-                  <div 
-                  
-                  key={product._id} className="py-5 shadow cursor-pointer">
+                  <div key={product._id} className="py-5 shadow cursor-pointer">
                     <img
                       src={product.img}
                       alt={product.title}
                       loading="lazy"
-                      onClick={()=>handleCheckOut(product)}
+                      onClick={() => handleCheckOut(product)}
                       className="w-48 h-48 object-contain mx-auto rounded-lg mb-3"
                     />
                     <div className="flex flex-col justify-between p-5 border-t border-gray-200">
@@ -210,9 +249,10 @@ const navigate = useNavigate()
                       <p className="text-gray-500 text-sm line-through">
                         {product.price}
                       </p>
-                      <button 
-                      onClick={()=> dispatch(addToCart(product))}
-                      className="text-sm font-light text-gray-800 border px-3 py-1 border-gray-300 rounded-sm cursor-pointer hover:bg-primary hover:text-light hover:border-light transition-all duration-300">
+                      <button
+                        onClick={() => dispatch(addToCart(product))}
+                        className="text-sm font-light text-gray-800 border px-3 py-1 border-gray-300 rounded-sm cursor-pointer hover:bg-primary hover:text-light hover:border-light transition-all duration-300"
+                      >
                         Add to Cart
                       </button>
                     </div>
@@ -238,7 +278,7 @@ const navigate = useNavigate()
               </div>
             </div>
           </div>
-          <ShopCart/>
+          <ShopCart />
         </div>
       </div>
     </>

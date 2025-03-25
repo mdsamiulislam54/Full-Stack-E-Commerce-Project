@@ -30,8 +30,11 @@ const filterProductsByCategory = (state) => {
 
 const filterProductsBySearchTerm = (state) => {
   return state.products.filter((p) => {
-    return p.title.toLowerCase().includes(state.searchTerm.toLowerCase());
-  })||[];
+    return p.description
+      .toLowerCase()
+      .split(" ") 
+      .some((word) => word.includes(state.searchTerm.toLowerCase())); 
+  }) || [];
 };
 
 
