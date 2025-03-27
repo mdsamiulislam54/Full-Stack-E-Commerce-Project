@@ -19,13 +19,17 @@ export const AllProducts = () => {
   const { filteredProducts, status, rating } = useSelector(
     (state) => state.filteredProducts
   );
+ 
   const navigate = useNavigate();
   const [prev, setPrv] = useState(0);
   const [next, setNext] = useState(12);
 
   useEffect(() => {
     dispatch(fetchProducts());
+
   }, [dispatch]);
+
+ 
 
   const handleRatingChange = (ratingValue) => {
     if (rating === ratingValue) {
@@ -104,7 +108,7 @@ export const AllProducts = () => {
                 <h3 className="font-semibold text-lg tracking-wider">
                   Categorys
                 </h3>
-               
+
                 <ul className="flex flex-col gap-2 mt-2">
                   <li className="sm:ml-4 text-md tracking-wider ">
                     <Link

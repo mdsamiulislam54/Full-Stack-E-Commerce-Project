@@ -9,11 +9,14 @@ import { useNavigate } from "react-router-dom";
 const LogoSearch = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleSubmit = (e)=>{
     e.preventDefault();
-    navigate('/allproducts')
+   
     const searchValue = e.target.search.value;
     dispatch(setSearchTerm(searchValue));
+    console.log(searchValue);
+    navigate('/allproducts')
    
    
   }

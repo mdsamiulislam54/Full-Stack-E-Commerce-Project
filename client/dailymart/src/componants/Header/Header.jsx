@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-assent z-100" style={{ willChange: "transform" }}>
+    <header className="bg-assent z-92" style={{ willChange: "transform" }}>
       <div className="mx-auto max-sm:sm:py-4 py-0">
         <nav className="max-sm:hidden">
           {/* TopBar - Hide on Scroll */}

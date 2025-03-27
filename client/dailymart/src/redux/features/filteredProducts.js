@@ -12,6 +12,7 @@ export const fetchProducts = createAsyncThunk(
 );
 
 const initialState = {
+  name: "allproducts",
   products: [],
   filteredProducts: [],
   category: "All",
@@ -29,12 +30,16 @@ const filterProductsByCategory = (state) => {
 };
 
 const filterProductsBySearchTerm = (state) => {
-  return state.products.filter((p) => {
-    return p.description
-      .toLowerCase()
+  const products = JSON.parse(JSON.stringify(state.products || []));
+
+  const searchTerm = state.searchTerm || "";
+  if (!searchTerm) return products;
+  
+  return products.filter((p) => {
+    return p.title?.toLowerCase()
       .split(" ") 
-      .some((word) => word.includes(state.searchTerm.toLowerCase())); 
-  }) || [];
+      .some((word) => word.includes(searchTerm.toLowerCase())); 
+  }) || []; 
 };
 
 
@@ -42,10 +47,10 @@ const filterProductsBySearchTerm = (state) => {
 const filterProductsByRating = (state) => {
     return state.products.filter((p) => {
       if (state.rating === "4up") {
-        const rating = parseFloat(p.rating)
+        const rating = parseFloat(p.rating)  || 0;
         return rating >= 4;  
       } else if (state.rating === "below4") {
-        const rating = parseFloat(p.rating)
+        const rating = parseFloat(p.rating) || 0;
         return rating < 4;  
       }
       return true; 
@@ -64,6 +69,7 @@ const productSlice = createSlice({
     setSearchTerm: (state, action) => {
       state.searchTerm = action.payload;
       state.filteredProducts = [...filterProductsBySearchTerm(state)];
+      console.log("After update:", state.searchTerm, state.filteredProducts);
     },
     setRating: (state, action) => {
       state.rating = action.payload;
@@ -87,7 +93,9 @@ const productSlice = createSlice({
         state.status = "succeeded";
       
         state.products = Array.isArray(action.payload) ? action.payload : [];
+   
         state.filteredProducts = [...state.products];
+        console.log([...state.products])
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";
