@@ -13,7 +13,7 @@ import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
 import Products from "../Products/Products.jsx";
 import Testimonial from "../Testimonial/Testimonial.jsx";
 import Brand from "../Brand/Brand.jsx";
-import Loader from "../Loader/Loader.jsx";
+
 
 const Home = () => {
   return (
