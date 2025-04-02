@@ -52,6 +52,8 @@ const Login = () => {
             position: "top-right",
             autoClose: 2000,
           });
+          const user = {email}
+          localStorage.setItem("user", JSON.stringify(user));
           //JWT TOKEN CREATE LOCALSTORAGE
           localStorage.setItem("token", response.data.token);
 

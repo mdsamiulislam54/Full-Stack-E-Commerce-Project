@@ -16,7 +16,7 @@ app.use(cors()); // Call cors as a function
 
 // Database connection
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL )
   .then(() => {
     console.log("connection sucessfuly!");
   })
