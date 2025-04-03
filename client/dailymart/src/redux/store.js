@@ -9,6 +9,7 @@ import cartReducer from "./features/cartSlice";
 import checkoutReducer from "./features/checkoutSlice";
 import filteredProductsReducer from './features/filteredProducts'
 import buynowReducer from './features/BuynowSlice'
+import shippingAddressReducer from './features/shippingAddressSlices'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -28,6 +29,7 @@ const store = configureStore({
     checkout : checkoutReducer,
     filteredProducts : filteredProductsReducer,  
     buynow : buynowReducer,
+    shippingAddress : shippingAddressReducer, 
   },
 });
 

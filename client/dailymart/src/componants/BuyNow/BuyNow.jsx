@@ -6,7 +6,9 @@ import division from "../../utilitis/division";
 import districts from "../../utilitis/districts";
 import districtUpazilas from "../../utilitis/upzila";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setShippingAddress } from "../../redux/features/shippingAddressSlices";
+
 
 
 
@@ -16,7 +18,27 @@ const BuyNow = () => {
   const [selectedDistricts, setSelectedDistricts] = useState(null);
   const [selectedUpzilla, setSelectedUpzilla] = useState(null);
   const {products} = useSelector((state) => state.buynow)
-  console.log( products)
+  const shippingAddress = useSelector((state) => state.shippingAddress.shippingAddress);
+  
+  const dispatch = useDispatch()
+  const handleSubmited = (e)=>{
+    e.preventDefault()
+    const userAddress = {
+      city: selectedCity.label,
+      district: selectedDistricts.label,
+      upzilla: selectedUpzilla.label,
+      name : e.target.name.value,
+      phone : e.target.phone.value,
+      email : e.target.email.value,
+      zip : e.target.zip.value,
+      address : e.target.address.value,
+     
+    }
+   dispatch(setShippingAddress(userAddress))
+   closeModal()
+   console.log(userAddress)
+    
+  }
  
   const openModal = () => {
     setIsOpen(true);
@@ -25,11 +47,11 @@ const BuyNow = () => {
     setIsOpen(false);
   };
   return (
-    <div className="">
+    <div className="bg-gray-100">
       <div className="w-11/12 mx-auto py-5">
         <div className=" grid sm:grid-cols-6 gap-4 ">
           <div className="sm:col-span-4">
-            <div className="flex justify-between items-center mb-4 bg-gray-100 p-3 rounded-md">
+            <div className="flex justify-between items-center mb-4 bg-light p-3 rounded-md">
               <h4 className="text-lg tracking-wide font-semibold">
                 Shipping & Billing
               </h4>
@@ -55,7 +77,7 @@ const BuyNow = () => {
                   <h2 className="text-2xl font-semibold font-dm-snas mb-4 text-center">
                     Add your address
                   </h2>
-                  <form className="space-y-4 ">
+                  <form  onSubmit={handleSubmited} className="space-y-4 ">
                     <input
                       type="text"
                       name="name"
@@ -124,30 +146,31 @@ const BuyNow = () => {
                     </select> */}
                     <input
                       className="w-full text-center p-2 bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md"
-                      type="button"
+                      type="submit"
                       value="Save"
                     />
                   </form>
                 </div>
               </Modal>
             </div>
-            <div className=" bg-gray-100 p-3 rounded-md">
+            <div className=" bg-light p-3 rounded-md">
               <div className="flex justify-between items-center mb-4 p-3 rounded-md">
-                <span className="text-md font-semibold"> Name : <span></span></span>
-                <span className="text-md font-semibold">Phone : <span></span></span>
-                <span className="text-md font-semibold"> Email : <span></span></span>
-                <span className="text-md font-semibold">Zip Code : <span></span></span>
+                <span className="text-md font-semibold"> Name :  <span className="text-sm font-semibold text-gray-600" >{shippingAddress.name || "N/N"}</span></span>
+                <span className="text-md font-semibold">Phone : <span className="text-sm font-semibold text-gray-600"> {shippingAddress.phone || "N/N"}</span></span>
+                <span className="text-md font-semibold"> Email : <span className="text-sm font-semibold text-gray-600"> {shippingAddress.email || "N/N"}</span></span>
+                <span className="text-md font-semibold">Zip Code : <span className="text-sm font-semibold text-gray-600"> {shippingAddress.zip || "N/N"}</span></span>
+              </div>
+              <div className="">
+                <span className="text-md font-semibold">Address : <span className="text-sm font-semibold text-gray-600">{`${shippingAddress.address}, ${shippingAddress.upzilla}, ${shippingAddress.district}, ${shippingAddress.city}`}</span></span>
+                
               </div>
               <div>
-                <span className="text-md font-semibold">Address :</span>
-              </div>
-              <div>
-                <div>
+                <div className="mt-10 bg-light">
                   {
                     products.map((product) => (
-                      <div key={product.id} className="flex items-center gap-4 mb-4 p-3 rounded-md border-b border-gray-400">
-                        <img src={product.img} alt={product.name} className="w-16 h-16" />
-                        <span className="text-md font-semibold">{product._id}</span>
+                      <div key={product.id} className="flex items-center gap-4 mb-4 py-4 rounded-md border-t  border-gray-400">
+                        <img src={product.img} alt={product.title} className="w-30 h-30 object-contain" />
+                        <span className="text-md font-semibold">{product.title}</span>
                        
                       </div>
                     ))

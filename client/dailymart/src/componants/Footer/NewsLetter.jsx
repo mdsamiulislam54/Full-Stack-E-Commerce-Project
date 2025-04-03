@@ -26,7 +26,7 @@ const NewsLetter = () => {
   };
 
   return (
-    <div className="shadow-lg bg-primary py-12 mt-10  ">
+    <div className="shadow-lg bg-primary py-12 pt-10  ">
       <div className="w-11/12 mx-auto">
         <div className="flex sm:flex-row flex-col sm:items-center items-center sm:justify-between justify-center gap-6">
           {/* Left Section */}
