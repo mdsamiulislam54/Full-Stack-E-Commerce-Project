@@ -8,6 +8,7 @@ import productsReducer from './features/productsSlice'
 import cartReducer from "./features/cartSlice";
 import checkoutReducer from "./features/checkoutSlice";
 import filteredProductsReducer from './features/filteredProducts'
+import buynowReducer from './features/BuynowSlice'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -26,6 +27,7 @@ const store = configureStore({
     cart : cartReducer,
     checkout : checkoutReducer,
     filteredProducts : filteredProductsReducer,  
+    buynow : buynowReducer,
   },
 });
 

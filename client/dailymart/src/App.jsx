@@ -104,6 +104,7 @@ import CartItem from './componants/CartItem/CartItem';
 import Checkout from './componants/Checkout/Checkout';
 import NotFound from './componants/PageNotFound/NotFound';
 import {AllProducts}  from './componants/AllProducts/AllProducts';
+import BuyNow from './componants/BuyNow/BuyNow';
 
 function App() {
   return (
@@ -138,6 +139,7 @@ function App() {
         <Route path="/cartItems" element={<CartItem />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/buynow" element={<BuyNow/>} />
       </Routes>
 
       {/* Footer doesn't need suspense */}

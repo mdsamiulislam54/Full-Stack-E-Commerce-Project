@@ -6,12 +6,18 @@ import division from "../../utilitis/division";
 import districts from "../../utilitis/districts";
 import districtUpazilas from "../../utilitis/upzila";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+
 
 const BuyNow = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedDistricts, setSelectedDistricts] = useState(null);
   const [selectedUpzilla, setSelectedUpzilla] = useState(null);
+  const {products} = useSelector((state) => state.buynow)
+  console.log( products)
+ 
   const openModal = () => {
     setIsOpen(true);
   };
@@ -135,6 +141,19 @@ const BuyNow = () => {
               <div>
                 <span className="text-md font-semibold">Address :</span>
               </div>
+              <div>
+                <div>
+                  {
+                    products.map((product) => (
+                      <div key={product.id} className="flex items-center gap-4 mb-4 p-3 rounded-md border-b border-gray-400">
+                        <img src={product.img} alt={product.name} className="w-16 h-16" />
+                        <span className="text-md font-semibold">{product._id}</span>
+                       
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
             </div>
           </div>
           <div className="sm:col-span-2">
@@ -149,13 +168,20 @@ const BuyNow = () => {
                 </button>
               </div>
               <div className="flex justify-between items-center mb-4 p-3 rounded-md">
-                <span className="text-md font-semibold">Product Name</span>
-                <span className="text-md font-semibold">Price</span>
+                <span className="text-md font-semibold">Item Price</span>
+                <span className="text-md font-semibold">0</span>
               </div>
-              <div className="flex justify-between items-center mb-4 p-3 rounded-md">
-                <span className="text-md font-semibold">Total</span>
-                <span className="text-md font-semibold">Price</span>
+              <div className="flex justify-between items-center mb-4 p-3 rounded-md border-b border-gray-400">
+                <span className="text-md font-semibold">Delivery Fee</span>
+                <span className="text-md font-semibold">0</span>
               </div>
+              <div className="flex justify-between items-center mb-4 p-3 rounded-md ">
+                <span className="text-md font-semibold">Total :</span>
+                <span className="text-md font-semibold">0</span>
+              </div>
+              <button
+              className="text-center w-full bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2"
+              >Proceed to pay</button>
             </div>
           </div>
         </div>

@@ -9,7 +9,9 @@ import { TbTruckDelivery, TbTruckReturn } from "react-icons/tb";
 import { FaBusinessTime } from "react-icons/fa";
 import { BsCashCoin } from "react-icons/bs";
 import { MdOutlineEventAvailable } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { addToBuynow } from "../../redux/features/BuynowSlice";
+
 
 const Checkout = () => {
   const { checkout } = useSelector((state) => state.checkout);
@@ -17,6 +19,13 @@ const Checkout = () => {
   const [selectionColor, setSelectionColor] = useState([]);
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToBuynow = (product) => {
+    dispatch(addToBuynow(product));
+    navigate("/buynow");
+    
+  }
 
   const allImages = checkout.flatMap((item) => [
     item.subimage1,
@@ -199,7 +208,7 @@ const Checkout = () => {
                     >
                       Add To Cart
                     </button>
-                    <button className="px-12 py-2 bg-secondary text-light rounded-lg  transition-all duration-300 cursor-pointer  hover:bg-primary hover:text-light">
+                    <button onClick={()=>handleAddToBuynow(item)} className="px-12 py-2 bg-secondary text-light rounded-lg  transition-all duration-300 cursor-pointer  hover:bg-primary hover:text-light">
                       Buy Now
                     </button>
                   </div>
