@@ -49,10 +49,13 @@ const NavBar = () => {
   ];
   return (
     <div className="  sm:bg-primary sm:text-light sm:py-2  ">
-      <div className="flex  justify-between  items-center py-2 w-11/12 mx-auto">
+      <div className="flex  justify-between  items-center py-1 w-11/12 mx-auto">
         <ul className="flex space-x-10   max-sm:flex-col max-sm:gap-2  ">
           <li>
-            <Link to={'/'} className="flex items-center gap-2 text-lg  relative ">
+            <Link
+              to={"/"}
+              className="flex items-center gap-2 text-lg  relative "
+            >
               Home
             </Link>
           </li>
@@ -96,7 +99,12 @@ const NavBar = () => {
             )}
           </li>
           <li>
-            <Link to={'/allproducts'} className="flex items-center text-lg   gap-2">Products</Link>
+            <Link
+              to={"/allproducts"}
+              className="flex items-center text-lg   gap-2"
+            >
+              Products
+            </Link>
           </li>
           <li>
             <Link className="flex items-center text-lg   gap-2">Blog</Link>

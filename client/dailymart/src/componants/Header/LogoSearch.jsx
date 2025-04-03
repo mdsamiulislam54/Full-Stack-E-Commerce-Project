@@ -24,7 +24,7 @@ const LogoSearch = () => {
 
   return (
     <div className=" sm:bg-light ">
-      <div className="sm:flex justify-between items-center sm:py-4 py-1 w-11/12 mx-auto">
+      <div className="sm:flex justify-between items-center sm:py-0 py-4 w-11/12 mx-auto">
         <div className="max-sm:hidden">
         
           <img src={BrendLogo} alt="" />

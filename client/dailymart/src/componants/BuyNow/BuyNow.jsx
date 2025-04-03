@@ -9,43 +9,54 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingAddress } from "../../redux/features/shippingAddressSlices";
 
-
-
-
 const BuyNow = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedDistricts, setSelectedDistricts] = useState(null);
   const [selectedUpzilla, setSelectedUpzilla] = useState(null);
-  const {products} = useSelector((state) => state.buynow)
-  const shippingAddress = useSelector((state) => state.shippingAddress.shippingAddress);
-  
-  const dispatch = useDispatch()
-  const handleSubmited = (e)=>{
-    e.preventDefault()
+  const { products } = useSelector((state) => state.buynow);
+  const shippingAddress = useSelector(
+    (state) => state.shippingAddress.shippingAddress
+  );
+
+  const dispatch = useDispatch();
+  const handleSubmited = (e) => {
+    e.preventDefault();
     const userAddress = {
       city: selectedCity.label,
       district: selectedDistricts.label,
       upzilla: selectedUpzilla.label,
-      name : e.target.name.value,
-      phone : e.target.phone.value,
-      email : e.target.email.value,
-      zip : e.target.zip.value,
-      address : e.target.address.value,
-     
-    }
-   dispatch(setShippingAddress(userAddress))
-   closeModal()
-   console.log(userAddress)
-    
-  }
- 
+      name: e.target.name.value,
+      phone: e.target.phone.value,
+      email: e.target.email.value,
+      zip: e.target.zip.value,
+      address: e.target.address.value,
+    };
+    dispatch(setShippingAddress(userAddress));
+    closeModal();
+    console.log(userAddress);
+  };
+
   const openModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
     setIsOpen(false);
   };
+  const totalPrice = (fee = "$0", discount = "$0") => {
+    // Ensure inputs are strings
+    if (typeof fee !== "string" || typeof discount !== "string") {
+      return "Invalid input";
+    }
+  
+    const delivaryFee = parseFloat(fee.replace("$", "")) || 0;
+    const discountAmount = parseFloat(discount.replace("$", "")) || 0;
+  
+    const total = delivaryFee + discountAmount;
+    return `$${total.toFixed(2)}`;
+  };
+  
+  
   return (
     <div className="bg-gray-100">
       <div className="w-11/12 mx-auto py-5">
@@ -77,7 +88,7 @@ const BuyNow = () => {
                   <h2 className="text-2xl font-semibold font-dm-snas mb-4 text-center">
                     Add your address
                   </h2>
-                  <form  onSubmit={handleSubmited} className="space-y-4 ">
+                  <form onSubmit={handleSubmited} className="space-y-4 ">
                     <input
                       type="text"
                       name="name"
@@ -155,56 +166,138 @@ const BuyNow = () => {
             </div>
             <div className=" bg-light p-3 rounded-md">
               <div className="flex justify-between items-center mb-4 p-3 rounded-md">
-                <span className="text-md font-semibold"> Name :  <span className="text-sm font-semibold text-gray-600" >{shippingAddress.name || "N/N"}</span></span>
-                <span className="text-md font-semibold">Phone : <span className="text-sm font-semibold text-gray-600"> {shippingAddress.phone || "N/N"}</span></span>
-                <span className="text-md font-semibold"> Email : <span className="text-sm font-semibold text-gray-600"> {shippingAddress.email || "N/N"}</span></span>
-                <span className="text-md font-semibold">Zip Code : <span className="text-sm font-semibold text-gray-600"> {shippingAddress.zip || "N/N"}</span></span>
+                <span className="text-md font-semibold">
+                  {" "}
+                  Name :{" "}
+                  <span className="text-sm font-semibold text-gray-600">
+                    {shippingAddress.name || "N/N"}
+                  </span>
+                </span>
+                <span className="text-md font-semibold">
+                  Phone :{" "}
+                  <span className="text-sm font-semibold text-gray-600">
+                    {" "}
+                    {shippingAddress.phone || "N/N"}
+                  </span>
+                </span>
+                <span className="text-md font-semibold">
+                  {" "}
+                  Email :{" "}
+                  <span className="text-sm font-semibold text-gray-600">
+                    {" "}
+                    {shippingAddress.email || "N/N"}
+                  </span>
+                </span>
+                <span className="text-md font-semibold">
+                  Zip Code :{" "}
+                  <span className="text-sm font-semibold text-gray-600">
+                    {" "}
+                    {shippingAddress.zip || "N/N"}
+                  </span>
+                </span>
               </div>
               <div className="">
-                <span className="text-md font-semibold">Address : <span className="text-sm font-semibold text-gray-600">{`${shippingAddress.address}, ${shippingAddress.upzilla}, ${shippingAddress.district}, ${shippingAddress.city}`}</span></span>
-                
+                <span className="text-md font-semibold">
+                  Address :{" "}
+                  <span className="text-sm font-semibold text-gray-600">{`${shippingAddress.address}, ${shippingAddress.upzilla}, ${shippingAddress.district}, ${shippingAddress.city}`}</span>
+                </span>
               </div>
               <div>
                 <div className="mt-10 bg-light">
-                  {
-                    products.map((product) => (
-                      <div key={product.id} className="flex items-center gap-4 mb-4 py-4 rounded-md border-t  border-gray-400">
-                        <img src={product.img} alt={product.title} className="w-30 h-30 object-contain" />
-                        <span className="text-md font-semibold">{product.title}</span>
-                       
+                  {products.map((product) => (
+                    <div
+                      key={product.id}
+                      className="flex  gap-4 mb-4 py-4 rounded-md border-t  border-gray-400"
+                    >
+                      <img
+                        src={product.img}
+                        alt={product.title}
+                        className="w-30 h-30 object-contain"
+                      />
+                      <div className="flex flex-col border-l px-2 border-gray-300">
+                        <span className="text-md font-semibold ">
+                          {product.title}
+                        </span>
+                        <span className="text-md font-semibold ">
+                          Category : {product.category}
+                        </span>
+                        <span className="text-md font-semibold ">
+                          Review : {product.review}
+                        </span>
+                        <span className="text-md font-semibold ">
+                          Rating : {product.rating}
+                        </span>
+                        <div className="flex">
+                          {product.color.map((c) => {
+                            return (
+                              <span
+                                key={c}
+                                className={` text-xs font-semibold  px-1 py-1 rounded-full bg-${c}`}
+                              >
+                                {c}
+                              </span>
+                            );
+                          })}
+                        </div>
                       </div>
-                    ))
-                  }
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
-          <div className="sm:col-span-2">
-            <div className="bg-gray-100 p-3 rounded-md">
+          <div className="sm:col-span-2 bg-light">
+            <div className=" p-3 rounded-md">
               <h4 className="text-lg tracking-wide font-semibold mb-4">
                 Order Summary
               </h4>
               <div className="flex  gap-4 items-center mb-4 p-3 rounded-md ">
-              <input className="border p-3 border-gray-4 rounded-lg border-gray-400 outline-none" type="text" placeholder="Enter Your Coupon Code" />
+                <input
+                  className="border p-3 border-gray-4 rounded-lg border-gray-400 outline-none"
+                  type="text"
+                  placeholder="Enter Your Coupon Code"
+                />
                 <button className="bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2">
-                    Apply
+                  Apply
                 </button>
               </div>
-              <div className="flex justify-between items-center mb-4 p-3 rounded-md">
-                <span className="text-md font-semibold">Item Price</span>
-                <span className="text-md font-semibold">0</span>
-              </div>
-              <div className="flex justify-between items-center mb-4 p-3 rounded-md border-b border-gray-400">
-                <span className="text-md font-semibold">Delivery Fee</span>
-                <span className="text-md font-semibold">0</span>
-              </div>
-              <div className="flex justify-between items-center mb-4 p-3 rounded-md ">
-                <span className="text-md font-semibold">Total :</span>
-                <span className="text-md font-semibold">0</span>
-              </div>
-              <button
-              className="text-center w-full bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2"
-              >Proceed to pay</button>
+              {products.map((product, index) => {
+                return (
+                  <div
+                    key={index}
+                    className=" mb-4"
+                  >
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-md font-semibold">Item Price</span>
+                      <span className="text-md font-semibold">
+                        {product.price}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-md font-semibold">Discount Price</span>
+                      <span className="text-md font-semibold">
+                        {product.discountPrice}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center mb-4 border-b border-gray-400 pb-2">
+                      <span className="text-md font-semibold">
+                        Delivery Fee
+                      </span>
+                      <span className="text-md font-semibold">$5</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="text-md font-semibold">Total :</span>
+                      <span className="text-md font-semibold">
+                      {totalPrice("$5", product.discountPrice || "$0")}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+
+              <button className="text-center w-full bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2">
+                Proceed to pay
+              </button>
             </div>
           </div>
         </div>
