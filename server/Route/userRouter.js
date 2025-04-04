@@ -9,6 +9,8 @@ import ProductSchema from "../model/ProductsSchemaModel.js";
 import ShopSchemaModel from "../model/ShopSchema.js";
 import errorHandler from "../errorhandaler/errorHandalar.js";
 import nodemailer from "nodemailer";
+import SSLCommerzPayment from "sslcommerz-lts";
+import OrderModel from "../model/OrderModel.js";
 
 const router = express.Router();
 
@@ -236,6 +238,104 @@ router.post("/send-order-email", async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+router.post("/ssl-payment", async (req, res) => {
+  const { email, name, address, productName, productImage, price, paymentMethod, phone, pcode } = req.body;
+  const priceToNumber = Math.floor(price.replace('$', '')) * 120;
+
+  // Generate unique transaction ID
+const tran_id = Math.floor(Math.random() * 10000000); // Generate a random transaction ID
+  const data = {
+    total_amount: priceToNumber,
+    currency: 'BDT',
+    tran_id: tran_id,  // Use unique tran_id for each API call
+    success_url: `http://localhost:5173/payment-success/${tran_id}`,  // Include tnx_id in the URL
+    fail_url: 'http://localhost:3030/fail',
+    cancel_url: 'http://localhost:3030/cancel',
+    ipn_url: 'http://localhost:3030/ipn',
+    shipping_method: 'Courier',
+    product_name: productName,
+    product_category: 'Electronic',
+    product_profile: 'general',
+    cus_name: name,
+    cus_email: email,
+    cus_add1: address,
+    cus_add2: 'Dhaka',
+    cus_city: 'Dhaka',
+    cus_state: 'Dhaka',
+    cus_postcode: pcode,
+    cus_country: 'Bangladesh',
+    cus_phone: phone,
+    cus_fax: '01711111111',
+    ship_name: name,
+    ship_add1: 'Dhaka',
+    ship_add2: 'Dhaka',
+    ship_city: 'Dhaka',
+    ship_state: 'Dhaka',
+    ship_postcode: pcode,
+    ship_country: 'Bangladesh',
+    paymentMethod: paymentMethod,
+    productImage: productImage,
+  };
+
+  console.log(data);
+
+  const sslcz = new SSLCommerzPayment(process.env.STOR_ID, process.env.STOR_PASS, false);
+  sslcz.init(data).then(apiResponse => {
+    // Redirect the user to the payment gateway
+    let GatewayPageURL = apiResponse.GatewayPageURL;
+    res.send({ url: GatewayPageURL });
+
+    // Save the order to the database
+    const saveOrder = new OrderModel({
+      productName,
+      productImage,
+      price,
+      paymentMethod,
+      email,
+      name,
+      address,
+      phone,
+      pcode,
+      status: 'pending',
+      createdAt: new Date(),
+       // Save the transaction ID
+    });
+
+    saveOrder.save()
+      .then(() => {
+        console.log("Order saved successfully!");
+      })
+      .catch((error) => {
+        console.error("Error saving order:", error);
+      });
+
+    console.log('Redirecting to: ', GatewayPageURL);
+  });
+});
+
+router.post("/payment-success", async (req, res) => {
+  try {
+    const { tnx_id, status } = req.body;  // Extract tnx_id and status from the body
+    const updatedOrder = await OrderModel.findOneAndUpdate(
+      { tran_id },  // Find the order by tnx_id
+      { status: "success" },  // Update the status to 'success'
+      { new: true }
+    );
+
+    if (!updatedOrder) {
+      return res.status(404).json({ message: "Order not found" });
+    }
+
+    // Redirect to the success page with tnx_id
+     // Pass tnx_id in the URL for front-end
+
+    res.status(200).json({ message: "✅ Order updated successfully!" });
+    res.redirect(`http://localhost:5173/payment-success/${tran_id}`); 
+  } catch (error) {
+    console.error("Order save error:", error);
+    res.status(500).json({ message: "❌ Failed to update order" });
   }
 });
 

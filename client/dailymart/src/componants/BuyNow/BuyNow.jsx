@@ -5,15 +5,16 @@ import { IoIosCloseCircle } from "react-icons/io";
 import division from "../../utilitis/division";
 import districts from "../../utilitis/districts";
 import districtUpazilas from "../../utilitis/upzila";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingAddress } from "../../redux/features/shippingAddressSlices";
-import { FaCcPaypal } from "react-icons/fa6";
-import { FaCcMastercard, FaAmazonPay } from "react-icons/fa";
-import { BsCash } from "react-icons/bs";
+
+import { FaHandHoldingDollar } from "react-icons/fa6";
 import { TbTruckDelivery } from "react-icons/tb";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import Bkash from "../../assets/bkash.png";
+import Nagad from "../../assets/nogad.png";
 
 const BuyNow = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ const BuyNow = () => {
   const [paymentMethod, setPaymentMethod] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const handlePaymentChange = (e) => {
@@ -91,30 +92,60 @@ const BuyNow = () => {
     const today = new Date();
     const futureDate = new Date(today);
     futureDate.setDate(today.getDate() + 2);
-    console.log(addressall);
-    axios
-      .post("http://localhost:5000/api/users/send-order-email", {
-        email: shippingAddress.email,
-        name: shippingAddress.name,
-        address: addressall,
-        productName: product.title,
-        productImage: product.img,
-        price: product.price,
-        paymentMethod: paymentMethod[0],
-        deliveryDate: futureDate.toLocaleDateString(),
-      })
-      .then(() => {
-        toast.success("Order placed successfully!");
+
+    const orderData = {
+      email: shippingAddress.email,
+      name: shippingAddress.name,
+      address: addressall,
+      phone: shippingAddress.phone,
+      productName: product.title,
+      productImage: product.img,
+      price: product.price,
+      paymentMethod: paymentMethod[0],
+      deliveryDate: futureDate.toLocaleDateString(),
+      pcode : shippingAddress.zip,
+    };
+    const paymentEndpoint =
+      paymentMethod[0] === "cash on delivary"
+        ? "http://localhost:5000/api/users/send-order-email"
+        : "http://localhost:5000/api/users/ssl-payment";
+
+        axios
+    .post(paymentEndpoint, orderData)
+    .then((res) => {
+      console.log('redirct url',res.data.url);
+      if (res.data.url) {
+        window.location.replace(res.data.url);
+       
+      } else {
+        toast.success("Order placed successfully! ", 
+          {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
         setOrderPlaced(true);
-        setTimeout(() => {
-          navigate("/");
-          setOrderPlaced(false);
-        }, 3000);
-      })
-      .catch((error) => {
-        console.error("There was an error placing an order!", error);
-        toast.error("Order failed. Please try again later.");
-      });
+      }
+    })
+    .catch((err) => {
+      console.error("Payment error:", err);
+      toast.error("Payment failed. Please try again.",   {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      } );
+      setOrderPlaced(false);
+    });
+ 
   };
 
   console.log("Updated Payment Method:", paymentMethod);
@@ -370,49 +401,35 @@ const BuyNow = () => {
                               className="accent-pink-500 w-3 h-3"
                             />
                             <span className="text-md font-semibold">
-                              <BsCash size={40} color="red" />
+                              <FaHandHoldingDollar size={40} color="red" />
                             </span>
                           </label>
 
-                          {/* FaCcPaypal */}
+                          {/* Bkash */}
                           <label className="flex items-center gap-2 p-4 rounded-2xl  hover:shadow-md cursor-pointer transition">
                             <input
                               type="checkbox"
                               name="paypal"
                               onChange={handlePaymentChange}
-                              value="paypal"
+                              value="Bkash"
                               className="accent-red-500 w-5 h-5"
                             />
                             <span className="text-md font-semibold">
-                              <FaCcPaypal size={40} color="red" />
+                              <img src={Bkash} alt="" />
                             </span>
                           </label>
 
-                          {/* FaCcMastercard */}
+                          {/* Nogad */}
                           <label className="flex items-center gap-2 p-4  rounded-2xl hover:shadow-md cursor-pointer transition">
                             <input
                               type="checkbox"
                               name="mastercard"
                               onChange={handlePaymentChange}
-                              value="mastercard"
+                              value="Nogad"
                               className="accent-blue-500 w-5 h-5"
                             />
                             <span className="text-md font-semibold">
-                              <FaCcMastercard size={40} color="red" />
-                            </span>
-                          </label>
-
-                          {/* FaAmazonPay */}
-                          <label className="flex items-center gap-2 p-4  rounded-2xl  hover:shadow-md cursor-pointer transition">
-                            <input
-                              type="checkbox"
-                              name="amazon"
-                              onChange={handlePaymentChange}
-                              value="amazon"
-                              className="accent-green-500 w-5 h-5"
-                            />
-                            <span className="text-md font-semibold">
-                              <FaAmazonPay size={40} color="red" />
+                              <img src={Nagad} alt="" />
                             </span>
                           </label>
                         </div>

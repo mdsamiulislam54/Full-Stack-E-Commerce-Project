@@ -6,13 +6,14 @@ import bodyParser from "body-parser";
 import errorHandler from "./errorhandaler/errorHandalar.js";
 import userRouter from "./Route/userRouter.js";
 
+
 dotenv.config();
 const app = express();
 app.use(bodyParser.json())
 
 // Middleware setup
 app.use(express.json());
-app.use(cors()); // Call cors as a function
+app.use(cors()); // Call cors as a function 
 
 // Database connection
 mongoose
@@ -25,6 +26,8 @@ mongoose
   });
 
   app.use('/api/users', userRouter)
+  
+
   
 // Middleware setup
 app.use(errorHandler);
