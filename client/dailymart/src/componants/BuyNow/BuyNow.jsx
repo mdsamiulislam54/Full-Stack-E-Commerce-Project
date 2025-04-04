@@ -5,9 +5,15 @@ import { IoIosCloseCircle } from "react-icons/io";
 import division from "../../utilitis/division";
 import districts from "../../utilitis/districts";
 import districtUpazilas from "../../utilitis/upzila";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingAddress } from "../../redux/features/shippingAddressSlices";
+import { FaCcPaypal } from "react-icons/fa6";
+import { FaCcMastercard, FaAmazonPay } from "react-icons/fa";
+import { BsCash } from "react-icons/bs";
+import { TbTruckDelivery } from "react-icons/tb";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const BuyNow = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -18,8 +24,23 @@ const BuyNow = () => {
   const shippingAddress = useSelector(
     (state) => state.shippingAddress.shippingAddress
   );
+  const [paymentMethod, setPaymentMethod] = useState([]);
+  const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const handlePaymentChange = (e) => {
+    e.preventDefault();
+    const { value, checked } = e.target;
+    setPaymentMethod((prev) => {
+      if (checked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((method) => method !== value);
+      }
+    });
+  };
   const handleSubmited = (e) => {
     e.preventDefault();
     const userAddress = {
@@ -48,15 +69,56 @@ const BuyNow = () => {
     if (typeof fee !== "string" || typeof discount !== "string") {
       return "Invalid input";
     }
-  
+
     const delivaryFee = parseFloat(fee.replace("$", "")) || 0;
     const discountAmount = parseFloat(discount.replace("$", "")) || 0;
-  
+
     const total = delivaryFee + discountAmount;
     return `$${total.toFixed(2)}`;
   };
-  
-  
+
+  const handleOrder = (product) => {
+    if (paymentMethod.length === 0) {
+      toast.error("Please select a payment method!");
+      return;
+    }
+    if (paymentMethod.length > 1) {
+      toast.error("Please select only one payment method!");
+      return;
+    }
+
+    const addressall = `${shippingAddress.address}, ${shippingAddress.upzilla}, ${shippingAddress.district}, ${shippingAddress.city}`;
+    const today = new Date();
+    const futureDate = new Date(today);
+    futureDate.setDate(today.getDate() + 2);
+    console.log(addressall);
+    axios
+      .post("http://localhost:5000/api/users/send-order-email", {
+        email: shippingAddress.email,
+        name: shippingAddress.name,
+        address: addressall,
+        productName: product.title,
+        productImage: product.img,
+        price: product.price,
+        paymentMethod: paymentMethod[0],
+        deliveryDate: futureDate.toLocaleDateString(),
+      })
+      .then(() => {
+        toast.success("Order placed successfully!");
+        setOrderPlaced(true);
+        setTimeout(() => {
+          navigate("/");
+          setOrderPlaced(false);
+        }, 3000);
+      })
+      .catch((error) => {
+        console.error("There was an error placing an order!", error);
+        toast.error("Order failed. Please try again later.");
+      });
+  };
+
+  console.log("Updated Payment Method:", paymentMethod);
+
   return (
     <div className="bg-gray-100">
       <div className="w-11/12 mx-auto py-5">
@@ -165,7 +227,7 @@ const BuyNow = () => {
               </Modal>
             </div>
             <div className=" bg-light p-3 rounded-md">
-              <div className="flex justify-between items-center mb-4 p-3 rounded-md">
+              <div className="sm:flex justify-between items-center mb-4 p-3 gap-4 rounded-md">
                 <span className="text-md font-semibold">
                   {" "}
                   Name :{" "}
@@ -263,10 +325,7 @@ const BuyNow = () => {
               </div>
               {products.map((product, index) => {
                 return (
-                  <div
-                    key={index}
-                    className=" mb-4"
-                  >
+                  <div key={index} className=" mb-4">
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-md font-semibold">Item Price</span>
                       <span className="text-md font-semibold">
@@ -274,7 +333,9 @@ const BuyNow = () => {
                       </span>
                     </div>
                     <div className="flex justify-between items-center mb-4">
-                      <span className="text-md font-semibold">Discount Price</span>
+                      <span className="text-md font-semibold">
+                        Discount Price
+                      </span>
                       <span className="text-md font-semibold">
                         {product.discountPrice}
                       </span>
@@ -285,22 +346,95 @@ const BuyNow = () => {
                       </span>
                       <span className="text-md font-semibold">$5</span>
                     </div>
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center border-b border-gray-400 pb-2">
                       <span className="text-md font-semibold">Total :</span>
                       <span className="text-md font-semibold">
-                      {totalPrice("$5", product.discountPrice || "$0")}
+                        {totalPrice("$5", product.discountPrice || "$0")}
                       </span>
                     </div>
+                    <div className="py-4">
+                      <div>
+                        <h2 className="text-md font-semibold mb-2">
+                          Payment Method:
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                          {/* cash on delivary */}
+                          <label
+                            title="Cash on delivary"
+                            className="flex items-center gap-2 p-4  rounded-2xl  hover:shadow-md cursor-pointer transition"
+                          >
+                            <input
+                              type="checkbox"
+                              onChange={handlePaymentChange}
+                              value="cash on delivary"
+                              className="accent-pink-500 w-3 h-3"
+                            />
+                            <span className="text-md font-semibold">
+                              <BsCash size={40} color="red" />
+                            </span>
+                          </label>
+
+                          {/* FaCcPaypal */}
+                          <label className="flex items-center gap-2 p-4 rounded-2xl  hover:shadow-md cursor-pointer transition">
+                            <input
+                              type="checkbox"
+                              name="paypal"
+                              onChange={handlePaymentChange}
+                              value="paypal"
+                              className="accent-red-500 w-5 h-5"
+                            />
+                            <span className="text-md font-semibold">
+                              <FaCcPaypal size={40} color="red" />
+                            </span>
+                          </label>
+
+                          {/* FaCcMastercard */}
+                          <label className="flex items-center gap-2 p-4  rounded-2xl hover:shadow-md cursor-pointer transition">
+                            <input
+                              type="checkbox"
+                              name="mastercard"
+                              onChange={handlePaymentChange}
+                              value="mastercard"
+                              className="accent-blue-500 w-5 h-5"
+                            />
+                            <span className="text-md font-semibold">
+                              <FaCcMastercard size={40} color="red" />
+                            </span>
+                          </label>
+
+                          {/* FaAmazonPay */}
+                          <label className="flex items-center gap-2 p-4  rounded-2xl  hover:shadow-md cursor-pointer transition">
+                            <input
+                              type="checkbox"
+                              name="amazon"
+                              onChange={handlePaymentChange}
+                              value="amazon"
+                              className="accent-green-500 w-5 h-5"
+                            />
+                            <span className="text-md font-semibold">
+                              <FaAmazonPay size={40} color="red" />
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => handleOrder(product)}
+                      className="text-center w-full bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2 mt-4 flex items-center justify-center gap-2"
+                    >
+                      <span>
+                        <TbTruckDelivery size={30} />
+                      </span>
+                      {orderPlaced ? "✅ Order Successful" : "Place Order"}
+                    </button>
                   </div>
                 );
               })}
-
-              <button className="text-center w-full bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2">
-                Proceed to pay
-              </button>
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ const CartItem = () => {
     }
   }
   return (
-    <div className="bg-gray-500 min-h-screen">
+    <div className="bg-gray-100 min-h-screen">
       <div className="w-11/12 mx-auto  ">
         <div></div>
         <div className="flex justify-between items-center bg-light rounded mb-4 p-4">

@@ -9,7 +9,7 @@ const buynowSlice = createSlice({
     },
     reducers: {
         addToBuynow: (state, action) => {
-            const existingProduct = state.products.find(p => p._id === action.payload._id);
+            const existingProduct = state.products.find(p => p._id !== action.payload._id);
             console.log(action.payload)
             
             if (existingProduct) {

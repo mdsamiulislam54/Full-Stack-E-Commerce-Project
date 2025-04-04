@@ -63,11 +63,11 @@ console.log(name,email,password);
           });
         }
       } catch (error) {
-        toast.error("Error during registration. Please try again.", {
+        toast.error("This email is already in use", error, {
           position: "top-center",
           autoClose: 3000,
         });
-        console.error("Error during registration:", error);
+        
       }
     } else {
       toast.error("Please fill out all fields.", {

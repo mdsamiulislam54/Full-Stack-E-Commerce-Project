@@ -179,5 +179,66 @@ router.post("/send-email", async (req, res) => {
     res.status(500).json({ message: "Server error", error: err.message });
   }
 });
+router.post("/send-order-email", async (req, res) => {
+  const { email, name, address, productName, productImage, price,paymentMethod,deliveryDate } = req.body;
+
+  if (!email || !name || !address || !productName || !productImage || !price) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
+
+  // Create a transporter using SMTP
+  let transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.AUTH_EMAIL,
+      pass: process.env.AUTH_PASSWORD,
+    },
+  });
+
+  // HTML Email Template with Product Image
+  let mailOptions = {
+    from: process.env.AUTH_EMAIL,
+    to: email,
+    subject: `Order Confirmation - ${productName} 🎉`,
+    html: `
+      <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; text-align: center;">
+        <div style="max-width: 600px; background: white; padding: 20px; margin: auto; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+          <h2 style="color: #ff6f61;">Thank You for Your Order, ${name}! 🎉</h2>
+          <p style="font-size: 16px; color: #333;">We have received your order and will process it soon.</p>
+
+          <!-- Product Image -->
+          <div style="margin: 20px 0;">
+            <img src="${productImage}" alt="${productName}" style="width: 100%; max-width: 250px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);" />
+          </div>
+
+          <!-- Order Details -->
+          <div style="text-align: left; margin-top: 20px;">
+            <h3 style="color: #333;">Order Details:</h3>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Delivery Address:</strong> ${address}</p>
+            <p><strong>Product:</strong> ${productName}</p>
+            <p><strong>Price:</strong> ${price}</p>
+            <p><strong>Payment Method :</strong> ${paymentMethod}</p>
+            <p><strong>deliveryDate :</strong> ${deliveryDate}</p>
+          </div>
+
+          <p style="margin-top: 20px; font-size: 16px; color: #555;">If you have any questions, feel free to contact us.</p>
+          <a href="https://your-website.com" style="display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #ff6f61; color: white; text-decoration: none; border-radius: 5px;">Visit Our Store</a>
+        </div>
+      </div>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Order confirmation email sent successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error", error: err.message });
+  }
+});
+
+
 
 export default router;

@@ -152,7 +152,7 @@ const NavBar = () => {
         >
           <button
             onClick={closeModalhandelar}
-            className=" bg-secondary p-1 text-white rounded-full hover:opacity-85 cursor-pointer "
+            className=" bg-light p-1 text-primary rounded-full hover:opacity-85 cursor-pointer "
           >
             <VscClose
               size={30}
