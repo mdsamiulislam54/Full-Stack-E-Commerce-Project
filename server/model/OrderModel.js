@@ -38,6 +38,10 @@ const OrderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  tran_id: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     enum: ["pending", "success", "failed"],

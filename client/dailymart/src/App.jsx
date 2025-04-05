@@ -47,6 +47,7 @@ function App() {
           {/* Dynamic route for success payment */}
           <Route path="/payment-success/:tran_id" element={<SuccessPayment />} />
 
+
         </Routes>
         
         {/* Footer doesn't need suspense */}

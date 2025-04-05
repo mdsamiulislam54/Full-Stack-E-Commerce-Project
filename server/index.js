@@ -13,7 +13,12 @@ app.use(bodyParser.json())
 
 // Middleware setup
 app.use(express.json());
-app.use(cors()); // Call cors as a function 
+// ব্যাকেন্ডে (server.js/app.js)
+app.use(cors({
+  origin: ["http://localhost:5173"],
+  methods: ["GET", "POST", "PUT", "DELETE"], // PUT মেথড অ্যালাউ করুন
+  credentials: true
+})); // Call cors as a function 
 
 // Database connection
 mongoose

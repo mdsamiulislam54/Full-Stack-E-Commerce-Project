@@ -243,14 +243,14 @@ router.post("/send-order-email", async (req, res) => {
 router.post("/ssl-payment", async (req, res) => {
   const { email, name, address, productName, productImage, price, paymentMethod, phone, pcode } = req.body;
   const priceToNumber = Math.floor(price.replace('$', '')) * 120;
-
-  // Generate unique transaction ID
-const tran_id = Math.floor(Math.random() * 10000000); // Generate a random transaction ID
+  const tran_id = Math.floor(Math.random() * 10000000);
+console.log(tran_id);
   const data = {
     total_amount: priceToNumber,
     currency: 'BDT',
-    tran_id: tran_id,  // Use unique tran_id for each API call
-    success_url: `http://localhost:5173/payment-success/${tran_id}`,  // Include tnx_id in the URL
+    tran_id: tran_id,
+    success_url: `http://localhost:5173/payment-success/${tran_id}`, 
+ 
     fail_url: 'http://localhost:3030/fail',
     cancel_url: 'http://localhost:3030/cancel',
     ipn_url: 'http://localhost:3030/ipn',
@@ -279,7 +279,6 @@ const tran_id = Math.floor(Math.random() * 10000000); // Generate a random trans
     productImage: productImage,
   };
 
-  console.log(data);
 
   const sslcz = new SSLCommerzPayment(process.env.STOR_ID, process.env.STOR_PASS, false);
   sslcz.init(data).then(apiResponse => {
@@ -298,7 +297,8 @@ const tran_id = Math.floor(Math.random() * 10000000); // Generate a random trans
       address,
       phone,
       pcode,
-      status: 'pending',
+      status:"success",
+      tran_id,
       createdAt: new Date(),
        // Save the transaction ID
     });
@@ -315,29 +315,35 @@ const tran_id = Math.floor(Math.random() * 10000000); // Generate a random trans
   });
 });
 
-router.post("/payment-success", async (req, res) => {
+router.put("/payment-success/:tran_id", async (req, res) => {
+  const { tran_id } = req.params;
+  const { status } = req.body;
+
   try {
-    const { tnx_id, status } = req.body;  // Extract tnx_id and status from the body
     const updatedOrder = await OrderModel.findOneAndUpdate(
-      { tran_id },  // Find the order by tnx_id
-      { status: "success" },  // Update the status to 'success'
+      { tran_id: tran_id },
+      { $set: { status: status || "success" } }, // ডিফল্ট "success" সেট করুন
       { new: true }
     );
 
     if (!updatedOrder) {
-      return res.status(404).json({ message: "Order not found" });
+      return res.status(404).json({ success: false, message: "Order not found" });
     }
 
-    // Redirect to the success page with tnx_id
-     // Pass tnx_id in the URL for front-end
-
-    res.status(200).json({ message: "✅ Order updated successfully!" });
-    res.redirect(`http://localhost:5173/payment-success/${tran_id}`); 
+    res.status(200).json({ 
+      success: true,
+      message: "Payment verified!",
+      order: updatedOrder 
+    });
   } catch (error) {
-    console.error("Order save error:", error);
-    res.status(500).json({ message: "❌ Failed to update order" });
+    res.status(500).json({ 
+      success: false, 
+      message: "Server error",
+      error: error.message 
+    });
   }
 });
+
 
 
 

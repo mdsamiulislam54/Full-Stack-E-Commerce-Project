@@ -1,47 +1,38 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams  } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 
+
 const SuccessPayment = () => {
-  const { tran_id } = useParams(); // Get the transaction ID from the URL
-  const navigate = useNavigate();  // Hook to navigate to another route
+  const queryParams = new URLSearchParams(window.location.search);
+const paymentStatus = queryParams.get('status');
+  const { tran_id } = useParams(); 
+  const navigate = useNavigate();
+  console.log("SSL ট্রান_ID:", tran_id);
+  console.log("API URL:", `http://localhost:5000/api/users/payment-success/${tran_id}`);
+useEffect(() => {
 
-  console.log(tran_id); // Check the transaction ID in the console
-
-  useEffect(() => {
-    if (tran_id) {
-      axios
-        .post(`http://localhost:3030/payment-success/${tran_id}`, {
-          tran_id: tran_id, // Pass the transaction ID
-          status: "success", // Mark the payment as successful
-        })
-        .then(() => {
-          // Show a success alert using SweetAlert
-          Swal.fire({
-            title: "🎉 Payment Successful!",
-            text: `Transaction ID: ${tran_id}`,
-            icon: "success",
-            confirmButtonText: "Okay",
-            backdrop: true, // Optional: Add backdrop to the alert
-          });
-
-          // Redirect to the user dashboard or any other page
-          navigate("/userDashboard"); 
-        })
-        .catch((err) => {
-          // Show an error alert if the order update fails
-          Swal.fire({
-            title: "❌ Error!",
-            text: "Order update failed. Please try again.",
-            icon: "error",
-            confirmButtonText: "Close",
-          });
-          console.error("Order update failed", err); // Log the error to the console
-        });
+  if (tran_id && paymentStatus === "success") {
+   
+  axios.get(`http://localhost:5000/api/users/payment-success/${tran_id}`, {
+    paymentStatus
+  })
+  .then((res) => {
+    if (res.data.success) {
+      Swal.fire("Success!", res.data.message, "success");
+      setTimeout(() => navigate("/userDashboard"), 3000);
+    } else {
+      throw new Error(res.data.message);
     }
-  }, [tran_id]); // Dependency array includes tnx_id and navigate
-
+  })
+  .catch((err) => {
+    Swal.fire("Failed!", err.response?.data?.message || err.message, "error");
+    console.error("API Error:", err);
+  });
+  }
+}, [tran_id, navigate, paymentStatus]);
+  
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md text-center">
