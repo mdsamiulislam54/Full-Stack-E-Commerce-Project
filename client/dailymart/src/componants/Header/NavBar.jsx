@@ -47,6 +47,7 @@ const NavBar = () => {
     "Food",
     "headphones",
   ];
+  const profileImages = localStorage.getItem("profileImages");
   return (
     <div className="  sm:bg-primary sm:text-light sm:py-2  ">
       <div className="flex  justify-between  items-center py-1 w-11/12 mx-auto">
@@ -135,9 +136,17 @@ const NavBar = () => {
                 onClick={openModalHandelar}
                 className="flex items-center text-lg  gap-2"
               >
-                <span>
-                  <FaUserCheck />
-                </span>
+               {
+                profileImages? (
+                  <img
+                    className="rounded-full h-7 w-7 object-cover"
+                    src={profileImages}
+                    alt="profile image"
+                  />
+                ) : (
+                  <FaUserCheck size={24} className="text-primary" />
+                )
+               }
                 Login
               </Link>
             </li>

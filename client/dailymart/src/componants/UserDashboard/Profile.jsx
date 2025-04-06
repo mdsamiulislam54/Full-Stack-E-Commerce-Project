@@ -55,7 +55,7 @@ const Profile = () => {
     setIsOpen(false);
   };
   const userPData = localStorage.getItem("userProfile");
-  const profileImages = localStorage.getItem("profileImages");
+  
   console.log(userPData);
   return (
     <div className="p-10">
@@ -122,7 +122,7 @@ const Profile = () => {
         onRequestClose={closeModal}
         className="fixed inset-0 flex items-center justify-center z-100"
         overlayClassName="fixed inset-0  bg-black opacity-90 z-100"
-        contentLabel="Example Modal"
+        contentLabel=" User Information  Panel"
       >
         <div>
           <IoIosCloseCircle
@@ -216,7 +216,7 @@ const Profile = () => {
 
           <button
             onClick={handleSave}
-            className=" bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
+            className=" bg-primary text-white py-2 rounded-md hover:bg-secondary cursor-pointer duration-300 transition-colors"
           >
             Save Profile
           </button>

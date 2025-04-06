@@ -6,7 +6,7 @@ import Logo from '../../assets/brand-logo.png'
 const WelcomePage = () => {
   const user = useSelector((state)=> state.user.user)
   return (
-    <div className=" flex items-center justify-center mt-[10%]  px-4">
+    <div className=" flex items-center justify-center  px-4">
       <div className="bg-white/80 backdrop-blur-md p-10 rounded-xl text-center  max-w-md w-full">
         <div className="flex justify-center items-center">
         <img
