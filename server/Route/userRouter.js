@@ -204,6 +204,7 @@ router.post("/send-order-email", async (req, res) => {
     subject: `Order Confirmation - ${productName} 🎉`,
     html: `
       <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; text-align: center;">
+    
         <div style="max-width: 600px; background: white; padding: 20px; margin: auto; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
           <h2 style="color: #ff6f61;">Thank You for Your Order, ${name}! 🎉</h2>
           <p style="font-size: 16px; color: #333;">We have received your order and will process it soon.</p>

@@ -7,6 +7,8 @@ import { closeLoginModal } from "../../redux/features/loginSlice";
 import { openRegisterModal } from "../../redux/features/registerSlice";
 import { setUser } from "../../redux/features/userSlice";
 import { useRef, useState } from "react";
+import { setIsLoggedIn } from "../../redux/features/LoginCheck";
+
 
 const Login = () => {
   const [showPassword, setPassword] = useState(false)
@@ -83,6 +85,7 @@ const Login = () => {
 
       
           form.reset();
+          dispatch(setIsLoggedIn(true))
         }
       } catch (error) {
         toast.error("Invlid Email and password", {

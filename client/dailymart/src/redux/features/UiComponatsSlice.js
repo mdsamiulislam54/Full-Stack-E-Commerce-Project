@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import reducer from "./shippingAddressSlices";
+
 
 const uiSlice = createSlice({
     name: "ui",
     initialState:{
-        isActiveComponent: 'welcome',
+        isActiveComponent: '',
         
     },
     reducers: {

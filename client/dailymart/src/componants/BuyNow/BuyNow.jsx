@@ -15,6 +15,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Bkash from "../../assets/bkash.png";
 import Nagad from "../../assets/nogad.png";
+import Logo from "../../assets/brand-logo.png";
 
 const BuyNow = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -27,16 +28,20 @@ const BuyNow = () => {
   );
   const [paymentMethod, setPaymentMethod] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
-
-  const navigate = useNavigate()
+  const [checked, setChecked] = useState("");
+  const [selected, setSelected] = useState('')
+console.log(paymentMethod)
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const handlePaymentChange = (e) => {
     e.preventDefault();
     const { value, checked } = e.target;
+    setChecked(value);
+    setSelected(value)
     setPaymentMethod((prev) => {
       if (checked) {
-        return [...prev, value];
+        return [ value];
       } else {
         return prev.filter((method) => method !== value);
       }
@@ -103,23 +108,24 @@ const BuyNow = () => {
       price: product.price,
       paymentMethod: paymentMethod[0],
       deliveryDate: futureDate.toLocaleDateString(),
-      pcode : shippingAddress.zip,
+      pcode: shippingAddress.zip,
+     
     };
     const paymentEndpoint =
       paymentMethod[0] === "cash on delivary"
         ? "http://localhost:5000/api/users/send-order-email"
         : "http://localhost:5000/api/users/ssl-payment";
 
-        axios
-    .post(paymentEndpoint, orderData)
-    .then((res) => {
-     setTimeout(() => { navigate('/')},2000)
-      if (res.data.url) {
-        window.location.replace(res.data.url);
-       
-      } else {
-        toast.success("Order placed successfully! ", 
-          {
+    axios
+      .post(paymentEndpoint, orderData)
+      .then((res) => {
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+        if (res.data.url) {
+          window.location.replace(res.data.url);
+        } else {
+          toast.success("Order placed successfully! ", {
             position: "top-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -127,25 +133,23 @@ const BuyNow = () => {
             pauseOnHover: true,
             draggable: true,
             progress: undefined,
-          }
-        );
-        setOrderPlaced(true);
-      }
-    })
-    .catch((err) => {
-      console.error("Payment error:", err);
-      toast.error("Payment failed. Please try again.",   {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      } );
-      setOrderPlaced(false);
-    });
- 
+          });
+          setOrderPlaced(true);
+        }
+      })
+      .catch((err) => {
+        console.error("Payment error:", err);
+        toast.error("Payment failed. Please try again.", {
+          position: "top-right",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        setOrderPlaced(false);
+      });
   };
 
   console.log("Updated Payment Method:", paymentMethod);
@@ -388,11 +392,20 @@ const BuyNow = () => {
                         <h2 className="text-md font-semibold mb-2">
                           Payment Method:
                         </h2>
+                        <span>
+                          {
+                           <p>Payment Metohd : {selected}</p>
+                          }
+                        </span>
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                           {/* cash on delivary */}
                           <label
                             title="Cash on delivary"
-                            className="flex items-center gap-2 p-4  rounded-2xl  hover:shadow-md cursor-pointer transition"
+                            className={`cursor-pointer flex items-center gap-2 border p-2 rounded-md ${
+                              checked === "cash on delivary"
+                                ? "bg-green-100 border-green-500"
+                                : "bg-white border-gray-300"
+                            }`}
                           >
                             <input
                               type="checkbox"
@@ -400,16 +413,22 @@ const BuyNow = () => {
                               value="cash on delivary"
                               className="accent-pink-500 w-3 h-3"
                             />
-                            <span className="text-md font-semibold">
+                            <span className="text-md font-semibold ">
                               <FaHandHoldingDollar size={40} color="red" />
                             </span>
                           </label>
 
                           {/* Bkash */}
-                          <label className="flex items-center gap-2 p-4 rounded-2xl  hover:shadow-md cursor-pointer transition">
+                          <label
+                            className={`cursor-pointer flex items-center gap-2 border p-2 rounded-md ${
+                              checked === "Bkash"
+                                ? "bg-pink-100 border-pink-500"
+                                : "bg-white border-gray-300"
+                            }`}
+                          >
                             <input
                               type="checkbox"
-                              name="paypal"
+                              
                               onChange={handlePaymentChange}
                               value="Bkash"
                               className="accent-red-500 w-5 h-5"
@@ -420,10 +439,16 @@ const BuyNow = () => {
                           </label>
 
                           {/* Nogad */}
-                          <label className="flex items-center gap-2 p-4  rounded-2xl hover:shadow-md cursor-pointer transition">
+                          <label
+                            className={`cursor-pointer flex items-center gap-2 border p-2 rounded-md ${
+                              checked === "Nogad"
+                                ? "bg-orange-100 border-orange-500"
+                                : "bg-white border-gray-300"
+                            }`}
+                          >
                             <input
                               type="checkbox"
-                              name="mastercard"
+                              name="Nogad"
                               onChange={handlePaymentChange}
                               value="Nogad"
                               className="accent-blue-500 w-5 h-5"

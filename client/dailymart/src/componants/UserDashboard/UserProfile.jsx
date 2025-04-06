@@ -59,13 +59,13 @@ const UserProfile = ({ user }) => {
           </button>
         </div>
         <h2 className="text-center sm:text-lg font-semibold tracking-tighter flex items-center justify-center gap-1">
-          <span>{user.name}</span>{" "}
+          <span>{user?.name}</span>{" "}
           <span>
             <VscVerifiedFilled color="green" size={25} />
           </span>
         </h2>
         <p className="text-center text-sm font-normal tracking-tighter">
-          {user.email}
+          {user?.email}
         </p>
       </div>
 

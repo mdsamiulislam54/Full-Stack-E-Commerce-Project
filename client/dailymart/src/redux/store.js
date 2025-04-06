@@ -11,6 +11,7 @@ import filteredProductsReducer from './features/filteredProducts'
 import buynowReducer from './features/BuynowSlice'
 import shippingAddressReducer from './features/shippingAddressSlices'
 import uiSliceReducer from './features//UiComponatsSlice'
+import CheckLoginReducer from './features//LoginCheck'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -32,6 +33,7 @@ const store = configureStore({
     buynow : buynowReducer,
     shippingAddress : shippingAddressReducer, 
     ui : uiSliceReducer,  
+    loginCheck : CheckLoginReducer,  
   },
 });
 
