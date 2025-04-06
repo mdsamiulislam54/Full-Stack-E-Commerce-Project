@@ -15,6 +15,7 @@ const CartItem = () => {
   const { cartItems, totalPrice, shappingFee } = useSelector(
     (state) => state.cart
   );
+  console.log(cartItems)
   const [selectedProduct, setSelectedProduct] = useState(null);
   const navigate = useNavigate();
 

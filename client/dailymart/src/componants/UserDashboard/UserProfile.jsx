@@ -78,7 +78,7 @@ const UserProfile = ({ user }) => {
                 href="#"
                 className="text-lg font-medium hover:text-secondary transition-all duration-300 flex items-center justify-between gap-5 hover:ml-4 p-1  "
               >
-                 <span>  My Profile</span>{" "}
+                 <span> Profile Overview</span>{" "}
                 <span>
                   <IoIosArrowRoundForward size={20} />
                 </span>

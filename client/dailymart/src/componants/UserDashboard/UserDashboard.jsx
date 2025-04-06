@@ -14,7 +14,7 @@ import NotAuthorized from "../NotAuthorized "
 
 const UserDashboard = () => {
   const [userData, setUserData] = useState(null);
-  const [error, setError] = useState(null);
+
   const token = localStorage.getItem("token")
   const navigate = useNavigate();
 const login = useSelector((state)=>state.loginCheck.isLoggedIn)
@@ -30,7 +30,7 @@ console.log(login)
         setUserData(response.data);
       
       }).catch((err) => {
-        setError(err.response?.data?.message || "Error fetching data");
+        console.error(err.response?.data?.message || "Error fetching data");
         
       });
     }

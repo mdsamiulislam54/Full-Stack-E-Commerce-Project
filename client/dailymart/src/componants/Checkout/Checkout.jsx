@@ -18,6 +18,7 @@ const Checkout = () => {
   const [images, setImages] = useState();
   const [selectionColor, setSelectionColor] = useState([]);
   const [count, setCount] = useState(0);
+  console.log(checkout)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

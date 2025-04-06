@@ -15,7 +15,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import Bkash from "../../assets/bkash.png";
 import Nagad from "../../assets/nogad.png";
-import Logo from "../../assets/brand-logo.png";
+
 
 const BuyNow = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -23,6 +23,7 @@ const BuyNow = () => {
   const [selectedDistricts, setSelectedDistricts] = useState(null);
   const [selectedUpzilla, setSelectedUpzilla] = useState(null);
   const { products } = useSelector((state) => state.buynow);
+ 
   const shippingAddress = useSelector(
     (state) => state.shippingAddress.shippingAddress
   );
