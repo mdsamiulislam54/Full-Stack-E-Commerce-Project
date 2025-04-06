@@ -10,6 +10,7 @@ import checkoutReducer from "./features/checkoutSlice";
 import filteredProductsReducer from './features/filteredProducts'
 import buynowReducer from './features/BuynowSlice'
 import shippingAddressReducer from './features/shippingAddressSlices'
+import uiSliceReducer from './features//UiComponatsSlice'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -30,6 +31,7 @@ const store = configureStore({
     filteredProducts : filteredProductsReducer,  
     buynow : buynowReducer,
     shippingAddress : shippingAddressReducer, 
+    ui : uiSliceReducer,  
   },
 });
 

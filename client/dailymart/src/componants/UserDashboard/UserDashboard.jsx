@@ -1,32 +1,36 @@
-// import axios from "axios"
+import axios from "axios"
+
+import UserContainer from "./UserContainer"
+import UserProfile from "./UserProfile"
 
 import { useSelector,useDispatch } from "react-redux"
 import { logOut } from "../../redux/features/userSlice"
 
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 
 
 const UserDashboard = () => {
-  // const [userData, setUserData] = useState(null);
-  // const [error, setError] = useState(null);
-  // const token = localStorage.getItem("token")
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
+  const token = localStorage.getItem("token")
 
-  // useEffect(()=>{
-  //   if(token){
-  //     axios.get('http://localhost:5000/api/users/protected-data',{
-  //       headers:{
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((response)=>{
-  //       setUserData(response.data);
+  useEffect(()=>{
+    if(token){
+      axios.get('http://localhost:5000/api/users/protected-data',{
+        headers:{
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response)=>{
+        setUserData(response.data);
       
-  //     }).catch((err) => {
-  //       setError(err.response?.data?.message || "Error fetching data");
+      }).catch((err) => {
+        setError(err.response?.data?.message || "Error fetching data");
         
-  //     });
-  //   }
-  // },[token]);
+      });
+    }
+  },[token]);
 
 
 const user = useSelector((state)=> state.user.user)
@@ -44,21 +48,12 @@ const handleLogout = ()=>{
   return (
     <div>
      <div className="w-11/12 mx-auto">
-     <h1>User Data</h1>
-      {
-        user ? (
-          <div>
-            <h1> welcome {user.name}</h1>
-            <h1>Email: {user.email}</h1>
-          
-            <button onClick={handleLogout}>Logout</button>
+          <div className="grid sm:grid-cols-5  ">
+            <div className="sm:col-span-1 "><UserProfile user={user}/></div>
+            <div className="sm:col-span-4 "><UserContainer user={user}/>
+            
+            </div>
           </div>
-        ):(
-          <div>
-            no user
-          </div>
-        )
-      }
      </div>
     </div>
   )

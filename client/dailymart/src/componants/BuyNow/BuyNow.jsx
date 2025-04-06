@@ -5,7 +5,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import division from "../../utilitis/division";
 import districts from "../../utilitis/districts";
 import districtUpazilas from "../../utilitis/upzila";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setShippingAddress } from "../../redux/features/shippingAddressSlices";
 
@@ -28,7 +28,7 @@ const BuyNow = () => {
   const [paymentMethod, setPaymentMethod] = useState([]);
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const dispatch = useDispatch();
   const handlePaymentChange = (e) => {
@@ -113,7 +113,7 @@ const BuyNow = () => {
         axios
     .post(paymentEndpoint, orderData)
     .then((res) => {
-      console.log('redirct url',res.data.url);
+     setTimeout(() => { navigate('/')},2000)
       if (res.data.url) {
         window.location.replace(res.data.url);
        
