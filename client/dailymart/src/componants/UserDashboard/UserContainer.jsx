@@ -3,12 +3,13 @@ import WelcomePage from "./WelcomePage";
 import Profile from "./Profile";
 import Order from "./Order";
 import Wishlist from "./Wishlist";
-import Address from "./Address";
+
 import Setting from "./Setting";
 
 import Cart from "./Cart";
 import { Link } from "react-router-dom";
 import { setActiveComponent } from "../../redux/features/UiComponatsSlice";
+import { Suspense } from "react";
 const UserContainer = ({ handleLogout }) => {
   const dispatch = useDispatch();
 
@@ -24,8 +25,7 @@ const UserContainer = ({ handleLogout }) => {
         return <Order />;
       case "whishlist":
         return <Wishlist />;
-      case "address":
-        return <Address />;
+     
       case "cart":
         return <Cart />;
       case "Settings":
@@ -53,7 +53,10 @@ const UserContainer = ({ handleLogout }) => {
             Logout
           </button>
         </nav>
+        <Suspense fallback={'loading'}>
         <div>{renderComponent()}</div>
+        </Suspense>
+        
       </div>
     </div>
   );

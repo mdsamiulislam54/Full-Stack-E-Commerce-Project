@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-const getlocalStorage = ()=>{
+
+import Swal from 'sweetalert2';const getlocalStorage = ()=>{
     const cartData =localStorage.getItem("cart");
     return cartData? JSON.parse(cartData):{ cartItems: [], totalPrice: 0, totalQuantity: 0, shappingFee: 0 }
 }
@@ -23,13 +24,24 @@ const cartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             const item = action.payload;
-            const existingItem = state.cartItems.find((i) => i._id === item._id);
+            const fromCartPage = item.fromCartPage;
+            const existingItem = state.cartItems.find((cartItem) => cartItem._id === item._id);
             const itemprice = parseFloat(item.price.replace("$",""))
             
             if (existingItem) {
                 existingItem.quantity += 1;
+               if(!fromCartPage){
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Quantity Updated',
+                    text: 'This item already exists in your cart. Quantity increased.',
+                    showConfirmButton: false,
+                    confirmButtonText: "Okay",
+                  });
+               }
             } else {
                 state.cartItems.push({ ...item, quantity: 1 });
+               
             }
             
             state.totalQuantity += 1;
@@ -68,6 +80,7 @@ const cartSlice = createSlice({
                 state.totalPrice -= itemPrice * existingItem.quantity;
                 state.shappingFee = state.cartItems.length * 5;
                 setlocalStorage(state)
+                
             }
         },
      

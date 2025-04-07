@@ -6,10 +6,12 @@ import { HiMiniArrowPath } from "react-icons/hi2";
 import { addToCart } from "../../redux/features/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { addToCheckout } from "../../redux/features/checkoutSlice";
-
+import { addToWishlist } from "../../redux/features/wishlistSlice";
 const Products = () => {
   const dispatch = useDispatch();
   const { products, loading, error } = useSelector((state) => state.products);
+  const {whishlist} = useSelector((state) => state);
+  console.log(whishlist);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -61,6 +63,7 @@ const Products = () => {
                     <div className="">
                      
                       <CiHeart
+                      onClick={()=>dispatch(addToWishlist(product))}
                       title="Wishlist"
                         size={25}
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
@@ -75,7 +78,7 @@ const Products = () => {
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"
                       />
                        <CiShoppingCart
-                       onClick={()=> dispatch(addToCart(product))}
+                       onClick={()=> dispatch(addToCart({ ...product, fromCartPage: false }))}
                         size={25}
                         title="Add To Cart"
                         className="hover:text-secondary hover:ml-1 cursor-pointer transition-all duration-300"

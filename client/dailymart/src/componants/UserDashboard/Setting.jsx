@@ -2,7 +2,9 @@ import React from 'react'
 
 const Setting = () => {
   return (
-    <div>Setting</div>
+    <div>
+      <h1 className='text-center my-10 text-3xl font-bold '>Coming soon.......</h1>
+    </div>
   )
 }
 

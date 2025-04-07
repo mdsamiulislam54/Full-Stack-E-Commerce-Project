@@ -1,0 +1,25 @@
+
+_id
+67f0a9386715e1f02e1cc78c
+productName
+"Men's Watch"
+productImage
+"https://m.media-amazon.com/images/I/713EyiqlnTL._AC_UL480_FMwebp_QL65_…"
+price
+"$150.00"
+paymentMethod
+"Bkash"
+email
+"samiulm5332@gmail.com"
+name
+"Md Shamiul islam"
+address
+"buzruk rosul pur, boro jamallpur, Dohar, Barishal, Khulna"
+phone
+"01305111820"
+pcode
+"5710"
+status
+"pending"
+createdAt
+2025-04-05T03:53:28.658+00:00

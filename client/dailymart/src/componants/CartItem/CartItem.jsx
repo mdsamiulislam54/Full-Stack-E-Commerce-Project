@@ -11,6 +11,8 @@ import { addToCheckout } from "../../redux/features/checkoutSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { useState } from "react";
+
+import Swal from "sweetalert2";
 const CartItem = () => {
   const { cartItems, totalPrice, shappingFee } = useSelector(
     (state) => state.cart
@@ -22,9 +24,7 @@ const CartItem = () => {
   const dispatch = useDispatch();
   // Calculate the total price of checked items
 
-  const handleClear = () => {
-    dispatch(clearCart());
-  };
+ 
   const handleCheckOut = (product) => {
     navigate("/checkout");
     dispatch(addToCheckout(product));
@@ -39,6 +39,24 @@ const CartItem = () => {
       })
     }
   }
+
+  const handleClearAllCart = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You will not be able to recover this item!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#4C1D95",
+      cancelButtonColor: "#F59E0B",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(clearCart());
+        navigate('/');
+      }
+    });
+  }
+  
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="w-11/12 mx-auto  ">
@@ -48,7 +66,7 @@ const CartItem = () => {
             Shopping Cart
           </h1>
           <button
-            onClick={handleClear}
+            onClick={handleClearAllCart}
             className="text-lg tracking-wider font-medium hover:text-red-500 transition-all duration-300 cursor-pointer"
           >
             All Delete

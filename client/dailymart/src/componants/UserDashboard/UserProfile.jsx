@@ -96,18 +96,7 @@ const UserProfile = ({ user }) => {
                 </span>
               </Link>
             </li>
-            <li className="text-center ">
-              <Link
-                onClick={()=>dispatch(setActiveComponent('address'))}
-                href="#"
-                className="text-lg font-medium hover:text-secondary transition-all duration-300  flex items-center justify-between gap-5 hover:ml-4 p-1  "
-              >
-                <span> My Addresses</span>{" "}
-                <span>
-                  <IoIosArrowRoundForward size={20} />
-                </span>
-              </Link>
-            </li>
+          
             <li className="text-center  ">
               <Link
               onClick={()=>dispatch(setActiveComponent('whishlist'))}
