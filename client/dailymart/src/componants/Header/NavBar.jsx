@@ -108,7 +108,7 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center text-lg   gap-2">Blog</Link>
+            <Link to={'/blog'} className="flex items-center text-lg   gap-2">Blog</Link>
           </li>
           <li>
             <Link className="flex items-centertext-lg   gap-2">Offer</Link>

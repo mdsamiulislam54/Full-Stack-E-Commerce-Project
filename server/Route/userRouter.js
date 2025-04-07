@@ -56,7 +56,7 @@ router.post("/login", async (req, res) => {
         email: user.email,
       },
       process.env.SECRET_KEY,
-      { expiresIn: "1h" }
+      { expiresIn: "5h" }
     );
     res.status(200).json({ message: "Login successful", token: token });
    

@@ -17,6 +17,7 @@ import { AllProducts } from './componants/AllProducts/AllProducts';
 import BuyNow from './componants/BuyNow/BuyNow';
 import SuccessPayment from './componants/SuccessPayment/SuccessPayment';
 import Wishlist from './componants/UserDashboard/Wishlist';
+import Blog from './componants/Blog/Blog';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
           <Route path="/buynow" element={<BuyNow />} />
           <Route path="/wishlists" element={<Wishlist />} />
+          <Route path="/blog" element={<Blog />} />
           
           {/* Dynamic route for success payment */}
           <Route path="/payment-success/:tran_id" element={<SuccessPayment />} />
