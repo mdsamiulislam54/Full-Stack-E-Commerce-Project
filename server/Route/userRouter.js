@@ -11,6 +11,7 @@ import errorHandler from "../errorhandaler/errorHandalar.js";
 import nodemailer from "nodemailer";
 import SSLCommerzPayment from "sslcommerz-lts";
 import OrderModel from "../model/OrderModel.js";
+import blogModel from "../model/blogSchemaModel.js";
 
 const router = express.Router();
 
@@ -354,6 +355,29 @@ router.get('/orders', async (req, res) => {
   }
 });
 
+router.post('/blog/post', async (req,res)=>{
+  try{
+
+    const blogData = JSON.parse(fs.readFileSync('blog.json', 'utf8'))
+    await blogModel.insertMany(blogData)
+    res.status(200).json({message:"successful save blog data"})
+
+
+  }catch(err){
+    console.log(err)
+    res.status(500).json({message:'blog data save error', err})
+  }
+})
+router.get('/blog/data', async(req,res)=>{
+  try{
+
+    const blogdata = await blogModel.find({})
+    res.status(200).json(blogdata)
+
+  }catch(err){
+    res.status(500).json({message:'blog data get error', err})
+  }
+})
 
 
 export default router;
