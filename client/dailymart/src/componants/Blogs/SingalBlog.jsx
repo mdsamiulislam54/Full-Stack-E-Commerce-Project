@@ -1,13 +1,27 @@
 
 
 const Blog = ({blog}) => {
-  console.log(blog)
+
   const {title,slug,author,category,content,image,tags,publishedAt,likesCount,likedBy,comments} = blog;
   return (
     <div>
         <div className="">
          
-          <div className="col-span-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem nulla sequi in rem laborum eaque illo nam obcaecati amet fugiat, ullam dolor enim ipsam earum itaque beatae tempore. Pariatur, accusamus!</div>
+          <div className="" >
+              <div>
+                <img src={image} alt="" />
+              </div>
+              <div className="my-2">
+                <h2>{title}...</h2>
+                <p className="flex justify-between ">
+                  
+                  <span>{category}</span>
+                  <span>{publishedAt}</span>
+
+                </p>
+                <button>Read More...</button>
+              </div>
+          </div>
         </div>
     </div>
   )
