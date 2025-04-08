@@ -30,7 +30,7 @@ const Blog = () => {
       <div>
         <div className="w-11/12 mx-auto">
           <nav className="flex items-center py-4 border-b-2 border-gray-200 mb-4">
-            <Link className="flex items-center gap-2 text-gray-900 font-semibold">
+            <Link to={'/'} className="flex items-center gap-2 text-gray-900 font-semibold">
               <span>
                 <FaHome />
               </span>
@@ -46,7 +46,7 @@ const Blog = () => {
 
               <div className="relative flex items-center">
                 <input type="text" placeholder="Search blog..." className="border p-3  text-sm outline-none border-gray-400 " />
-                <button className="bg-primary px-4 py-3 rounded-md ml-2 text-light "><CiSearch  size={20}/></button>
+                <button className="bg-primary px-4 py-3  text-light "><CiSearch  size={20}/></button>
               </div>
               <div className="my-10">
                 <h2 className="text-xl font-semibold tracking-wider text-dark mb-2 ">Categories</h2>
@@ -55,12 +55,12 @@ const Blog = () => {
                 }
               </div>
               <div className="mb-5">
-                <h3 className="text-xl font-semibold tracking-wider text-dark mb-2 ">Recent Post</h3>
+                <h3 className="text-xl font-semibold tracking-wider text-dark mb-10 ">Recent Post</h3>
                 <div>
                   {
                     blogs.slice(0,5).map((blog)=>{
                       return(
-                       <div key={blog._id} className="flex items-start gap-3 mb-2">
+                       <div key={blog._id} className="flex items-start gap-3 mb-5">
                        
                             <img src={blog.image} alt={blog.title} className="w-28 h-full object-contain"  />
                         
@@ -76,8 +76,8 @@ const Blog = () => {
                     })
                   }
                 </div>
-                <div>
-                  <h3>Product Tags</h3>
+                <div className="my-10">
+                  <h3  className="mb-10 text-xl font-semibold">Product Tags</h3>
 
                  <div className="grid sm:grid-cols-3 grid-cols-4 gap-2" >
                   {
