@@ -1,8 +1,18 @@
-
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import {addToPostId} from '../../redux//features/blogSlice'
+import { useNavigate } from "react-router-dom";
 
 const Blog = ({blog}) => {
-
-  const {title,slug,author,category,content,image,tags,publishedAt,likesCount,likedBy,comments} = blog;
+const [id, setId] = useState()
+  const {title,category,image,publishedAt,_id} = blog;
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const handleSelectPost = (_id)=>{
+    dispatch(addToPostId(_id))
+    navigate('/readPage')
+  }
+  
   return (
     <div>
         <div className="">
@@ -19,7 +29,7 @@ const Blog = ({blog}) => {
                   <span className="text-sm text-gray-600">{publishedAt}</span>
 
                 </p>
-                <button className="text-md hover:text-primary cursor-pointer transition-all duration-300">Read More...</button>
+                <button onClick={()=>handleSelectPost(_id)} className="text-md hover:text-primary cursor-pointer transition-all duration-300">Read More...</button>
               </div>
           </div>
         </div>

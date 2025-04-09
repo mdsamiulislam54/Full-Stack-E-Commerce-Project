@@ -13,6 +13,7 @@ import shippingAddressReducer from './features/shippingAddressSlices'
 import uiSliceReducer from './features//UiComponatsSlice'
 import CheckLoginReducer from './features//LoginCheck'
 import whislistReducer from './features/wishlistSlice' 
+import blogSliceReducer from './features/blogSlice'
 
 // Redux Persist Configuration
 const persistConfig = {
@@ -21,6 +22,7 @@ const persistConfig = {
 };
 
 const persistedUserReducer = persistReducer(persistConfig, userReducer);
+
 
 const store = configureStore({
   reducer: {
@@ -35,7 +37,8 @@ const store = configureStore({
     shippingAddress : shippingAddressReducer, 
     ui : uiSliceReducer,  
     loginCheck : CheckLoginReducer,  
-    whishlist : whislistReducer
+    whishlist : whislistReducer,
+    blogs : blogSliceReducer
   },
 });
 

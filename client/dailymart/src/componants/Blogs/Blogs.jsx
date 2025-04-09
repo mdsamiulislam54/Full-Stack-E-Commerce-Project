@@ -1,28 +1,39 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import SingalBlog from "./SingalBlog";
 import { CiSearch } from "react-icons/ci";
-import { HiH1 } from "react-icons/hi2";
-const Blog = () => {
-  const [blogs, setBolg] = useState([]);
-  // const url = import.meta.env.VITE_BLOG_DATA_GET_URL
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlogData } from "../../redux/features/blogSlice";
+import { useEffect } from "react";
 
-  useEffect(() => {
-    axios
-      .get(import.meta.env.VITE_BLOG_DATA_GET_URL)
-      .then((res) => {
-        setBolg(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  const tags = blogs.map((blog)=> blog.tags)
+
+const Blog = () => {
+  // const [blogs, setBolg] = useState([]);
+  // // const url = import.meta.env.VITE_BLOG_DATA_GET_URL
+
+  // useEffect(() => {
+  //   axios
+  //     .get(import.meta.env.VITE_BLOG_DATA_GET_URL)
+  //     .then((res) => {
+  //       setBolg(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  const { blog, loading, error } = useSelector((state) => state.blogs);
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(fetchBlogData())
+  },[])
+  console.log(blog)
+  const tags = blog.map((blog)=> blog.tags)
   const allTag = tags.flat().slice(0,8)
-  console.log(allTag)
+  
   
 
   return (
@@ -41,7 +52,7 @@ const Blog = () => {
             </Link>
             <Link className="text-gray-400 text-sm font-semibold">Blog</Link>
           </nav>
-          <div className="grid sm:grid-cols-5 mt-12 gap-5">
+          <div className="grid sm:grid-cols-5 mt-12 gap-5 py-5">
             <div className="col-span-1">
 
               <div className="relative flex items-center">
@@ -51,14 +62,14 @@ const Blog = () => {
               <div className="my-10">
                 <h2 className="text-xl font-semibold tracking-wider text-dark mb-2 ">Categories</h2>
                 {
-                  blogs.map((blog)=><li key={blog._id} className="list-none ml-5 mb-1 font-normal text-md tracking-wide">{blog.category}</li>)
+                  blog.map((blog)=><li key={blog._id} className="list-none ml-5 mb-1 font-normal text-md tracking-wide">{blog.category}</li>)
                 }
               </div>
               <div className="mb-5">
                 <h3 className="text-xl font-semibold tracking-wider text-dark mb-10 ">Recent Post</h3>
                 <div>
                   {
-                    blogs.slice(0,5).map((blog)=>{
+                    blog.slice(0,5).map((blog)=>{
                       return(
                        <div key={blog._id} className="flex items-start gap-3 mb-5">
                        
@@ -96,7 +107,7 @@ const Blog = () => {
             </div>
             <div className="col-span-4">
             <div className=" grid sm:grid-cols-2 gap-5">
-            {blogs.map((blog) => (
+            {blog.map((blog) => (
                 <SingalBlog key={blog._id} blog={blog}></SingalBlog>
               ))}
             </div>

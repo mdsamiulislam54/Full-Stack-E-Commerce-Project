@@ -355,7 +355,62 @@ router.get('/orders', async (req, res) => {
   }
 });
 
-router.post('/blog/post', async (req,res)=>{
+
+router.get('/blog/data', async(req,res)=>{
+  try{
+
+    const blogdata = await blogModel.find({})
+    res.status(200).json(blogdata)
+
+  }catch(err){
+    res.status(500).json({message:'blog data get error', err})
+  }
+})
+
+router.post('/blog/post', async (req, res) => {
+  try {
+    const blogData = JSON.parse(fs.readFileSync('blog.json', 'utf8'));
+
+    for (const blog of blogData) {
+      const existing = await blogModel.findOne({ _id: blog._id });
+
+      if (existing) {
+        // Compare and build only changed fields
+        const updateFields = {};
+        for (let key in blog) {
+          if (key !== "_id" && blog[key] !== existing[key]) {
+            updateFields[key] = blog[key];
+          }
+        }
+
+        if (Object.keys(updateFields).length > 0) {
+          await blogModel.updateOne(
+            { _id: blog._id },
+            { $set: updateFields }
+          );
+          console.log(`✅ Updated blog ${blog._id}`);
+        } else {
+          console.log(`⚠️ No changes for blog ${blog._id}`);
+        }
+      } else {
+        // If blog not found, insert new
+        await blogModel.create(blog);
+        console.log(`🆕 Inserted blog ${blog._id}`);
+      }
+    }
+
+    res.status(200).json({ message: 'Blog data processed (updated/inserted).' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Blog data save error', err });
+  }
+});
+
+export default router;
+
+/**
+ * 
+ * router.post('/blog/post', async (req,res)=>{
   try{
 
     const blogData = JSON.parse(fs.readFileSync('blog.json', 'utf8'))
@@ -368,16 +423,4 @@ router.post('/blog/post', async (req,res)=>{
     res.status(500).json({message:'blog data save error', err})
   }
 })
-router.get('/blog/data', async(req,res)=>{
-  try{
-
-    const blogdata = await blogModel.find({})
-    res.status(200).json(blogdata)
-
-  }catch(err){
-    res.status(500).json({message:'blog data get error', err})
-  }
-})
-
-
-export default router;
+ */
