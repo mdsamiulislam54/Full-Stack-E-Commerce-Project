@@ -8,22 +8,10 @@ import { CiSearch } from "react-icons/ci";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogData } from "../../redux/features/blogSlice";
 import { useEffect } from "react";
-
+import Swal from 'sweetalert2'
 
 const Blog = () => {
-  // const [blogs, setBolg] = useState([]);
-  // // const url = import.meta.env.VITE_BLOG_DATA_GET_URL
 
-  // useEffect(() => {
-  //   axios
-  //     .get(import.meta.env.VITE_BLOG_DATA_GET_URL)
-  //     .then((res) => {
-  //       setBolg(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
 
   const { blog, loading, error } = useSelector((state) => state.blogs);
   const dispatch = useDispatch()
@@ -34,7 +22,14 @@ const Blog = () => {
   const tags = blog.map((blog)=> blog.tags)
   const allTag = tags.flat().slice(0,8)
   
-  
+  const handleSerachBlog = ()=>{
+    Swal.fire({
+      icon: 'info',
+      title: 'Search Coming Soon!',
+      text: 'We are working on adding the search functionality.',
+      confirmButtonText: 'Okay!'
+    });
+  }
 
   return (
     <>
@@ -57,7 +52,7 @@ const Blog = () => {
 
               <div className="relative flex items-center">
                 <input type="text" placeholder="Search blog..." className="border p-3  text-sm outline-none border-gray-400 " />
-                <button className="bg-primary px-4 py-3  text-light "><CiSearch  size={20}/></button>
+                <button onClick={handleSerachBlog} className="bg-primary px-4 py-3  text-light "><CiSearch  size={20}/></button>
               </div>
               <div className="my-10">
                 <h2 className="text-xl font-semibold tracking-wider text-dark mb-2 ">Categories</h2>
