@@ -4,7 +4,7 @@ import {addToPostId} from '../../redux//features/blogSlice'
 import { useNavigate } from "react-router-dom";
 
 const Blog = ({blog}) => {
-const [id, setId] = useState()
+
   const {title,category,image,publishedAt,_id} = blog;
   const dispatch = useDispatch()
   const navigate = useNavigate()

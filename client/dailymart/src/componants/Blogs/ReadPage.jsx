@@ -1,6 +1,7 @@
 
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { CgProfile } from "react-icons/cg";
 
 
 const ReadPage = () => {
@@ -13,26 +14,22 @@ const ReadPage = () => {
 
   return (
     <div>
-       <nav className="bg-gray-200 py-2">
-        <ul className="w-11/12 mx-auto">
-          <Link to={'/blogs'}>Blog</Link>
-          
-        </ul>
-      </nav>
-      <div className="w-11/12 mx-auto">
-        <div className="flex flex-col justify-center items-center gap-10">
+   
+      <div className="w-6/12 mx-auto my-5">
+        <div className="">
           {
             filterBlogs.map((blog)=>{
               return(
-                <div key={blog._id}>
-                  <img src={blog.image} alt="" />
+                <div key={blog._id} className="flex flex-col justify-center items-center">
+                  <img src={blog.image} alt={blog.title} className="w-full" />
                   <div>
-                    <div>
-                      <p>{blog.author}</p>
-                      <p>{blog.publishedAt}</p>
+                    <div className="flex items-center justify-between  py-5">
+                      <p className="flex items-center font-semibold text-xl gap-3"><span><CgProfile size={20} /></span>{blog.author}</p>
+                      <p className="text-xl font-bold text-gray-600">{blog.publishedAt}</p>
                     </div>
-                    <p>{blog.slug}</p>
-                    <p>{blog.content}</p>
+                    <p className="text-2xl font-semibold mb-4">{blog.slug}</p>
+                    <p className="tracking-wide text-sm font-light leading-8">{blog.content}</p>
+                    
                   </div>
                 </div>
               )
