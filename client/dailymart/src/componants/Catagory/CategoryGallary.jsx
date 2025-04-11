@@ -59,7 +59,7 @@ const CategoryGallary = () => {
         
         >
           <div className="border   h-100">
-            {Category.map((item) => {
+            {Category?.map((item) => {
               return (
                 <SwiperSlide key={item._id} className=" bg-light my-10 transition-all duration-500 rounded ">
                   <div className="relative  ">
