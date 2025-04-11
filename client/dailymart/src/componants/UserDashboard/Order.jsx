@@ -5,7 +5,7 @@ const Order = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/users/orders') //
+    axios.get(import.meta.env.VITE_ORDERS_GET_URL) //
       .then(res => setOrders(res.data))
       .catch(err => console.error('Failed to fetch orders:', err));
   }, []);

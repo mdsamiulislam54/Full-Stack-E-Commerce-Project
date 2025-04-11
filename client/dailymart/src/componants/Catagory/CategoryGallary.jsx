@@ -23,7 +23,8 @@ const CategoryGallary = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/users/shop/data"
+       
+            import.meta.env.VITE_CATEGORY_GET_URL
         );
         setCategory(response.data);
       } catch (error) {
