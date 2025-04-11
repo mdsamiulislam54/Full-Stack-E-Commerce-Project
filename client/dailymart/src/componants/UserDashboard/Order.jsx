@@ -9,7 +9,7 @@ const Order = () => {
       .then(res => setOrders(res.data))
       .catch(err => console.error('Failed to fetch orders:', err));
   }, []);
-
+console.log(orders)
   
   return (
     <div className="max-w-5xl mx-auto p-4">

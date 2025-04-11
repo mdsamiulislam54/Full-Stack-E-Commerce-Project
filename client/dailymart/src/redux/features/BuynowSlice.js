@@ -10,6 +10,7 @@ const buynowSlice = createSlice({
     reducers: {
         addToBuynow: (state, action) => {
             const existingProduct = state.products.find(p => p._id !== action.payload._id);
+            console.log(action.payload)
             
             
             if (existingProduct) {
@@ -20,9 +21,18 @@ const buynowSlice = createSlice({
 
             state.totalPrice += action.payload.price;
             state.totalQuantity += 1;
+        },
+        addTOPrice :(state,action)=>{
+            state.totalPrice = action.payload
+            
+        },
+        addToQuantity : (state, action)=>{
+            state.totalQuantity = action.payload
+            console.log(action.payload)
         }
+
     }
 });
 
-export const { addToBuynow } = buynowSlice.actions;
+export const { addToBuynow,addTOPrice,addToQuantity } = buynowSlice.actions;
 export default buynowSlice.reducer;

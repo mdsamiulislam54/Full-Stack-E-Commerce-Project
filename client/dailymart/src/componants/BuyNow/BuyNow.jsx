@@ -22,7 +22,7 @@ const BuyNow = () => {
   const [selectedCity, setSelectedCity] = useState(null);
   const [selectedDistricts, setSelectedDistricts] = useState(null);
   const [selectedUpzilla, setSelectedUpzilla] = useState(null);
-  const { products } = useSelector((state) => state.buynow);
+  const { products,totalPrice,totalQuantity } = useSelector((state) => state.buynow);
  
   const shippingAddress = useSelector(
     (state) => state.shippingAddress.shippingAddress
@@ -71,16 +71,10 @@ console.log(paymentMethod)
   const closeModal = () => {
     setIsOpen(false);
   };
-  const totalPrice = (fee = "$0", discount = "$0") => {
-    // Ensure inputs are strings
-    if (typeof fee !== "string" || typeof discount !== "string") {
-      return "Invalid input";
-    }
+  const totalDisPrice = (fee = 0, discount = 0) => {
+  
 
-    const delivaryFee = parseFloat(fee.replace("$", "")) || 0;
-    const discountAmount = parseFloat(discount.replace("$", "")) || 0;
-
-    const total = delivaryFee + discountAmount;
+    const total = fee + discount;
     return `$${total.toFixed(2)}`;
   };
 
@@ -153,7 +147,7 @@ console.log(paymentMethod)
       });
   };
 
-  console.log("Updated Payment Method:", paymentMethod);
+
 
   return (
     <div className="bg-gray-100">
@@ -365,17 +359,17 @@ console.log(paymentMethod)
                     <div className="flex justify-between items-center mb-4">
                       <span className="text-md font-semibold">Item Price</span>
                       <span className="text-md font-semibold">
-                        {product.price}
+                        ${totalPrice}
                       </span>
+                     
                     </div>
-                    <div className="flex justify-between items-center mb-4">
+                    <div className="flex justify-between items-center mb-4 ">
                       <span className="text-md font-semibold">
-                        Discount Price
+                        Total item:
                       </span>
-                      <span className="text-md font-semibold">
-                        {product.discountPrice}
-                      </span>
+                      <span className="text-md font-semibold">{totalQuantity}</span>
                     </div>
+                  
                     <div className="flex justify-between items-center mb-4 border-b border-gray-400 pb-2">
                       <span className="text-md font-semibold">
                         Delivery Fee
@@ -385,7 +379,7 @@ console.log(paymentMethod)
                     <div className="flex justify-between items-center border-b border-gray-400 pb-2">
                       <span className="text-md font-semibold">Total :</span>
                       <span className="text-md font-semibold">
-                        {totalPrice("$5", product.discountPrice || "$0")}
+                        {totalDisPrice(5, totalPrice || 0)}
                       </span>
                     </div>
                     <div className="py-4">

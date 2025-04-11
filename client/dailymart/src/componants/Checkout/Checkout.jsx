@@ -10,20 +10,34 @@ import { FaBusinessTime } from "react-icons/fa";
 import { BsCashCoin } from "react-icons/bs";
 import { MdOutlineEventAvailable } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { addToBuynow } from "../../redux/features/BuynowSlice";
-
+import { addToBuynow,addTOPrice,addToQuantity } from "../../redux/features/BuynowSlice";
+import Swal from "sweetalert2";
 
 const Checkout = () => {
   const { checkout } = useSelector((state) => state.checkout);
   const [images, setImages] = useState();
   const [selectionColor, setSelectionColor] = useState([]);
   const [count, setCount] = useState(0);
+  const [totalPrice , setTototalPrice] = useState()
   console.log(checkout)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleAddToBuynow = (product) => {
+    if(count === 0){
+      Swal.fire({
+        icon: "warning",
+        title: "Quantity Required",
+        text: "Please update the quantity before proceeding.",
+        confirmButtonText: "Okay, got it!",
+      });
+      return
+    }
+   
     dispatch(addToBuynow(product));
+    dispatch(addTOPrice(totalPrice))
+    dispatch(addToQuantity(count))
+    
     navigate("/buynow");
     
   }
@@ -52,12 +66,26 @@ const Checkout = () => {
       setSelectionColor([...selectionColor, index]);
     }
   };
-  const handelIncrement = () => {
-    setCount(count + 1);
+  const handelIncrement = (price) => {
+    const priceConvart = parseFloat(price.replace("$", ""));
+  
+    setCount((prev) => {
+      const newCount = prev + 1;
+      setTototalPrice(newCount * priceConvart); // ✅ নতুন count দিয়ে হিসাব
+      return newCount;
+    });
   };
-  const handelDecrement = () => {
-    setCount(count - 1);
+  
+  const handelDecrement = (price) => {
+    const priceConvart = parseFloat(price.replace("$", ""));
+  
+    setCount((prev) => {
+      const newCount = prev > 0 ? prev - 1 : 1;
+      setTototalPrice(newCount * priceConvart); // ✅ নতুন count দিয়ে হিসাব
+      return newCount;
+    });
   };
+  
   const handleDeliveryDate = () => {
     const today = new Date();
     const tomorrow = new Date(today);
@@ -143,7 +171,7 @@ const Checkout = () => {
                     <p>
                       {" "}
                       <span className="font-semibold text-2xl tracking-wider ">
-                        {item.discountPrice}
+                        ${ totalPrice}
                       </span>
                     </p>
                     <p className="flex gap-5 items-center">
@@ -188,7 +216,7 @@ const Checkout = () => {
                   </div>
                   <div className="flex items-center gap-5 mt-5">
                     <button
-                      onClick={handelDecrement}
+                      onClick={()=>handelDecrement(item.discountPrice)}
                       className={`px-2 font-dm-snas font-bold cursor-pointer bg-gray-100 rounded `}
                       disabled={count === 0}
                     >
@@ -196,7 +224,7 @@ const Checkout = () => {
                     </button>
                     <span className="font-bold">{count}</span>
                     <button
-                      onClick={handelIncrement}
+                      onClick={()=>handelIncrement(item.discountPrice)}
                       className="px-2 font-dm-snas font-bold cursor-pointer bg-gray-100 rounded"
                     >
                       +
@@ -209,7 +237,7 @@ const Checkout = () => {
                     >
                       Add To Cart
                     </button>
-                    <button onClick={()=>handleAddToBuynow(item)} className="px-12 py-2 bg-secondary text-light rounded-lg  transition-all duration-300 cursor-pointer  hover:bg-primary hover:text-light">
+                    <button onClick={()=>handleAddToBuynow(item,item.discountPrice)}  className="px-12 py-2 bg-secondary text-light rounded-lg  transition-all duration-300 cursor-pointer  hover:bg-primary hover:text-light">
                       Buy Now
                     </button>
                   </div>
