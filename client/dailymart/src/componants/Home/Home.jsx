@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <>
-    {/* <Loader/>  */}
+    
        <BannerSection />
       <WhyChooseUs />
       <CategoryGallary/>

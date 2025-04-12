@@ -80,7 +80,7 @@ const Checkout = () => {
     const priceConvart = parseFloat(price.replace("$", ""));
   
     setCount((prev) => {
-      const newCount = prev > 0 ? prev - 1 : 1;
+      const newCount = prev > 0 ? prev - 0 : 1;
       setTototalPrice(newCount * priceConvart); // ✅ নতুন count দিয়ে হিসাব
       return newCount;
     });

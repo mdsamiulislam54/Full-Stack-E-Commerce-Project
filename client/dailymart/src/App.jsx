@@ -22,8 +22,10 @@ import ReadPage from './componants/Blogs/ReadPage';
 
 function App() {
   return (
-    <Suspense fallback={<Loader />}> 
+
       <BrowserRouter>
+      <Suspense fallback={<Loader/>}>
+     
         <Layout />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -56,10 +58,11 @@ function App() {
 
         </Routes>
         
-        {/* Footer doesn't need suspense */}
+       
         <Footer />
+        </Suspense>
       </BrowserRouter>
-    </Suspense>
+
   );
 }
 
