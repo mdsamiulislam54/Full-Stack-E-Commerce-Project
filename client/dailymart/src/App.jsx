@@ -19,6 +19,7 @@ import SuccessPayment from './componants/SuccessPayment/SuccessPayment';
 import Wishlist from './componants/UserDashboard/Wishlist';
 import Blogs from './componants/Blogs/Blogs';
 import ReadPage from './componants/Blogs/ReadPage';
+import Contract from './componants/Contract/Contract';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/wishlists" element={<Wishlist />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/readPage" element={<ReadPage />} />
+          <Route path="/contract" element={<Contract />} />
           
           {/* Dynamic route for success payment */}
           <Route path="/payment-success/:tran_id" element={<SuccessPayment />} />

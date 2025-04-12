@@ -62,7 +62,7 @@ const TopBar = () => {
             </Link>
           </li>
           <li>
-            <Link className="flex items-center gap-2   sm:text-md sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
+            <Link to={'/contract'} className="flex items-center gap-2   sm:text-md sm:text-lg font-normal tracking-wider hover:text-secondary transition-all duration-500 ease-in-out">
               <span>
                 <RiContactsFill size={18} />
               </span>
