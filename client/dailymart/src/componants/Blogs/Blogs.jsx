@@ -50,14 +50,14 @@ const Blog = () => {
           <div className="grid sm:grid-cols-5 mt-12 gap-5 py-5">
             <div className="col-span-1">
 
-              <div className="relative flex items-center">
-                <input type="text" placeholder="Search blog..." className="border p-3  text-sm outline-none border-gray-400 " />
+              <div className="relative flex items-center justify-center">
+                <input type="text" placeholder="Search blog..." className="border p-2.5  text-sm outline-none border-gray-400 " />
                 <button onClick={handleSerachBlog} className="bg-primary px-4 py-3  text-light "><CiSearch  size={20}/></button>
               </div>
               <div className="my-10">
-                <h2 className="text-xl font-semibold tracking-wider text-dark mb-2 ">Categories</h2>
+                <h2 className="text-xl font-semibold tracking-wider text-dark  mb-4   ">Categories</h2>
                 {
-                  blog.map((blog)=><li key={blog._id} className="list-none ml-5 mb-1 font-normal text-md tracking-wide">{blog.category}</li>)
+                  blog.map((blog)=><li key={blog._id} className="list-none ml-5 mb-1 font-normal text-md tracking-wide ">{blog.category}</li>)
                 }
               </div>
               <div className="mb-5">

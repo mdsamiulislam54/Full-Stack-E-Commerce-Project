@@ -15,7 +15,7 @@ const ReadPage = () => {
   return (
     <div>
    
-      <div className="w-6/12 mx-auto my-5">
+      <div className="sm:w-6/12 w-11/12 mx-auto my-5">
         <div className="">
           {
             filterBlogs.map((blog)=>{
