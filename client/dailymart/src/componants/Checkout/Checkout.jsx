@@ -109,13 +109,13 @@ const Checkout = () => {
             <div className="flex justify-center gap-5 ">
               {allImages.map((item) => {
                 return (
-                  <div key={item} className="shadow">
+                  <div key={item} className="shadow ">
                     <img
                       onMouseEnter={() => handleClickImgaes(item)}
                       src={item}
                       alt=""
                       loading="lazy"
-                      className="w-20 h-20 object-contain m-5 cursor-pointer transition-all duration-300 "
+                      className="sm:w-20 sm:h-20 w-10 h-10 object-contain m-5 cursor-pointer transition-all duration-300 "
                     />
                   </div>
                 );
@@ -147,7 +147,7 @@ const Checkout = () => {
               return (
                 <div
                   key={item._id}
-                  className="p-5 max-sm:flex flex-col justify-center items-center "
+                  className="sm:p-5 max-sm:flex flex-col justify-center items-center "
                 >
                   <h3 className="sm:text-3xl text-xl tracking-wider max-sm:text-center">
                     {item.productDetails.title}
@@ -247,9 +247,9 @@ const Checkout = () => {
           </div>
           <div className="sm:border-l-2 sm:pl-2 border-gray-200">
             <p className="text-xl tracking-wide mb-4">Delivery Options</p>
-            <div className="ml-4">
+            <div className="sm:ml-4">
               <p className="flex justify-between items-center">
-                <span className="flex items-center gap-4 tracking-wide font-medium mb-4">
+                <span className="flex items-center sm:gap-4 tracking-wide font-medium mb-4">
                   <TbTruckDelivery size={25} />
                   <span>Standdard Delivery</span>
                 </span>
@@ -274,7 +274,7 @@ const Checkout = () => {
               </p>
             </div>
             <p className="text-xl tracking-wide mb-4">Return & Warranty</p>
-            <div className="ml-4">
+            <div className="sm:ml-4">
               <p className="flex  gap-5 items-center  tracking-wide font-medium mb-4">
                 <span>
                   <TbTruckReturn size={25} />

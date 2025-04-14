@@ -155,12 +155,12 @@ console.log(paymentMethod)
         <div className=" grid sm:grid-cols-6 gap-4 ">
           <div className="sm:col-span-4">
             <div className="flex justify-between items-center mb-4 bg-light p-3 rounded-md">
-              <h4 className="text-lg tracking-wide font-semibold">
+              <h4 className="sm:text-lg tracking-wide font-semibold">
                 Shipping & Billing
               </h4>
               <button
                 onClick={openModal}
-                className=" text-lg tracking-wide font-semibold text-primary cursor-pointer"
+                className=" sm:text-lg tracking-wide font-semibold text-primary cursor-pointer"
               >
                 Add Address
               </button>
@@ -257,8 +257,8 @@ console.log(paymentMethod)
               </Modal>
             </div>
             <div className=" bg-light p-3 rounded-md">
-              <div className="sm:flex justify-between items-center mb-4 p-3 gap-4 rounded-md">
-                <span className="text-md font-semibold">
+              <div className="grid">
+                <span className="text-md font-semibold ">
                   {" "}
                   Name :{" "}
                   <span className="text-sm font-semibold text-gray-600">
@@ -338,18 +338,18 @@ console.log(paymentMethod)
               </div>
             </div>
           </div>
-          <div className="sm:col-span-2 bg-light">
-            <div className=" p-3 rounded-md">
+          <div className="sm:col-span-2 bg-light overflow-x-hidden p-1">
+            <div className=" sm:p-3 rounded-md">
               <h4 className="text-lg tracking-wide font-semibold mb-4">
                 Order Summary
               </h4>
-              <div className="flex  gap-4 items-center mb-4 p-3 rounded-md ">
+              <div className="flex  sm:gap-4 items-center  mb-4 sm:p-3 rounded-md ">
                 <input
-                  className="border p-3 border-gray-4 rounded-lg border-gray-400 outline-none"
+                  className="border p-2 p-1 w-8/12 border-gray-4 rounded-lg border-gray-400 outline-none"
                   type="text"
                   placeholder="Enter Your Coupon Code"
                 />
-                <button className="bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-2">
+                <button className="bg-primary text-light hover:bg-secondary hover:text-dark transition-all duration-300 font-semibold text-lg tracking-wide cursor-pointer rounded-md px-4 py-1.5  ml-1">
                   Apply
                 </button>
               </div>
@@ -392,21 +392,23 @@ console.log(paymentMethod)
                            <p>Payment Metohd : {selected}</p>
                           }
                         </span>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                        <div className="grid  grid-cols-3  gap-4">
                           {/* cash on delivary */}
                           <label
+                            htmlFor="cash"
                             title="Cash on delivary"
-                            className={`cursor-pointer flex items-center gap-2 border p-2 rounded-md ${
+                            className={`cursor-pointer flex items-center justify-center gap-2  p-2 rounded-md w-24 h-24 sm:w-auto sm:h-auto ${
                               checked === "cash on delivary"
-                                ? "bg-green-100 border-green-500"
-                                : "bg-white border-gray-300"
+                                ? "bg-light shadow-xl"
+                                : "bg-white shadow"
                             }`}
                           >
                             <input
                               type="checkbox"
+                              id="cash"
                               onChange={handlePaymentChange}
                               value="cash on delivary"
-                              className="accent-pink-500 w-3 h-3"
+                              className="accent-pink-500 w-0 h-0"
                             />
                             <span className="text-md font-semibold ">
                               <FaHandHoldingDollar size={40} color="red" />
@@ -415,10 +417,10 @@ console.log(paymentMethod)
 
                           {/* Bkash */}
                           <label
-                            className={`cursor-pointer flex items-center gap-2 border p-2 rounded-md ${
+                            className={`cursor-pointer flex items-center gap-2  p-2 rounded-md w-24 h-24 sm:w-auto sm:h-auto ${
                               checked === "Bkash"
-                                ? "bg-pink-100 border-pink-500"
-                                : "bg-white border-gray-300"
+                                ? "bg-light border-pink-500 shadow-xl"
+                                : "bg-white shadow"
                             }`}
                           >
                             <input
@@ -426,19 +428,19 @@ console.log(paymentMethod)
                               
                               onChange={handlePaymentChange}
                               value="Bkash"
-                              className="accent-red-500 w-5 h-5"
+                              className="accent-red-500 w-0 h-0"
                             />
                             <span className="text-md font-semibold">
-                              <img src={Bkash} alt="" />
+                              <img src={Bkash} alt="" className="" />
                             </span>
                           </label>
 
                           {/* Nogad */}
                           <label
-                            className={`cursor-pointer flex items-center gap-2 border p-2 rounded-md ${
+                            className={`cursor-pointer flex items-center gap-2  p-2 rounded-md w-24 h-24 sm:w-auto sm:h-auto ${
                               checked === "Nogad"
-                                ? "bg-orange-100 border-orange-500"
-                                : "bg-white border-gray-300"
+                                ? "bg-light shadow-xl"
+                                : "bg-white border-gray-300 shadow"
                             }`}
                           >
                             <input
@@ -446,7 +448,7 @@ console.log(paymentMethod)
                               name="Nogad"
                               onChange={handlePaymentChange}
                               value="Nogad"
-                              className="accent-blue-500 w-5 h-5"
+                              className="accent-blue-500 w-0 h-0"
                             />
                             <span className="text-md font-semibold">
                               <img src={Nagad} alt="" />

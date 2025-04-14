@@ -24,7 +24,7 @@ const CategoryGallary = () => {
       try {
         const response = await axios.get(
        
-            import.meta.env.VITE_CATEGORY_GET_URL
+            import.meta.env.VITE_CATEGORY_GET_URL || "http://localhost:5000/api/users/shop/data"
         );
         setCategory(response.data);
       } catch (error) {

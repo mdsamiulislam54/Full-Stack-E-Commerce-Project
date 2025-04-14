@@ -4,6 +4,7 @@ import axios from "axios";
 export const fetchBlogData = createAsyncThunk("blogs/fetchBlogData", async () => {
   try {
     const response = await axios.get(import.meta.env.VITE_BLOG_DATA_GET_URL);
+  
     return response.data;
   } catch (error) {
     console.error(error);
