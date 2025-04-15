@@ -24,7 +24,7 @@ const Home = () => {
     <>
     
        <BannerSection />
-      <WhyChooseUs />
+     
       <CategoryGallary/>
       <Products/>
       <ShopCart/>
@@ -34,6 +34,8 @@ const Home = () => {
       <BigOffers/>
       <Testimonial/>
       <Brand/> 
+      <WhyChooseUs />
+      
     {/* <BuyNow/> */}
       
     </>

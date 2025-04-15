@@ -12,6 +12,7 @@ import { fetshproducts } from "../../redux/features/productsSlice";
 import { CiShoppingCart, CiHeart, CiSearch } from "react-icons/ci";
 import { HiMiniArrowPath } from "react-icons/hi2";
 import { addToCart } from "../../redux/features/cartSlice";
+import { BiSolidCartAdd } from "react-icons/bi";
 
 
 const NewArrivals = () => {
@@ -200,7 +201,7 @@ const NewArrivals = () => {
                                
                               </div>
                               <div>
-                              <button onClick={()=>dispatch(addToCart(product))} className="px-4 py-1 hover:bg-primary border border-gray-300 hover:text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointer">Add To Cart</button>
+                              <button onClick={()=>dispatch(addToCart(product))} className="px-4 py-1 hover:bg-primary border border-gray-300 hover:text-light rounded-lg my-2 transition-all duration-300 hover:opacity-80 hover:ml-2 cursor-pointe flex items-center gap-2"> <BiSolidCartAdd size={25} /> Add To Cart</button>
                               </div>
                             </div>
                           </div>

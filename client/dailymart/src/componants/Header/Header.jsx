@@ -6,17 +6,15 @@ import { CgMenuRightAlt } from "react-icons/cg";
 import { VscClose } from "react-icons/vsc";
 import MobilNavbar from "./MobilNavbar";
 import BandLogo from "../../assets/brand-logo.png";
-
-
-
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [windowY, setWindowY] = useState(0);
   const [isshow, setShow] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      
       setWindowY(window.scrollY);
     };
     window.addEventListener("scroll", handleScroll);
@@ -27,6 +25,9 @@ const Header = () => {
 
   const handleShow = () => {
     setShow(!isshow);
+  };
+  const handleHomePageBack = () => {
+    navigate("/");
   };
 
   return (
@@ -46,45 +47,48 @@ const Header = () => {
 
           {/* LogoSearch & NavBar - Sticky */}
           <div className="  bg-white shadow-md">
-          <LogoSearch />
+            <LogoSearch />
             <NavBar />
           </div>
         </nav>
 
         {/* Mobile View */}
-        <div className="max-sm:block hidden bg-light text-light shadow-md p-4">
-        
-
-          <div className="flex flex-row-reverse  justify-between items-center gap-2 ">
-            <div className="flex  justify-between gap-3 items-center">
-              <div onClick={handleShow}>
-                {isshow ?<VscClose size={24} className="hover:cursor-pointer text-dark"/>: <CgMenuRightAlt size={24} className="hover:cursor-pointer text-dark"/>}
-              </div>
-             
-            </div>
-            <div>
-                <img src={BandLogo} alt="brand logo" className="w-24 object-contain" />
-                
-              </div>
-            {/* <div className="relative  ">
-              <input type="text" name="" id="" placeholder="Sarch products..." className="border-1 border-gray-400 outline-none p-1 rounded-2xl w-full sm:w-2/3 md:w-1/2"/>
-              <span className=" ">
-                <button className=" absolute top-0 right-0 text-center bg-assent text-dark hover:bg-secondary transition-colors duration-300 px-2  h-full rounded-r-2xl"><IoIosSearch/></button>
-              </span>
-            </div> */}
-           
-          </div>
-        
+        <div
           
+          className="max-sm:block hidden bg-light text-light shadow-md p-4"
+        >
+          <div className="flex items-center justify-between ">
+            <div>
+              <img
+                src={BandLogo}
+                alt="brand logo"
+                className="w-24 object-contain"
+                onClick={handleHomePageBack}
+              />
+            </div>
+            <div  onClick={handleShow}>
+              {isshow ? (
+                <VscClose
+                  size={24}
+                 
+                  className="hover:cursor-pointer text-dark"
+                />
+              ) : (
+                <CgMenuRightAlt
+                  size={24}
+                  className="hover:cursor-pointer text-dark"
+                />
+              )}
+            </div>
+          </div>
+
           <div
             className={`max-sm:block hidden absolute top-20 left-0 w-10/12 shadow-2xl z-[100] bg-light text-dark transition-all duration-300 ease-in-out ${
               isshow ? "h-screen" : "h-0 overflow-hidden"
             }`}
           >
-          
-            {isshow && <MobilNavbar />}
+            {isshow && <MobilNavbar isshow= {handleShow} />}
           </div>
-          
         </div>
       </div>
     </header>

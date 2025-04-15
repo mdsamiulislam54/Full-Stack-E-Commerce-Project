@@ -13,7 +13,7 @@ import Swal from 'sweetalert2'
 const Blog = () => {
 
 
-  const { blog, loading, error } = useSelector((state) => state.blogs);
+  const { blog } = useSelector((state) => state.blogs);
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(fetchBlogData())

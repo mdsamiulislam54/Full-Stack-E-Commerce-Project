@@ -14,10 +14,12 @@ import './style.css'
 
 // Import required modules
 import { Autoplay, FreeMode ,Pagination} from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 
 
 const CategoryGallary = () => {
   const [Category, setCategory] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +35,9 @@ const CategoryGallary = () => {
     };
     fetchData();
   }, []);
-
+const handleHomePage = ()=>{
+  navigate('/allproducts')
+}
   return (
     <div className="   bg-gray-100  py-2">
       <div className="w-11/12 mx-auto my-10">
@@ -75,7 +79,7 @@ const CategoryGallary = () => {
                     {/* Overlay (Black Background with Opacity) */}
                     <div className="flex flex-col items-center mb-5 ">
                       <h3 className="sm:text-xl my-2 tracking-wide font-medium font-dm-snas">{item.category}</h3>
-                      <button className="flex items-center gap-3 hover:bg-primary border border-gray-300 sm:px-4 px-2 py-1 rounded
+                      <button onClick={handleHomePage} className="flex items-center gap-3 hover:bg-primary border border-gray-300 sm:px-4 px-2 py-1 rounded
                        hover:text-light hover:opacity-80 hover:ml-2 transition-all duration-300 cursor-pointer font-dm-snas">
                         Shop Now
                         <FaArrowRight className="ml-2" />

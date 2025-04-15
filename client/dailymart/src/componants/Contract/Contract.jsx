@@ -30,8 +30,8 @@ const Contract = () => {
   };
   return (
     <div>
-      <div className="w-8/12 mx-auto my-22">
-        <div className="flex justify-between gap-3">
+      <div className="sm:w-8/12 w-11/12 mx-auto my-22">
+        <div className="flex max-sm:flex-col justify-between gap-3">
           <div className="flex gap-2 shadow p-10">
             <span>
               <CiMobile3 size={50} />
@@ -65,7 +65,7 @@ const Contract = () => {
             Get in Touch
           </h2>
           <form ref={clearfrom} onSubmit={handleSubmit} action="">
-            <div className="flex justify-between gap-5 mb-8">
+            <div className="flex  max-sm:flex-col justify-between gap-5 mb-8">
               <input
                 type="text"
                 required

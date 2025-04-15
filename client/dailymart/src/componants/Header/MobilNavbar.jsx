@@ -5,10 +5,10 @@ import { IoIosSearch } from "react-icons/io";
 
 
 
-const MobilNavbar = () => {
+const MobilNavbar = ({isshow}) => {
   return (
     <div>
-        <div className="p-4">
+        <div className="p-4" onClick={isshow}>
              <div className="relative  ">
               <input type="text" name="" id="" placeholder="Sarch products..." className="border-1 border-gray-400 outline-none p-1 rounded-sm w-full sm:w-2/3 md:w-1/2"/>
               <span className=" ">

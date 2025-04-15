@@ -3,6 +3,7 @@ import { FaHome } from "react-icons/fa";
 import { MdManageAccounts } from "react-icons/md";
 import { IoLogIn } from "react-icons/io5";
 import { RiContactsFill } from "react-icons/ri";
+import { CiMobile3 } from "react-icons/ci";
 
 import Modal from "react-modal";
 import Registration from "../Registration/Registration";
@@ -30,8 +31,8 @@ const TopBar = () => {
   return (
     <div className="sm:bg-light  ">
       <div className="sm:flex justify-between items-center max-sm:flex-col gap-5 max-sm:item-start sm:px-0  w-11/12 mx-auto py-2 ">
-        <p className=" font-normal  text-lg sm:block hidden">
-          24/7 customer service <strong>+880-01612086842</strong>
+        <p className=" font-normal  text-lg sm:block hidden ">
+          <span className="flex items-center gap-2"><CiMobile3 size={25}/> <strong>+880-01612086842</strong></span>
         </p>
         <ul className="sm:flex sm:space-x-10 items-center gap-4">
           <li>

@@ -12,6 +12,7 @@ import { CiWarning } from "react-icons/ci";
 import { addToCart } from "../../redux/features/cartSlice";
 import ShopCart from "../ShopCart/ShopCart";
 import { addToCheckout } from "../../redux/features/checkoutSlice";
+import { BiSolidCartAdd } from "react-icons/bi";
 
 export const AllProducts = () => {
   const dispatch = useDispatch();
@@ -79,7 +80,7 @@ export const AllProducts = () => {
                 Home {">"}
               </Link>
               <Link
-                to={"/blog"}
+                to={"/blogs"}
                 className="hover:text-gray-300 duration-300 transition-all text-sm sm:text-md"
               >
                 blog {">"}
@@ -255,9 +256,9 @@ export const AllProducts = () => {
                       </p>
                       <button
                         onClick={() => dispatch(addToCart(product))}
-                        className="text-sm font-light text-gray-800 border px-3 py-1 border-gray-300 rounded-sm cursor-pointer hover:bg-primary hover:text-light hover:border-light transition-all duration-300"
+                        className="text-sm font-light text-gray-800 border px-3 py-1 border-gray-300 rounded-sm cursor-pointer hover:bg-primary hover:text-light hover:border-light transition-all duration-300 flex items-center gap-2"
                       >
-                        Add to Cart
+                         <BiSolidCartAdd size={25 } /> Add to Cart
                       </button>
                     </div>
                   </div>

@@ -4,10 +4,10 @@ import { MdAssignmentReturn, MdPayment } from "react-icons/md";
 
 const WhyChooseUs = () => {
   return (
-    <div>
+    <div className="bg-assent py-2">
       <div className="w-11/12 mx-auto   my-4  ">
         <div className="grid sm:grid-cols-4 grid-cols-1 lg-grid-col-2 gap-2">
-          <div className="sm:flex justify-center items-center gap-2 bg-assent py-5 rounded-md text-center sm:text-start">
+          <div className="sm:flex justify-center items-center gap-2 shadow-md bg-light py-10 rounded-md text-center sm:text-start">
             <span className="sm:border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4 ">
             
               <FaShippingFast size={40} className="text-secondary" />
@@ -21,7 +21,7 @@ const WhyChooseUs = () => {
               </p>
             </span>
             </div>
-          <div className="sm:flex justify-center items-center gap-2 bg-assent rounded-md py-5 px-1 text-center sm:text-start">
+          <div className="sm:flex justify-center items-center gap-2 shadow-md bg-light rounded-md py-5 px-1 text-center sm:text-start">
             <span className="border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4">
             
               <BiSupport size={50} className="text-secondary "/>
@@ -33,7 +33,7 @@ const WhyChooseUs = () => {
               </p>
             </span>
           </div>
-          <div className="sm:flex justify-center items-center gap-2 bg-assent rounded-md py-5 text-center sm:text-start">
+          <div className="sm:flex justify-center items-center gap-2 shadow-md bg-light rounded-md py-5 text-center sm:text-start">
             <span className="border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4">
               {" "}
               <MdAssignmentReturn size={50} className="text-secondary" />
@@ -45,7 +45,7 @@ const WhyChooseUs = () => {
               </p>
             </span>
           </div>
-          <div className="sm:flex justify-center items-center gap-2 bg-assent rounded-md py-5 text-center sm:text-start">
+          <div className="sm:flex justify-center items-center gap-2 shadow-md bg-light rounded-md py-5 text-center sm:text-start">
             <span className="border-r-2 border-light px-3 max-sm:flex justify-center max-sm:mb-4">
               {" "}
               <MdPayment size={50} className="text-secondary" />
