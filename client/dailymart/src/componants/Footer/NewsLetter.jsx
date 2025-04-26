@@ -14,7 +14,7 @@ const NewsLetter = () => {
     }
     // Send email to the server
     axios
-      .post("http://localhost:5000/api/users/send-email", { email })
+      .post("https://dailymart.up.railway.app/api/users/send-email", { email })
       .then(() => {
         toast.success("Subscribed successfully!");
         setEmail("");

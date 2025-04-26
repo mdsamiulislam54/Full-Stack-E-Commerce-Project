@@ -40,7 +40,7 @@ console.log(name,email,password);
     if (name && email && password) {
       try {
         // Sending POST request to the API
-        const response = await axios.post("http://localhost:5000/api/users/register", {
+        const response = await axios.post("https://dailymart.up.railway.app/api/users/register", {
           name:name,
           email:email,
           password:password

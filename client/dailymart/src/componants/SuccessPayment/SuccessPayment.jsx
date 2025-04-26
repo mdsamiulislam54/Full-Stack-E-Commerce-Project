@@ -9,13 +9,12 @@ const SuccessPayment = () => {
 const paymentStatus = queryParams.get('status');
   const { tran_id } = useParams(); 
   const navigate = useNavigate();
-  console.log("SSL ট্রান_ID:", tran_id);
-  console.log("API URL:", `http://localhost:5000/api/users/payment-success/${tran_id}`);
+  
 useEffect(() => {
 
   if (tran_id && paymentStatus === "success") {
    
-  axios.get(`http://localhost:5000/api/users/payment-success/${tran_id}`, {
+  axios.get(`https://dailymart.up.railway.app/api/users/payment-success/${tran_id}`, {
     paymentStatus
   })
   .then((res) => {

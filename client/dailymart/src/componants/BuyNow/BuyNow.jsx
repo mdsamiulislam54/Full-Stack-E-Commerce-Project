@@ -108,8 +108,8 @@ console.log(paymentMethod)
     };
     const paymentEndpoint =
       paymentMethod[0] === "cash on delivary"
-        ? "http://localhost:5000/api/users/send-order-email"
-        : "http://localhost:5000/api/users/ssl-payment";
+        ? "https://dailymart.up.railway.app/api/users/send-order-email"
+        : "https://dailymart.up.railway.app/api/users/ssl-payment";
 
     axios
       .post(paymentEndpoint, orderData)

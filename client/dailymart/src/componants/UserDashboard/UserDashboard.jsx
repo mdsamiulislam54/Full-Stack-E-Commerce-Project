@@ -21,7 +21,7 @@ const login = useSelector((state)=>state.loginCheck.isLoggedIn)
 console.log(login)
   useEffect(()=>{
     if(token){
-      axios.get('http://localhost:5000/api/users/protected-data',{
+      axios.get('https://dailymart.up.railway.app/api/users/protected-data',{
         headers:{
           Authorization: `Bearer ${token}`,
         },
