@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "heading":"New arrival men's casual shirts!",
+        "subheading":"Stylish Comfortable perfect fit",
+        "offer":"Free Shipping on First Order!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-3.jpg"
+    },
+    {
+        "id":2,
+        "heading":"Upgrade your style with premium watches!",
+        "subheading":"Limited Stock – Grab Yours Now!",
+        "offer":"Flat 30% Off  Limited Time Only!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-2.jpg"
+    },
+    {
+        "id":3,
+        "heading":"Step into elegance  men's formal shoes",
+        "subheading":"Limited stock  get yours before They're Gone!",
+        "offer":"Free shipping on first order!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-3.jpg"
+    },
+    {
+        "id":1,
+        "heading":"Comfort and style for Your little ones!",
+        "subheading":"Durable  trendy all-day comfort",
+        "offer":"Special offer: 15% Off on first purchase!",
+        "button":"Explore Collection",
+        "image":"../src/assets/banner-4.jpg"
+    }
+]

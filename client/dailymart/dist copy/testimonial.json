@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "email": "johndoe@example.com",
+        "images": "../src/assets/customar-1.jpg",
+        "message": "The service was excellent, and I am very happy with the quality of the product. Highly recommended!",
+        "city": "New York",
+        "date": "2024/03/19",
+        "phone": "+1 234-567-8901"
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "janesmith@example.com",
+        "images": "../src/assets/customar-2.jpg",
+        "message": "This is one of the best online shopping experiences I have ever had. The product was delivered on time!",
+        "city": "Los Angeles",
+        "date": "2024/03/18",
+        "phone": "+1 987-654-3210"
+    },
+    {
+        "id": 3,
+        "name": "Michael Johnson",
+        "email": "michaelj@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "Great customer service and fantastic quality. I will definitely buy from this store again in the future.",
+        "city": "Chicago",
+        "date": "2024/03/17",
+        "phone": "+1 345-678-9012"
+    },
+    {
+        "id": 4,
+        "name": "Emily Davis",
+        "email": "emilyd@example.com",
+        "images": "../src/assets/customar-1.jpg",
+        "message": "The delivery was fast, and the product was exactly as described. Very satisfied with my purchase. Thank you!",
+        "city": "Houston",
+        "date": "2024/03/16",
+        "phone": "+1 456-789-0123"
+    },
+    {
+        "id": 5,
+        "name": "David Wilson",
+        "email": "davidw@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "Amazing product quality! I was not expecting such a great item at this price. Definitely worth every penny.",
+        "city": "Phoenix",
+        "date": "2024/03/15",
+        "phone": "+1 567-890-1234"
+    },
+    {
+        "id": 6,
+        "name": "Sophia Martinez",
+        "email": "sophiam@example.com",
+        "images": "../src/assets/customar-2.jpg",
+        "message": "Very professional service and great attention to detail. The product met all my expectations perfectly!",
+        "city": "Philadelphia",
+        "date": "2024/03/14",
+        "phone": "+1 678-901-2345"
+    },
+    {
+        "id": 7,
+        "name": "James Anderson",
+        "email": "jamesa@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "Absolutely loved the product! The material is high quality, and it looks exactly like the pictures.",
+        "city": "San Antonio",
+        "date": "2024/03/13",
+        "phone": "+1 789-012-3456"
+    },
+    {
+        "id": 8,
+        "name": "Olivia Thomas",
+        "email": "oliviat@example.com",
+        "images": "../src/assets/customar-1.jpg",
+        "message": "This was my first time ordering from this website, and I must say I am highly impressed with their service.",
+        "city": "San Diego",
+        "date": "2024/03/12",
+        "phone": "+1 890-123-4567"
+    },
+    {
+        "id": 9,
+        "name": "William Harris",
+        "email": "williamh@example.com",
+        "images": "../src/assets/customar-2.jpg",
+        "message": "The customer support was very responsive and helpful. The product itself is amazing and exactly what I wanted.",
+        "city": "Dallas",
+        "date": "2024/03/11",
+        "phone": "+1 901-234-5678"
+    },
+    {
+        "id": 10,
+        "name": "Ava Clark",
+        "email": "avac@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "Everything was perfect, from the order process to the delivery. I will surely recommend this to my friends.",
+        "city": "San Jose",
+        "date": "2024/03/10",
+        "phone": "+1 012-345-6789"
+    },
+    {
+        "id": 11,
+        "name": "Benjamin Lewis",
+        "email": "benjaminl@example.com",
+        "images": "../src/assets/customar-1.jpg",
+        "message": "I had a great shopping experience with this website. The checkout process was smooth, and the product is top-notch!",
+        "city": "Austin",
+        "date": "2024/03/09",
+        "phone": "+1 123-456-7890"
+    },
+    {
+        "id": 12,
+        "name": "Mia Walker",
+        "email": "miaw@example.com",
+        "images": "../src/assets/customar-2.jpg",
+        "message": "The product was exactly what I was looking for. The quality is outstanding, and I couldn't be happier with my purchase.",
+        "city": "Jacksonville",
+        "date": "2024/03/08",
+        "phone": "+1 234-567-8901"
+    },
+    {
+        "id": 13,
+        "name": "Lucas Hall",
+        "email": "lucash@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "Excellent shopping experience. The packaging was neat, and the product arrived in perfect condition. Thank you!",
+        "city": "San Francisco",
+        "date": "2024/03/07",
+        "phone": "+1 345-678-9012"
+    },
+    {
+        "id": 14,
+        "name": "Charlotte Allen",
+        "email": "charlottea@example.com",
+        "images": "../src/assets/customar-1.jpg",
+        "message": "Very happy with the purchase. The product looks elegant and stylish. The delivery was also super quick.",
+        "city": "Columbus",
+        "date": "2024/03/06",
+        "phone": "+1 456-789-0123"
+    },
+    {
+        "id": 15,
+        "name": "Henry Young",
+        "email": "henryy@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "The website is easy to navigate, and the products are reasonably priced. I will be shopping here again for sure.",
+        "city": "Fort Worth",
+        "date": "2024/03/05",
+        "phone": "+1 567-890-1234"
+    },
+    {
+        "id": 16,
+        "name": "Amelia King",
+        "email": "ameliak@example.com",
+        "images": "../src/assets/customar-2.jpg",
+        "message": "I am impressed with how smooth the entire process was. Great customer service and amazing product quality!",
+        "city": "Charlotte",
+        "date": "2024/03/04",
+        "phone": "+1 678-901-2345"
+    },
+    {
+        "id": 17,
+        "name": "Ethan Scott",
+        "email": "ethans@example.com",
+        "images": "../src/assets/customar-1.jpg",
+        "message": "This store offers a great variety of products. The one I bought is of excellent quality and worth the money.",
+        "city": "Detroit",
+        "date": "2024/03/03",
+        "phone": "+1 789-012-3456"
+    },
+    {
+        "id": 18,
+        "name": "Harper Baker",
+        "email": "harperb@example.com",
+        "images": "../src/assets/customar-3.jpg",
+        "message": "The customer support team was very friendly and helpful. My order arrived quickly and in perfect condition.",
+        "city": "El Paso",
+        "date": "2024/03/02",
+        "phone": "+1 890-123-4567"
+    }
+]

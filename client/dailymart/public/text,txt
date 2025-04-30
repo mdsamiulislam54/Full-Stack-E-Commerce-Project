@@ -1,0 +1,22 @@
+
+
+ami akta e-commarce website create korci name"DailyMart" ,{ tech hosce: 1,html,tailwindcss,react.js,react-router,js,icon react-icons,axios,framer motion, react-madal,react-redux@toolkit ,react-zoom-pan-pinch,sweetalert2,swiper }.  backned tech hosce: { database>mongodb, express.js,bcrypt,mongoose,paument getway sslcommerze-lts, } ,
+
+Feture gola hosce: 
+1. user login and registretion korte parbe,login korar pore user tar dashboard dekte parbe ,
+2.user chaile serarch kore tar product nite parbe.Feture
+3.user tar favorite product whislist add korte parbe and dakte parbe,
+4. sundor akta UI design ache jekhane "navbar", "banner", "categories", "Just for You" 'new arrivals', 'testimonial','brand','footer> newsLetter section ace' ache,
+5. user cart e product add korte parbe, quantity update korte parbe, and checkout korte parbe,
+
+6. responsive design ache jeta mobile, tablet, and desktop e properly dekhabe,
+7. payment gateway integration ache jekhane user online payment korte parbe,
+8.sob state managed korar jonno redux use korci ,
+9,slider jonno ami swiper js use korci jate user expreiance vlo hoi,
+10.user authentication ami database mongodb use korci 
+11, UserDashboard ace jekhane user tar profile MdDetails, order,car,whislist , logOut korte parbe,profile images set korte parbe
+
+
+amer website live link : https://dailymartstore-59c72b-s-dev.netlify.app/
+
+ai hosce amer sob data aro kiso data jodi lage amek bolo , and ate readme.md file diba document hisabe git hub rakbo , r ei documentaion ta obvisly professional hote hobe 
