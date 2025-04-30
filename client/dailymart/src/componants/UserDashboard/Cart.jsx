@@ -58,11 +58,11 @@ const Cart = () => {
       });
     }
   return (
-      <div className="bg-gray-100 min-h-screen">
+      <div className=" min-h-screen">
           <div className="w-11/12 mx-auto  ">
             <div></div>
-            <div className="flex justify-between items-center bg-light rounded mb-4 p-4">
-              <h1 className="text-2xl font-semibold text-gray-700 ">
+            <div className="flex justify-between items-center rounded mb-4 p-4">
+              <h1 className="text-xl font-semibold text-gray-700 ">
                 Shopping Cart
               </h1>
               <button
@@ -78,7 +78,7 @@ const Cart = () => {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {/* Cart Items Section */}
-                <div className="sm:col-span-2 bg-white sm:p-4 rounded-lg shadow-lg">
+                <div className="sm:col-span-2 bg-white sm:p-4 rounded-lg ">
                   {cartItems.map((item) => (
                     <div
                       key={item._id}
@@ -88,12 +88,12 @@ const Cart = () => {
                         src={item.img}
                         alt={item.title}
                         loading="lazy"
-                        className="w-16 h-16 object-contain rounded-md"
+                        className="w-12 h-12 object-contain rounded-md"
                       />
     
                       <div className="ml-4 flex-1 max-sm:flex gap-4 items-center">
-                        <h3 className="text-lg font-medium">{item.title}</h3>
-                        <p className="text-gray-500"> {item.price}</p>
+                        <h3 className="text-sm font-medium">{item.title}</h3>
+                        <p className="text-gray-500 text-sm"> {item.price}</p>
                       </div>
                       {/* Quantity Buttons */}
                       <div className="flex items-center gap-5 px-4">
@@ -142,7 +142,7 @@ const Cart = () => {
                 </div>
     
                 {/* Checkout Section */}
-                <div className="bg-white p-4 rounded-lg shadow-lg">
+                <div className=" p-4 rounded-lg ">
                   <h2 className="text-lg font-semibold mb-3">Order Summary</h2>
                   <div className="flex justify-between text-gray-600">
                     <span>Subtotal</span>

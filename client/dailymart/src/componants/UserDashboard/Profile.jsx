@@ -118,111 +118,125 @@ const Profile = () => {
       </button>
     
       <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        className="fixed inset-0 flex items-center justify-center z-100"
-        overlayClassName="fixed inset-0  bg-black opacity-90 z-100"
-        contentLabel=" User Information  Panel"
-      >
-        <div>
-          <IoIosCloseCircle
-            onClick={closeModal}
-            size={30}
-            className="cursor-pointer text-2xl text-red-500 absolute top-2 right-2"
-          />
-        <div className="space-y-4 grid sm:grid-cols-2 gap-5 bg-light p-5 rounded-2xl ">
-          <div>
-            <label className="block font-medium">Name</label>
-            <input
-              type="text"
-              name="name"
-              value={userData.name}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md "
-            />
-          </div>
+  isOpen={modalIsOpen}
+  onRequestClose={closeModal}
+  className="bg-white shadow-2xl p-8 rounded-2xl max-w-lg w-full mx-auto my-20 relative"
+  overlayClassName="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
+  contentLabel="User Information Panel"
+>
+  {/* Close Icon */}
+  <IoIosCloseCircle
+    onClick={closeModal}
+    size={36}
+    className="cursor-pointer text-primary absolute top-3 right-3 hover:scale-110 transition"
+  />
 
-          <div>
-            <label className="block font-medium">Email</label>
-            <input
-              type="email"
-              name="email"
-              value={userData.email}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
+  {/* Title */}
+  <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+    User Information
+  </h2>
 
-          <div>
-            <label className="block font-medium">Phone</label>
-            <input
-              type="text"
-              name="phone"
-              value={userData.phone}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block font-medium">Division</label>
-            <input
-              type="text"
-              name="division"
-              value={userData.Division}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block font-medium">Districts</label>
-            <input
-              type="text"
-              name="districts"
-              value={userData.Districts}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block font-medium">Upzila</label>
-            <input
-              type="text"
-              name="upzila"
-              value={userData.Upzilla}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
-          <div>
-            <label className="block font-medium">Zip Code</label>
-            <input
-              type="text"
-              name="zip"
-              value={userData.Zip}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
+  {/* Form */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Name</label>
+      <input
+        type="text"
+        name="name"
+        value={userData.name}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
 
-          <div>
-            <label className="block font-medium">Address</label>
-            <textarea
-              name="address"
-              value={userData.Address}
-              onChange={handleChange}
-              className=" border px-3 py-2 rounded-md"
-            />
-          </div>
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Email</label>
+      <input
+        type="email"
+        name="email"
+        value={userData.email}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
 
-          <button
-            onClick={handleSave}
-            className=" bg-primary text-white py-2 rounded-md hover:bg-secondary cursor-pointer duration-300 transition-colors"
-          >
-            Save Profile
-          </button>
-        </div>
-        </div>
-      </Modal>
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Phone</label>
+      <input
+        type="text"
+        name="phone"
+        value={userData.phone}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Division</label>
+      <input
+        type="text"
+        name="division"
+        value={userData.Division}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">District</label>
+      <input
+        type="text"
+        name="districts"
+        value={userData.Districts}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Upazila</label>
+      <input
+        type="text"
+        name="upzila"
+        value={userData.Upzilla}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div>
+      <label className="block text-gray-700 mb-1 font-medium">Zip Code</label>
+      <input
+        type="text"
+        name="zip"
+        value={userData.Zip}
+        onChange={handleChange}
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      />
+    </div>
+
+    <div className="sm:col-span-2">
+      <label className="block text-gray-700 mb-1 font-medium">Address</label>
+      <textarea
+        name="address"
+        
+        value={userData.address}
+        onChange={handleChange}
+        rows="3"
+        className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+      ></textarea>
+    </div>
+  </div>
+
+  {/* Save Button */}
+  <button
+    onClick={handleSave}
+    className="mt-6 w-full bg-primary text-white py-2 rounded-lg hover:bg-secondary transition duration-300"
+  >
+    Save Profile
+  </button>
+</Modal>
+
     </div>
   );
 };

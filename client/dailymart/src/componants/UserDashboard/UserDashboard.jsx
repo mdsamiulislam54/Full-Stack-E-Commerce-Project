@@ -21,7 +21,7 @@ const login = useSelector((state)=>state.loginCheck.isLoggedIn)
 console.log(login)
   useEffect(()=>{
     if(token){
-      axios.get('https://dailymart.up.railway.app/api/users/protected-data',{
+      axios.get(import.meta.env.VITE_PROTECT_DATA_API,{
         headers:{
           Authorization: `Bearer ${token}`,
         },
@@ -54,12 +54,12 @@ const handleLogout = ()=>{
   return (
     <>
       {userData? (
-        <div>
+        <div >
           
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto border border-gray-200">
              <div className="grid sm:grid-cols-5  ">
-               <div className="sm:col-span-1 "><UserProfile user={user}/></div>
-               <div className="sm:col-span-4 "><UserContainer user={user} handleLogout={handleLogout}/>
+               <div className="sm:col-span-1 "><UserProfile user={user}  handleLogout={handleLogout}/></div>
+               <div className="sm:col-span-4 "><UserContainer user={user}/>
                
                </div>
              </div>

@@ -46,12 +46,7 @@ const UserContainer = ({ handleLogout }) => {
           >
             Dashboard
           </Link>
-          <button
-            onClick={() => handleLogout()}
-            className="text-xl text-primary underline cursor-pointer hover:text-secondary  duration-300 transition-all"
-          >
-            Logout
-          </button>
+        
         </nav>
         <Suspense fallback={'loading'}>
         <div>{renderComponent()}</div>

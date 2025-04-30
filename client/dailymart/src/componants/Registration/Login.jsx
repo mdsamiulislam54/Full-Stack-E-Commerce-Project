@@ -41,7 +41,7 @@ const Login = () => {
       try {
         // Sending POST request to the API
         const response = await axios.post(
-          "https://dailymart.up.railway.app/api/users/login",
+          import.meta.env.VITE_LOGIN_API,
           {
             email: email,
             password: password,
@@ -63,7 +63,7 @@ const Login = () => {
           const token = localStorage.getItem("token");
 
           const userData = await axios.get(
-            "https://dailymart.up.railway.app/api/users/protected-data",
+            import.meta.env.VITE_PROTECT_DATA_API,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

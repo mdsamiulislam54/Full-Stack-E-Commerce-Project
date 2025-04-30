@@ -5,12 +5,11 @@ import { Link } from "react-router-dom";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { setActiveComponent } from "../../redux/features/UiComponatsSlice";
 import { useDispatch } from "react-redux";
-useDispatch
-const UserProfile = ({ user }) => {
+useDispatch;
+const UserProfile = ({ user, handleLogout }) => {
   const input = useRef(null);
   const [image, setImage] = useState("");
-    const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     input.current.click();
@@ -36,10 +35,10 @@ const UserProfile = ({ user }) => {
     }
   }, []);
   return (
-    <div className="bg-gray-100 px-2 sm:border-b-0 border-b-2 border-gray-300 py-2 py-0">
+    <div className="bg-gray-100 px-2 sm:border-b-0 border-b-2 border-primary h-screen relative">
       <div>
         <div className="relative flex justify-center items-center object-contain mb-4">
-          <img className="w-50 h-50 rounded-full" src={image} alt="" />
+          <img className="w-30 h-30 rounded-full" src={image} alt="" />
           <input
             onChange={handleUploadImages}
             ref={input}
@@ -49,11 +48,11 @@ const UserProfile = ({ user }) => {
           <button
             onClick={handleClick}
             title="Change profile picture"
-            className="absolute sm:bottom-2 sm:right-10 bottom-0 right-28 bg-primary p-2 text-center rounded-full  cursor-pointer "
+            className="absolute sm:bottom-2 sm:right-20 bottom-4 right-24   text-center rounded-full  cursor-pointer "
           >
             <FaUserEdit
-              size={20}
-              color="white"
+              size={15}
+              color="red"
               className="hover:text-primary duration-300 transition-all"
             />
           </button>
@@ -69,16 +68,16 @@ const UserProfile = ({ user }) => {
         </p>
       </div>
 
-      <div className="border-t my-4 border-gray-400">
-        <nav>
+      <div className="border-t my-4 border-gray-400 ">
+        <nav >
           <ul className="flex flex-col gap-2 ">
             <li className="text-center ">
               <Link
-              onClick={()=>dispatch(setActiveComponent('profile'))}
+                onClick={() => dispatch(setActiveComponent("profile"))}
                 href="#"
                 className="text-lg font-medium hover:text-secondary transition-all duration-300 flex items-center justify-between gap-5 hover:ml-4 p-1  "
               >
-                 <span> Profile Overview</span>{" "}
+                <span className="text-sm my-2"> Profile Overview</span>{" "}
                 <span>
                   <IoIosArrowRoundForward size={20} />
                 </span>
@@ -86,37 +85,37 @@ const UserProfile = ({ user }) => {
             </li>
             <li className="text-center ">
               <Link
-                onClick={()=>dispatch(setActiveComponent('orders'))}
+                onClick={() => dispatch(setActiveComponent("orders"))}
                 href="#"
                 className="text-lg font-medium hover:text-secondary transition-all duration-300  flex items-center justify-between gap-5 hover:ml-4 p-1  "
               >
-                <span> My Orders</span>{" "}
+                <span className="text-sm ml-4"> My Orders</span>{" "}
                 <span>
                   <IoIosArrowRoundForward size={20} />
                 </span>
               </Link>
             </li>
-          
+
             <li className="text-center  ">
               <Link
-              onClick={()=>dispatch(setActiveComponent('whishlist'))}
+                onClick={() => dispatch(setActiveComponent("whishlist"))}
                 href="#"
                 className="text-lg font-medium hover:text-secondary transition-all duration-300  flex items-center justify-between gap-5 hover:ml-4 p-1  "
               >
-                <span> My Wishlist</span>{" "}
+                <span className="text-sm ml-4"> My Wishlist</span>{" "}
                 <span>
                   <IoIosArrowRoundForward size={20} />
                 </span>
               </Link>
             </li>
-         
+
             <li className="text-center  ">
               <Link
-              onClick={()=>dispatch(setActiveComponent('cart'))}
+                onClick={() => dispatch(setActiveComponent("cart"))}
                 href="#"
                 className="text-lg font-medium hover:text-secondary transition-all duration-300  flex items-center justify-between gap-5 hover:ml-4 p-1 "
               >
-                <span> My Cart List</span>{" "}
+                <span className="text-sm ml-4"> My Cart List</span>{" "}
                 <span>
                   <IoIosArrowRoundForward size={20} />
                 </span>
@@ -124,16 +123,23 @@ const UserProfile = ({ user }) => {
             </li>
             <li className="text-center ">
               <Link
-              onClick={()=>dispatch(setActiveComponent('Settings'))}
+                onClick={() => dispatch(setActiveComponent("Settings"))}
                 href="#"
                 className="text-lg font-medium hover:text-secondary transition-all duration-300  flex items-center justify-between gap-5 hover:ml-4 p-1   "
               >
-                <span> Settings</span>{" "}
+                <span className="text-sm ml-4"> Settings</span>{" "}
                 <span>
                   <IoIosArrowRoundForward size={20} />
                 </span>
               </Link>
             </li>
+
+            <button
+              onClick={() => handleLogout()}
+              className="text-sm  cursor-pointer hover:text-secondary  duration-300 transition-all w-full absolute bottom-0 left-0 bg-primary mb-1 text-white py-2 font-bold "
+            >
+              Logout
+            </button>
           </ul>
         </nav>
       </div>
