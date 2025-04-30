@@ -88,7 +88,7 @@ DailyMart is a complete e-commerce solution where users can register, login, bro
 
 ---
 
-## 📦 Installation & Setup
+## 📦 Installation & Setup this project
 
 **Clone the repository:**  
 
