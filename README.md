@@ -79,7 +79,7 @@ DailyMart is a complete e-commerce solution where users can register, login, bro
 
 ## 📸 Screenshots
 
-[Website](./client/dailymart/src/assets/webImg.png)
+[Website](./client/dailymart/src/assets/weImg.png)
 [dashboard](./client/dailymart/src/assets/dashboard.png)
 [blogs](./client/dailymart/src/assets/blogs.png)
 [products](./client/dailymart/src/assets/product.png)
